@@ -7,6 +7,7 @@ import { JobPosterModel } from './model/JobPosterModel';
 import {ApplicationsModel} from './model/ApplicationsModel';
 import {EducationModel} from './model/EducationModel';
 import {UserModel} from './model/UserModel';
+import { WorkExpModel } from './model/WorkExpModel';
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -19,6 +20,7 @@ class App {
   public Applications:ApplicationsModel;
   public Educations:EducationModel;
   public Users:UserModel;
+  public workExp:WorkExpModel;
 
   //Run configuration methods on the Express instance.
   constructor() {
@@ -31,6 +33,7 @@ class App {
     this.Applications=new ApplicationsModel();
     this.Educations = new EducationModel();
     this.Users = new UserModel();
+    this.workExp = new WorkExpModel();
   }
 
   // Configure Express middleware.
@@ -204,6 +207,17 @@ router.get('/app/education/jobSeeker/:jobSeekerId', (req, res) => {
   this.Educations.retrieveEducationDetails(res, {jobSeekerId: id});
 });
 
+//get work exp. list
+router.get('/app/workexp/', (req, res) => {
+  console.log('Query All list');
+  this.workExp.retrieveAllWorkExp(res);
+});
+
+//get count of work exp
+router.get('/app/workexpcount', (req, res) => {
+  console.log('Query the number of list elements in db',res);
+  this.workExp.retrieveWorkExpCount(res);
+});
 
     this.expressApp.use('/', router);
     this.expressApp.use('/app/json/', express.static(__dirname+'/app/json'));
