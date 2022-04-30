@@ -19,10 +19,10 @@ class ApplicationsModel {
     public createSchema(): void {
         this.schema = new Mongoose.Schema(
             {
-                jobSeekerId: Number,
+                jobId: Number,
                 appplications: [
                     {
-                        jobId: Number,
+                        jobSeekerId: Number,
                         applicationId: Number,
                         expectedSalary: String,
                         resume:String,
@@ -45,6 +45,19 @@ class ApplicationsModel {
         });
     }
 
+    public retrieveApplicationsOfSeeker(response:any, filter:Object) {
+        var query = this.model.find(filter);
+        query.exec( (err, itemArray) => {
+            response.json(itemArray);
+        });
+    }
+    public retrieveAllApplications(response:any): any {
+        var query = this.model.find({});
+        query.exec( (err, itemArray) => {
+            response.json(itemArray) ;
+        });
+    }
+   
   
 
 }

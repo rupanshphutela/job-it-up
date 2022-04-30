@@ -12,10 +12,10 @@ var ApplicationsModel = /** @class */ (function () {
     }
     ApplicationsModel.prototype.createSchema = function () {
         this.schema = new Mongoose.Schema({
-            jobSeekerId: Number,
+            jobId: Number,
             appplications: [
                 {
-                    jobId: Number,
+                    jobSeekerId: Number,
                     applicationId: Number,
                     expectedSalary: String,
                     resume: String,
@@ -30,6 +30,18 @@ var ApplicationsModel = /** @class */ (function () {
     };
     ApplicationsModel.prototype.retrieveApplicationDetails = function (response, filter) {
         var query = this.model.findOne(filter);
+        query.exec(function (err, itemArray) {
+            response.json(itemArray);
+        });
+    };
+    ApplicationsModel.prototype.retrieveApplicationsOfSeeker = function (response, filter) {
+        var query = this.model.find(filter);
+        query.exec(function (err, itemArray) {
+            response.json(itemArray);
+        });
+    };
+    ApplicationsModel.prototype.retrieveAllApplications = function (response) {
+        var query = this.model.find({});
         query.exec(function (err, itemArray) {
             response.json(itemArray);
         });

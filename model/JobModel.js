@@ -14,8 +14,8 @@ var JobModel = /** @class */ (function () {
         this.schema = new Mongoose.Schema({
             title: String,
             skills: [String],
-            jobId: String,
-            jobPosterId: String,
+            jobId: Number,
+            jobPosterId: Number,
             location: String,
             description: String,
             salary: String,
@@ -36,6 +36,7 @@ var JobModel = /** @class */ (function () {
     };
     JobModel.prototype.retrieveJobDetails = function (response, filter) {
         var query = this.model.findOne(filter);
+        console.log('Query  ' + query);
         query.exec(function (err, itemArray) {
             response.json(itemArray);
         });

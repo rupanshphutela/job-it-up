@@ -326,10 +326,10 @@ applicantsCollection = db.getCollection("applications")
 applicantsCollection.remove({})
 applicantsCollection.insert(
 {
-	jobSeekerId : 1,
+	jobId : 1,
 	applications : [
 	 {
-	  jobId: 1,
+	  jobSeekerId: 1,
 	  applicationId: 1,
 	  expectedSalary: "25/hr",
 	  resume:"http:localhost:8080/resume/seeker/jsmith.pdf",
@@ -341,10 +341,10 @@ applicantsCollection.insert(
 )
 applicantsCollection.insert(
 {
-	jobSeekerId : 2,
+	jobId : 2,
 	applications : [
 	 {
-		jobId: 2,
+		jobSeekerId: 2,
 		applicationId: 2,		
 		expectedSalary: "20/hr",
 		resume:"http:localhost:8080/resume/seeker/cdecker.doc",
@@ -357,10 +357,10 @@ applicantsCollection.insert(
 )
 applicantsCollection.insert(
 {
-	jobSeekerId : 3,
+	jobId : 3,
 	applications : [
 	 {
-		jobId: 3,
+		jobSeekerId: 3,
 		applicationId: 3,
 		expectedSalary: "20/hr",
 		resume:"http:localhost:8080/resume/seeker/lwalsh.pdf",

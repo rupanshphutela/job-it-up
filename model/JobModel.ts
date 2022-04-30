@@ -21,8 +21,8 @@ class JobModel {
             {
                 title: String,
                 skills: [String],
-                jobId: String,
-                jobPosterId: String,
+                jobId: Number,
+                jobPosterId: Number,
                 location: String,
                 description: String,
                 salary: String,
@@ -46,6 +46,7 @@ class JobModel {
     }
     public retrieveJobDetails(response:any, filter:Object) {
         var query = this.model.findOne(filter);
+        console.log('Query  ' + query);
         query.exec( (err, itemArray) => {
             response.json(itemArray);
         });

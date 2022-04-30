@@ -4,6 +4,7 @@ import {JobModel} from './model/JobModel';
 import * as crypto from 'crypto';
 import { JobSeekerModel } from './model/JobSeekerModel';
 import { JobPosterModel } from './model/JobPosterModel';
+import {ApplicationsModel} from './model/ApplicationsModel';
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -13,6 +14,7 @@ class App {
   public Jobs:JobModel;
   public JobSeekers:JobSeekerModel;
   public JobPosters:JobPosterModel;
+  public Applications:ApplicationsModel;
 
   //Run configuration methods on the Express instance.
   constructor() {
@@ -22,6 +24,7 @@ class App {
     this.Jobs = new JobModel();
     this.JobSeekers = new JobSeekerModel();
     this.JobPosters = new JobPosterModel();
+    this.Applications=new ApplicationsModel();
   }
 
   // Configure Express middleware.
@@ -108,7 +111,45 @@ class App {
   console.log('Query Single Job Poster with id: ' + id);
   this.JobPosters.retrieveJobPosterDetails(res, {jobPosterId: id});
   });
+//get all jobs posted by job poster
+router.get('/app/job/jobPoster/:jobPosterId', (req, res) => {
+  var id = req.params.jobPosterId;
+  console.log('Query applications of job poster with id: ' + id);
+  this.Jobs.retrieveJobDetails(res, {jobPosterId: id});
+});
 
+//get all applications
+router.get('/app/applications/', (req, res) => {
+  console.log('Query All Applications');
+  this.Applications.retrieveAllApplications(res);
+});
+
+
+//create a new application
+router.post('/app/application/', (req, res) => {
+  const id = crypto.randomBytes(16).toString("hex");
+  console.log(req.body);
+    var jsonObj = req.body;
+    jsonObj.applicationId = id;
+    this.Applications.model.create(jsonObj, (err) => {
+        if (err) {
+            console.log('object creation failed');
+        }
+    });
+    res.send('{"id":"' + id + '"}');
+});
+//get applications for a job 
+router.get('/app/application/job/:jobId', (req, res) => {
+  var id = req.params.jobId;
+  console.log('Query applications for job  with id: ' + id);
+  this.Applications.retrieveApplicationDetails(res, {jobId: id});
+});
+//get a single application
+router.get('/app/application/:applicationId', (req, res) => {
+  var id = req.params.applicationId;
+  console.log('Query Single application with id: ' + id);
+  this.Applications.retrieveApplicationDetails(res, {applicationId: id});
+});
 
     this.expressApp.use('/', router);
     this.expressApp.use('/app/json/', express.static(__dirname+'/app/json'));

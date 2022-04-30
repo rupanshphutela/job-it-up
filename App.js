@@ -7,6 +7,7 @@ var JobModel_1 = require("./model/JobModel");
 var crypto = require("crypto");
 var JobSeekerModel_1 = require("./model/JobSeekerModel");
 var JobPosterModel_1 = require("./model/JobPosterModel");
+var ApplicationsModel_1 = require("./model/ApplicationsModel");
 // Creates and configures an ExpressJS web server.
 var App = /** @class */ (function () {
     //Run configuration methods on the Express instance.
@@ -17,6 +18,7 @@ var App = /** @class */ (function () {
         this.Jobs = new JobModel_1.JobModel();
         this.JobSeekers = new JobSeekerModel_1.JobSeekerModel();
         this.JobPosters = new JobPosterModel_1.JobPosterModel();
+        this.Applications = new ApplicationsModel_1.ApplicationsModel();
     }
     // Configure Express middleware.
     App.prototype.middleware = function () {
@@ -92,6 +94,42 @@ var App = /** @class */ (function () {
             var id = req.params.jobPosterId;
             console.log('Query Single Job Poster with id: ' + id);
             _this.JobPosters.retrieveJobPosterDetails(res, { jobPosterId: id });
+        });
+        //get all jobs posted by job poster
+        router.get('/app/job/jobPoster/:jobPosterId', function (req, res) {
+            var id = req.params.jobPosterId;
+            console.log('Query applications of job poster with id: ' + id);
+            _this.Jobs.retrieveJobDetails(res, { jobPosterId: id });
+        });
+        //get all applications
+        router.get('/app/applications/', function (req, res) {
+            console.log('Query All Applications');
+            _this.Applications.retrieveAllApplications(res);
+        });
+        //create a new application
+        router.post('/app/application/', function (req, res) {
+            var id = crypto.randomBytes(16).toString("hex");
+            console.log(req.body);
+            var jsonObj = req.body;
+            jsonObj.applicationId = id;
+            _this.Applications.model.create(jsonObj, function (err) {
+                if (err) {
+                    console.log('object creation failed');
+                }
+            });
+            res.send('{"id":"' + id + '"}');
+        });
+        //get applications for a job 
+        router.get('/app/application/job/:jobId', function (req, res) {
+            var id = req.params.jobId;
+            console.log('Query applications for job  with id: ' + id);
+            _this.Applications.retrieveApplicationDetails(res, { jobId: id });
+        });
+        //get a single application
+        router.get('/app/application/:applicationId', function (req, res) {
+            var id = req.params.applicationId;
+            console.log('Query Single application with id: ' + id);
+            _this.Applications.retrieveApplicationDetails(res, { applicationId: id });
         });
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
