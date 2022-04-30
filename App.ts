@@ -54,9 +54,9 @@ class App {
   });
 
   router.get('/app/job/:jobId', (req, res) => {
-    var id = req.params.listId;
+    var id = req.params.jobId;
     console.log('Query Single job with id: ' + id);
-    this.Jobs.retrieveJobDetails(res, {listId: id});
+    this.Jobs.retrieveJobDetails(res, {jobId: id});
 });
 
   /*Job Seeker*/
@@ -69,7 +69,7 @@ class App {
   const id = crypto.randomBytes(16).toString("hex");
   console.log(req.body);
     var jsonObj = req.body;
-    jsonObj.jobId = id;
+    jsonObj.jobSeekerId = id;
     this.JobSeekers.model.create(jsonObj, (err) => {
         if (err) {
             console.log('object creation failed');
@@ -79,9 +79,9 @@ class App {
   });
 
   router.get('/app/jobSeeker/:jobSeekerId', (req, res) => {
-  var id = req.params.listId;
+  var id = req.params.jobSeekerId;
   console.log('Query Single Job Seeker with id: ' + id);
-  this.JobSeekers.retrieveJobSeekerDetails(res, {listId: id});
+  this.JobSeekers.retrieveJobSeekerDetails(res, {jobSeekerId: id});
   });
 
   /*Job Poster*/
@@ -94,7 +94,7 @@ class App {
   const id = crypto.randomBytes(16).toString("hex");
   console.log(req.body);
     var jsonObj = req.body;
-    jsonObj.jobId = id;
+    jsonObj.jobPosterId = id;
     this.JobPosters.model.create(jsonObj, (err) => {
         if (err) {
             console.log('object creation failed');
@@ -104,9 +104,9 @@ class App {
   });
 
   router.get('/app/jobposter/:jobPosterId', (req, res) => {
-  var id = req.params.listId;
+  var id = req.params.jobPosterId;
   console.log('Query Single Job Poster with id: ' + id);
-  this.JobPosters.retrieveJobPosterDetails(res, {listId: id});
+  this.JobPosters.retrieveJobPosterDetails(res, {jobPosterId: id});
   });
 
 

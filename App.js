@@ -45,9 +45,9 @@ var App = /** @class */ (function () {
             res.send('{"id":"' + id + '"}');
         });
         router.get('/app/job/:jobId', function (req, res) {
-            var id = req.params.listId;
+            var id = req.params.jobId;
             console.log('Query Single job with id: ' + id);
-            _this.Jobs.retrieveJobDetails(res, { listId: id });
+            _this.Jobs.retrieveJobDetails(res, { jobId: id });
         });
         /*Job Seeker*/
         router.get('/app/jobseeker/', function (req, res) {
@@ -58,7 +58,7 @@ var App = /** @class */ (function () {
             var id = crypto.randomBytes(16).toString("hex");
             console.log(req.body);
             var jsonObj = req.body;
-            jsonObj.jobId = id;
+            jsonObj.jobSeekerId = id;
             _this.JobSeekers.model.create(jsonObj, function (err) {
                 if (err) {
                     console.log('object creation failed');
@@ -67,9 +67,9 @@ var App = /** @class */ (function () {
             res.send('{"id":"' + id + '"}');
         });
         router.get('/app/jobSeeker/:jobSeekerId', function (req, res) {
-            var id = req.params.listId;
+            var id = req.params.jobSeekerId;
             console.log('Query Single Job Seeker with id: ' + id);
-            _this.JobSeekers.retrieveJobSeekerDetails(res, { listId: id });
+            _this.JobSeekers.retrieveJobSeekerDetails(res, { jobSeekerId: id });
         });
         /*Job Poster*/
         router.get('/app/jobposter/', function (req, res) {
@@ -80,7 +80,7 @@ var App = /** @class */ (function () {
             var id = crypto.randomBytes(16).toString("hex");
             console.log(req.body);
             var jsonObj = req.body;
-            jsonObj.jobId = id;
+            jsonObj.jobPosterId = id;
             _this.JobPosters.model.create(jsonObj, function (err) {
                 if (err) {
                     console.log('object creation failed');
@@ -89,9 +89,9 @@ var App = /** @class */ (function () {
             res.send('{"id":"' + id + '"}');
         });
         router.get('/app/jobposter/:jobPosterId', function (req, res) {
-            var id = req.params.listId;
+            var id = req.params.jobPosterId;
             console.log('Query Single Job Poster with id: ' + id);
-            _this.JobPosters.retrieveJobPosterDetails(res, { listId: id });
+            _this.JobPosters.retrieveJobPosterDetails(res, { jobPosterId: id });
         });
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
