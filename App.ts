@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import {JobModel} from './model/JobModel';
 import * as crypto from 'crypto';
+import { JobSeekerModel } from './model/JobSeekerModel';
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -9,6 +10,7 @@ class App {
   // ref to Express instance
   public expressApp: express.Application;
   public Jobs:JobModel;
+  public JobSeekers:JobSeekerModel
 
   //Run configuration methods on the Express instance.
   constructor() {
@@ -16,6 +18,7 @@ class App {
     this.middleware();
     this.routes();
     this.Jobs = new JobModel();
+    this.JobSeekers = new JobSeekerModel();
   }
 
   // Configure Express middleware.
@@ -50,6 +53,35 @@ class App {
     console.log('Query Single job with id: ' + id);
     this.Jobs.retrieveJobDetails(res, {listId: id});
 });
+
+//Rupansh start
+  router.get('/app/jobseeker/', (req, res) => {
+    console.log('Query All Job Seekers');
+    this.JobSeekers.retrieveAllJobSeekers(res);
+  });
+
+  router.post('/app/jobseeker/', (req, res) => {
+  const id = crypto.randomBytes(16).toString("hex");
+  console.log(req.body);
+    var jsonObj = req.body;
+    jsonObj.jobId = id;
+    this.JobSeekers.model.create(jsonObj, (err) => {
+        if (err) {
+            console.log('object creation failed');
+        }
+    });
+    res.send('{"id":"' + id + '"}');
+  });
+
+  router.get('/app/jobSeeker/:jobSeekerId', (req, res) => {
+  var id = req.params.listId;
+  console.log('Query Single job with id: ' + id);
+  this.JobSeekers.retrieveJobSeekerDetails(res, {listId: id});
+  });
+
+// Rupansh end
+
+
 
     this.expressApp.use('/', router);
     this.expressApp.use('/app/json/', express.static(__dirname+'/app/json'));

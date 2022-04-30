@@ -5,6 +5,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var JobModel_1 = require("./model/JobModel");
 var crypto = require("crypto");
+var JobSeekerModel_1 = require("./model/JobSeekerModel");
 // Creates and configures an ExpressJS web server.
 var App = /** @class */ (function () {
     //Run configuration methods on the Express instance.
@@ -13,6 +14,7 @@ var App = /** @class */ (function () {
         this.middleware();
         this.routes();
         this.Jobs = new JobModel_1.JobModel();
+        this.JobSeekers = new JobSeekerModel_1.JobSeekerModel();
     }
     // Configure Express middleware.
     App.prototype.middleware = function () {
@@ -44,6 +46,29 @@ var App = /** @class */ (function () {
             console.log('Query Single job with id: ' + id);
             _this.Jobs.retrieveJobDetails(res, { listId: id });
         });
+        //Rupansh start
+        router.get('/app/jobseeker/', function (req, res) {
+            console.log('Query All Job Seekers');
+            _this.JobSeekers.retrieveAllJobSeekers(res);
+        });
+        router.post('/app/jobseeker/', function (req, res) {
+            var id = crypto.randomBytes(16).toString("hex");
+            console.log(req.body);
+            var jsonObj = req.body;
+            jsonObj.jobId = id;
+            _this.JobSeekers.model.create(jsonObj, function (err) {
+                if (err) {
+                    console.log('object creation failed');
+                }
+            });
+            res.send('{"id":"' + id + '"}');
+        });
+        router.get('/app/jobSeeker/:jobSeekerId', function (req, res) {
+            var id = req.params.listId;
+            console.log('Query Single job with id: ' + id);
+            _this.JobSeekers.retrieveJobSeekerDetails(res, { listId: id });
+        });
+        // Rupansh end
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
         this.expressApp.use('/images', express.static(__dirname + '/img'));
