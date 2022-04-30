@@ -6,6 +6,7 @@ var bodyParser = require("body-parser");
 var JobModel_1 = require("./model/JobModel");
 var crypto = require("crypto");
 var JobSeekerModel_1 = require("./model/JobSeekerModel");
+var JobPosterModel_1 = require("./model/JobPosterModel");
 // Creates and configures an ExpressJS web server.
 var App = /** @class */ (function () {
     //Run configuration methods on the Express instance.
@@ -15,6 +16,7 @@ var App = /** @class */ (function () {
         this.routes();
         this.Jobs = new JobModel_1.JobModel();
         this.JobSeekers = new JobSeekerModel_1.JobSeekerModel();
+        this.JobPosters = new JobPosterModel_1.JobPosterModel();
     }
     // Configure Express middleware.
     App.prototype.middleware = function () {
@@ -25,6 +27,7 @@ var App = /** @class */ (function () {
     App.prototype.routes = function () {
         var _this = this;
         var router = express.Router();
+        /*Job*/
         router.get('/app/job/', function (req, res) {
             console.log('Query All Jobs');
             _this.Jobs.retrieveAllJobs(res);
@@ -46,7 +49,7 @@ var App = /** @class */ (function () {
             console.log('Query Single job with id: ' + id);
             _this.Jobs.retrieveJobDetails(res, { listId: id });
         });
-        //Rupansh start
+        /*Job Seeker*/
         router.get('/app/jobseeker/', function (req, res) {
             console.log('Query All Job Seekers');
             _this.JobSeekers.retrieveAllJobSeekers(res);
@@ -65,10 +68,31 @@ var App = /** @class */ (function () {
         });
         router.get('/app/jobSeeker/:jobSeekerId', function (req, res) {
             var id = req.params.listId;
-            console.log('Query Single job with id: ' + id);
+            console.log('Query Single Job Seeker with id: ' + id);
             _this.JobSeekers.retrieveJobSeekerDetails(res, { listId: id });
         });
-        // Rupansh end
+        /*Job Poster*/
+        router.get('/app/jobposter/', function (req, res) {
+            console.log('Query All Job Posters');
+            _this.JobPosters.retrieveAllJobPosters(res);
+        });
+        router.post('/app/jobposter/', function (req, res) {
+            var id = crypto.randomBytes(16).toString("hex");
+            console.log(req.body);
+            var jsonObj = req.body;
+            jsonObj.jobId = id;
+            _this.JobPosters.model.create(jsonObj, function (err) {
+                if (err) {
+                    console.log('object creation failed');
+                }
+            });
+            res.send('{"id":"' + id + '"}');
+        });
+        router.get('/app/jobposter/:jobPosterId', function (req, res) {
+            var id = req.params.listId;
+            console.log('Query Single Job Poster with id: ' + id);
+            _this.JobPosters.retrieveJobPosterDetails(res, { listId: id });
+        });
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
         this.expressApp.use('/images', express.static(__dirname + '/img'));

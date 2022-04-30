@@ -3,6 +3,7 @@ import * as bodyParser from 'body-parser';
 import {JobModel} from './model/JobModel';
 import * as crypto from 'crypto';
 import { JobSeekerModel } from './model/JobSeekerModel';
+import { JobPosterModel } from './model/JobPosterModel';
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -10,7 +11,8 @@ class App {
   // ref to Express instance
   public expressApp: express.Application;
   public Jobs:JobModel;
-  public JobSeekers:JobSeekerModel
+  public JobSeekers:JobSeekerModel;
+  public JobPosters:JobPosterModel;
 
   //Run configuration methods on the Express instance.
   constructor() {
@@ -19,6 +21,7 @@ class App {
     this.routes();
     this.Jobs = new JobModel();
     this.JobSeekers = new JobSeekerModel();
+    this.JobPosters = new JobPosterModel();
   }
 
   // Configure Express middleware.
@@ -30,9 +33,11 @@ class App {
   // Configure API endpoints.
   private routes(): void {
     let router = express.Router();
-    router.get('/app/job/', (req, res) => {
-      console.log('Query All Jobs');
-      this.Jobs.retrieveAllJobs(res);
+
+  /*Job*/
+  router.get('/app/job/', (req, res) => {
+    console.log('Query All Jobs');
+    this.Jobs.retrieveAllJobs(res);
   });
 
   router.post('/app/job/', (req, res) => {
@@ -54,7 +59,7 @@ class App {
     this.Jobs.retrieveJobDetails(res, {listId: id});
 });
 
-//Rupansh start
+  /*Job Seeker*/
   router.get('/app/jobseeker/', (req, res) => {
     console.log('Query All Job Seekers');
     this.JobSeekers.retrieveAllJobSeekers(res);
@@ -75,12 +80,34 @@ class App {
 
   router.get('/app/jobSeeker/:jobSeekerId', (req, res) => {
   var id = req.params.listId;
-  console.log('Query Single job with id: ' + id);
+  console.log('Query Single Job Seeker with id: ' + id);
   this.JobSeekers.retrieveJobSeekerDetails(res, {listId: id});
   });
 
-// Rupansh end
+  /*Job Poster*/
+  router.get('/app/jobposter/', (req, res) => {
+    console.log('Query All Job Posters');
+    this.JobPosters.retrieveAllJobPosters(res);
+  });
 
+  router.post('/app/jobposter/', (req, res) => {
+  const id = crypto.randomBytes(16).toString("hex");
+  console.log(req.body);
+    var jsonObj = req.body;
+    jsonObj.jobId = id;
+    this.JobPosters.model.create(jsonObj, (err) => {
+        if (err) {
+            console.log('object creation failed');
+        }
+    });
+    res.send('{"id":"' + id + '"}');
+  });
+
+  router.get('/app/jobposter/:jobPosterId', (req, res) => {
+  var id = req.params.listId;
+  console.log('Query Single Job Poster with id: ' + id);
+  this.JobPosters.retrieveJobPosterDetails(res, {listId: id});
+  });
 
 
     this.expressApp.use('/', router);
