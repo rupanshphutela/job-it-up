@@ -1,12 +1,14 @@
 import Mongoose = require("mongoose");
 import {DataAccess} from './../DataAccess';
 import {IEducationModel} from '../interfaces/IEducationModel';
+import { STATUS_CODES } from "http";
 
 let mongooseConnection = DataAccess.mongooseConnection;
 let mongooseObj = DataAccess.mongooseInstance;
 
 class EducationModel {
     public schema:any;
+    public innerSchema:any;
     public model:any;
 
     public constructor() {
@@ -18,10 +20,15 @@ class EducationModel {
         this.schema = new Mongoose.Schema(
             {
                 jobSeekerId: Number,
-                universityName: String,
-                degree: String,
-                fromDate: String,
-                toDate: String,
+                education: [
+                    {
+                        educationId: Number,
+                        universityName: String,
+                        degree: String,
+                        fromDate: String,
+                        toDate: String,
+                    }
+                ]   
             }, {collection: 'education'}
         );
     }

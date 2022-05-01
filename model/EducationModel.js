@@ -13,10 +13,15 @@ var EducationModel = /** @class */ (function () {
     EducationModel.prototype.createSchema = function () {
         this.schema = new Mongoose.Schema({
             jobSeekerId: Number,
-            universityName: String,
-            degree: String,
-            fromDate: String,
-            toDate: String
+            education: [
+                {
+                    educationId: Number,
+                    universityName: String,
+                    degree: String,
+                    fromDate: String,
+                    toDate: String
+                }
+            ]
         }, { collection: 'education' });
     };
     EducationModel.prototype.createModel = function () {
