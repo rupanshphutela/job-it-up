@@ -67,3 +67,8 @@
 .row{
     width:100%
 }
+
+.panel.tab-pane {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
