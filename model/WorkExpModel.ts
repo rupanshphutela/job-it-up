@@ -1,10 +1,10 @@
 import Mongoose = require("mongoose");
 import {DataAccess} from '../DataAccess';
-import {IWorkExpModel} from '../interfaces/IWorkExpModel';
+import {IWorkExperienceModel} from '../interfaces/IWorkExpModel';
 
 let mongooseConnection = DataAccess.mongooseConnection;
 
-class WorkExpModel {
+class WorkExperienceModel {
     public schema:any;
     public model:any;
 
@@ -26,7 +26,7 @@ class WorkExpModel {
     }
 
     public createModel(): void {
-        this.model = mongooseConnection.model<IWorkExpModel>("WorkExps", this.schema);
+        this.model = mongooseConnection.model<IWorkExperienceModel>("WorkExps", this.schema);
     }
 
     public retrieveAllWorkExp(response:any): any {
@@ -36,14 +36,12 @@ class WorkExpModel {
         });
     }
 
-    public retrieveWorkExpCount(response:any): any {
-        console.log("retrieve Work Exp Count ...");
-        var query = this.model.estimatedDocumentCount();
-        query.exec( (err, numberOfLists) => {
-            console.log("Work Experience: " + numberOfLists);
-            response.json(numberOfLists) ;
+    public retrieveWorkExpDetailsById(response:any, filter:Object) {
+        var query = this.model.findOne(filter);
+        query.exec( (err, itemArray) => {
+            response.json(itemArray);
         });
     }
 
 }
-export {WorkExpModel};
+export {WorkExperienceModel};

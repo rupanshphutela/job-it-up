@@ -7,7 +7,7 @@ import { JobPosterModel } from './model/JobPosterModel';
 import {ApplicationsModel} from './model/ApplicationsModel';
 import {EducationModel} from './model/EducationModel';
 import {UserModel} from './model/UserModel';
-import { WorkExpModel } from './model/WorkExpModel';
+import { WorkExperienceModel } from './model/WorkExpModel';
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -20,7 +20,7 @@ class App {
   public Applications:ApplicationsModel;
   public Educations:EducationModel;
   public Users:UserModel;
-  public workExp:WorkExpModel;
+  public WorkExperience:WorkExperienceModel;
 
   //Run configuration methods on the Express instance.
   constructor() {
@@ -33,7 +33,7 @@ class App {
     this.Applications=new ApplicationsModel();
     this.Educations = new EducationModel();
     this.Users = new UserModel();
-    this.workExp = new WorkExpModel();
+    this.WorkExperience = new WorkExperienceModel();
   }
 
   // Configure Express middleware.
@@ -208,16 +208,30 @@ router.get('/app/education/jobSeeker/:jobSeekerId', (req, res) => {
 });
 
 //get work exp. list
-router.get('/app/workexp/', (req, res) => {
+router.get('/app/workExp/', (req, res) => {
   console.log('Query All list');
-  this.workExp.retrieveAllWorkExp(res);
+  this.WorkExperience.retrieveAllWorkExp(res);
 });
 
-//get count of work exp
-router.get('/app/workexpcount', (req, res) => {
-  console.log('Query the number of list elements in db',res);
-  this.workExp.retrieveWorkExpCount(res);
+//get work exp for job seeker by id.
+router.get('/app/workExp/:jobSeekerId', (req, res) => {
+  var id = req.params.jobSeekerId;
+  this.WorkExperience.retrieveWorkExpDetailsById(res, {jobSeekerId: id});
 });
+
+//Create a new workExp.
+router.post('/app/workExp/', (req, res) => {
+  const id = crypto.randomBytes(16).toString("hex");
+  console.log(req.body);
+    var jsonObj = req.body;
+    jsonObj.workExp = id;
+    this.WorkExperience.model.create(jsonObj, (err) => {
+        if (err) {
+            console.log('object creation failed');
+        }
+    });
+    res.send('{"id":"' + id + '"}');
+  });
 
     this.expressApp.use('/', router);
     this.expressApp.use('/app/json/', express.static(__dirname+'/app/json'));
