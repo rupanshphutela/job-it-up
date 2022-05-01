@@ -1,0 +1,44 @@
+.a {
+    font-size: 36px;
+    font-family: "Gruppo", sans-serif;
+}
+
+.text-over-img {
+    position: absolute;
+    left: 16px;
+    margin-top: -35px;
+    font-weight: bold;
+    font-family: fantasy;
+    letter-spacing: .2rem;
+    color: rgb(255, 255, 255)
+}
+
+.font-style {
+    font-family: fantasy;
+    letter-spacing: .2rem;
+}
+
+.bg-dark {
+    background-color: black;
+}
+
+.text-white {
+    color: white;
+}
+
+.list-group{
+    max-height: 380px;
+    margin-bottom: 10px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    color: black;
+  }
+
+  .list-group-item-text{
+    color: black;
+  }
+
+  .navbar-nav > .active > a {
+    color: white;
+}
