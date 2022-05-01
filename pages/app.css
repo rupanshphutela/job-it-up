@@ -38,3 +38,20 @@
   .navbar-nav > .active > a {
     color: white;
 }
+
+.search-form{
+    background-image: url('https://uploads-ssl.webflow.com/624f6b40b18cb17821caecea/6251aea91cfcfa4e477e082d_3.jpg'); 
+    height: 300px; 
+    width:100%
+  
+}
+.search-box{
+    padding:0px; 
+    width:150px 
+}
+
+
+.row{
+
+    width:100%
+}
