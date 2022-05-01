@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="app.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
@@ -17,7 +18,7 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <!-- need to change below a tag with img for logo. -->
-                    <a class="navbar-brand font-style" style="font-size: xx-large; font-family: Changa One; font-weight:bold; color:black"  href="#">
+                    <a class="a"  href="#">
                         Job It Up
                     </a>
                 </div>
@@ -38,7 +39,7 @@
         <div class="row ml-1" style="margin-top: 20px">
             <img src="https://uploads-ssl.webflow.com/624f6b40b18cb17821caecea/6251aea91cfcfa4e477e082d_3.jpg"
                 width="100%" height="300px" style="position: relative; text-align: center;">
-            <div class="text-over-img font-style">
+            <div class="text-over-img">
             <h4>
                 Experience the new way to work..
             </h4>
@@ -48,7 +49,7 @@
         <div class="row ml-1" style="margin: 10px">
             <div class='col-lg-3'>
                 <ul class='list-group'>
-                  <li class="list-group-item">
+                  <li class="list-group-item active">
                     <div class="media-left">
                       
                   <img class="media-object" src="data:image/jpeg;base64,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" />
@@ -59,7 +60,7 @@
                      <p class="list-group-item-text" style="color:black;">Tucson,AZ</p>
                   </div>
                   </li>
-                  <li class="list-group-item active">
+                  <li class="list-group-item">
                     <div class="media-left">
                       <img class="media-object" src="data:image/png;base64,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" />
                     </div>
@@ -114,27 +115,46 @@
                 </ul>
               </div>
             <div class='col-lg-9 tab-content'>
-              <div class='panel panel-default tab-pane active' id='panel1'>
-                <div class='panel-body'>
-                  <div class='page-header'>
-                    <h3>The first panel <small>Posted on december 23 2015</small></h3>
-                  </div>
-                  <img class='featuredImg' src='resources/screenshot1.png'>
-                  <p>Another paragraph</p>
-                  <h4>This is a header</h4>
-                  <p>Paragraph to match this header</p>
-                </div>
-              </div>
-              <div class='panel panel-default tab-pane' id='panel2'>
-                <div class='panel-body'>
-                  <div class='page-header'>
-                    <h3>This is panel two <small>Posted on december 24 2015</small></h3>
-                  </div>
-                  <p>This is a paragraph for panel two</p>
-                  <h4>This is a sub header for panel two</h4>
-                  <p>This is content belonging to subheading of panel two</p>
-                </div>
-              </div>
+				<div class='col-lg-2'>
+				<div class="text-center" role="group">
+                      <img src="data:image/jpeg;base64,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" />
+                    <h5 class='list-group-item-text'>Protingent</h5>
+					<h5 class='list-group-item-text'>Tucson, AZ</h5>
+					<br>
+					<div class="text-center" role="group">
+                    <a class="btn btn-lg btn-primary" href="#" >Apply Now</a>
+                    </div>
+				</div>
+				</div>
+	            <div class='col-lg-10'>
+				<ul class='list-group'>
+					<h3><strong>Front End Developer</strong></h3>
+					<h4><strong>Salary</strong></h4>
+					<p>$25-30 per hour</p>
+					<h4><strong>Deadline</strong></h4>
+					<p>15th May 2022</p>
+					<h4><strong>Experience</strong></h4>
+					<p>3-4 years</p>
+					<h4><strong>Job Description</strong></h4>
+					<p>1.Assists in the distribution of all Quality Assurance practices, standards, methodologies and metrics<br>
+					2.Performs test executions and writes test scripts for complex integrated systems<br>
+					3.Performs regression testing on new software releases and reports findings<br>
+					4.Participates in the development and implementation of structured testing concepts, methodologies, and automated testing and support tools<br>
+					<br>
+					Job Qualifications:<br>
+					1.Proven quality assurance and project analysis experience<br>
+					2.Extensive JavaScript, Angular, web-services testing hands-on experience<br>
+					3.Experience with QA Automation tools: Protractor and Selenium<br>
+					4.Ability to perform white-box testing and write regression and automation scripts<br>
+					5.Must be able to code unit test cases and writing QA automation scripts<br>
+					6.Strong technical writing, presentation, training and demonstration<br>
+					<br>
+					About Protingent: 
+					<br>
+					Protingent is a niche provider of top Engineering and IT talent to Software, Electronics, Medical Device, Telecom and Aerospace companies nationwide. Protingent exists to make a positive impact and contribution to the lives of others as well as our community by providing relevant, rewarding and exciting work opportunities for our candidates
+					</p>
+				  </ul>
+				  </div>
             </div>
         </div>
     </div>
