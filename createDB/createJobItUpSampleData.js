@@ -143,28 +143,62 @@ educationCollection.remove({})
 educationCollection.insert(
 {
 	jobSeekerId: 1,
-	universityName: "Seattle University",
-	degree:"Masters in Computer Science",
-	fromDate:"08-16-2016",
-	toDate:"05-06-2018"
+	education: [
+		{
+			educationId: 1,
+			universityName: "Seattle University",
+			degree:"Masters in Computer Science",
+			fromDate:"08-16-2016",
+			toDate:"05-06-2018"
+		},
+		{
+			educationId: 2,
+			universityName: "Seattle University",
+			degree:"Bachelors in Computer Science",
+			fromDate:"08-16-2012",
+			toDate:"05-06-2016"
+		}
+
+	]
+	
 }
 )
 educationCollection.insert(
 {
 	jobSeekerId: 2,
-	universityName: "Columbia University",
-	degree:"Doctor Of Medicine",
-	fromDate:"08-16-2016",
-	toDate:"05-06-2020"
+	education: [
+		{
+			educationId: 1,
+			universityName: "Columbia University",
+			degree:"Doctor Of Medicine",
+			fromDate:"08-16-2016",
+			toDate:"05-06-2020"
+		},
+		{
+			educationId: 2,
+			universityName: "Columbia University",
+			degree:"Bachelors Of Medicine",
+			fromDate:"08-16-2012",
+			toDate:"05-06-2026"
+		}
+
+	]
+	
 }
 )
 educationCollection.insert(
 {
 	jobSeekerId: 3,
-	universityName: "Indiana University",
-	degree:"Bachelors in Mathematics",
-	fromDate:"08-16-2016",
-	toDate:"05-06-2020"
+	education: [
+		{
+			educationId: 1,
+			universityName: "Indiana University",
+			degree:"Bachelors in Mathematics",
+			fromDate:"08-16-2016",
+			toDate:"05-06-2020"
+		}
+	]
+	
 }
 )
 db.createCollection('work')
