@@ -21,6 +21,14 @@ interface IJobSeekerModel extends Mongoose.Document {
 		degree: string,
 		fromDate: string,
 		toDate: string
+    },
+    workExperience:
+    {
+        workExperienceId: string,
+        companyName: string,
+        role: string,
+        fromDate: string,
+        toDate: string,
     }
 }
 export {IJobSeekerModel};

@@ -32,6 +32,22 @@ jobSeekerCollection.insert(
 			fromDate:"08-16-2012",
 			toDate:"05-06-2016"
 		}
+	],
+	workExperience: [
+		{
+			workExperienceId: "1",
+			companyName: "Tim's Co-op.",
+			role: "Software Engineer",
+			fromDate: "06-27-2020",
+			toDate: "04-27-2021",
+		},
+		{
+			workExperienceId: "2",
+			companyName: "Web MD",
+			role: "Software Engineer",
+			fromDate: "06-27-2021",
+			toDate: "04-27-2022",
+		}
 	]
 }
 )
@@ -65,6 +81,15 @@ jobSeekerCollection.insert(
 			fromDate:"08-16-2012",
 			toDate:"05-06-2026"
 		}
+	],
+	workExperience: [
+		{
+			workExperienceId: "1",
+			companyName: "Sunrise Pvt. Ltd.",
+			role: "Dental Assistant",
+			fromDate: "12-27-2019",
+			toDate: "01-27-2022",
+		}
 	]
 }
 )
@@ -90,6 +115,15 @@ jobSeekerCollection.insert(
 			degree:"Bachelors in Mathematics",
 			fromDate:"08-16-2016",
 			toDate:"05-06-2020"
+		}
+	],
+	workExperience: [
+		{
+			workExperienceId: "1",
+			companyName: "Bellevue Coaching",
+			role: "Math Tutor",
+			fromDate: "11-29-2018",
+			toDate: "07-27-2020",
 		}
 	]
 }

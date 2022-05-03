@@ -6,7 +6,6 @@ import { JobSeekerModel } from './model/JobSeekerModel';
 import { JobPosterModel } from './model/JobPosterModel';
 import {ApplicationsModel} from './model/ApplicationsModel';
 import {UserModel} from './model/UserModel';
-import { WorkExperienceModel } from './model/WorkExpModel';
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -18,7 +17,6 @@ class App {
   public JobPosters:JobPosterModel;
   public Applications:ApplicationsModel;
   public Users:UserModel;
-  public WorkExperience:WorkExperienceModel;
 
   //Run configuration methods on the Express instance.
   constructor() {
@@ -30,7 +28,6 @@ class App {
     this.JobPosters = new JobPosterModel();
     this.Applications=new ApplicationsModel();
     this.Users = new UserModel();
-    this.WorkExperience = new WorkExperienceModel();
   }
 
   // Configure Express middleware.
@@ -176,32 +173,6 @@ router.post('/app/user/', (req, res) => {
     });
     res.send('{"id":"' + id + '"}');
 });
-
-//get work exp. list
-router.get('/app/workExp/', (req, res) => {
-  console.log('Query All list');
-  this.WorkExperience.retrieveAllWorkExp(res);
-});
-
-//get work exp for job seeker by id.
-router.get('/app/workExp/:jobSeekerId', (req, res) => {
-  var id = req.params.jobSeekerId;
-  this.WorkExperience.retrieveWorkExpDetailsById(res, {jobSeekerId: id});
-});
-
-//Create a new workExp.
-router.post('/app/workExp/', (req, res) => {
-  const id = crypto.randomBytes(16).toString("hex");
-  console.log(req.body);
-    var jsonObj = req.body;
-    jsonObj.workExp = id;
-    this.WorkExperience.model.create(jsonObj, (err) => {
-        if (err) {
-            console.log('object creation failed');
-        }
-    });
-    res.send('{"id":"' + id + '"}');
-  });
 
     this.expressApp.use('/', router);
     this.expressApp.use('/app/json/', express.static(__dirname+'/app/json'));

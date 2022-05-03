@@ -31,6 +31,13 @@ var JobSeekerModel = /** @class */ (function () {
                 degree: String,
                 fromDate: String,
                 toDate: String
+            },
+            workExperience: {
+                workExperienceId: String,
+                companyName: String,
+                role: String,
+                fromDate: String,
+                toDate: String
             }
         }, { collection: 'jobSeeker' });
     };
