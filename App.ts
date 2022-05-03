@@ -5,7 +5,6 @@ import * as crypto from 'crypto';
 import { JobSeekerModel } from './model/JobSeekerModel';
 import { JobPosterModel } from './model/JobPosterModel';
 import {ApplicationsModel} from './model/ApplicationsModel';
-import {EducationModel} from './model/EducationModel';
 import {UserModel} from './model/UserModel';
 import { WorkExperienceModel } from './model/WorkExpModel';
 
@@ -18,7 +17,6 @@ class App {
   public JobSeekers:JobSeekerModel;
   public JobPosters:JobPosterModel;
   public Applications:ApplicationsModel;
-  public Educations:EducationModel;
   public Users:UserModel;
   public WorkExperience:WorkExperienceModel;
 
@@ -31,7 +29,6 @@ class App {
     this.JobSeekers = new JobSeekerModel();
     this.JobPosters = new JobPosterModel();
     this.Applications=new ApplicationsModel();
-    this.Educations = new EducationModel();
     this.Users = new UserModel();
     this.WorkExperience = new WorkExperienceModel();
   }
@@ -178,33 +175,6 @@ router.post('/app/user/', (req, res) => {
         }
     });
     res.send('{"id":"' + id + '"}');
-});
-
-//Get list of educations
-router.get('/app/education/', (req, res) => {
-  console.log('Query All educations');
-  this.Educations.retrieveAllEducations(res);
-});
-
-//Create a new Education
-router.post('/app/education/', (req, res) => {
-const id = crypto.randomBytes(16).toString("hex");
-console.log(req.body);
-  var jsonObj = req.body;
-  jsonObj.educationId = id;
-  this.Educations.model.create(jsonObj, (err) => {
-      if (err) {
-          console.log('object creation failed');
-      }
-  });
-  res.send('{"id":"' + id + '"}');
-});
-
-//get education for job seeker 
-router.get('/app/education/jobSeeker/:jobSeekerId', (req, res) => {
-  var id = req.params.jobSeekerId;
-  console.log('Query education for jobSeeker with id: ' + id);
-  this.Educations.retrieveEducationDetails(res, {jobSeekerId: id});
 });
 
 //get work exp. list
