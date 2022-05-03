@@ -7,7 +7,7 @@ var JobModel_1 = require("./model/JobModel");
 var crypto = require("crypto");
 var JobSeekerModel_1 = require("./model/JobSeekerModel");
 var JobPosterModel_1 = require("./model/JobPosterModel");
-var ApplicationsModel_1 = require("./model/ApplicationsModel");
+var ApplicationModel_1 = require("./model/ApplicationModel");
 var UserModel_1 = require("./model/UserModel");
 // Creates and configures an ExpressJS web server.
 var App = /** @class */ (function () {
@@ -19,7 +19,7 @@ var App = /** @class */ (function () {
         this.Jobs = new JobModel_1.JobModel();
         this.JobSeekers = new JobSeekerModel_1.JobSeekerModel();
         this.JobPosters = new JobPosterModel_1.JobPosterModel();
-        this.Applications = new ApplicationsModel_1.ApplicationsModel();
+        this.Applications = new ApplicationModel_1.ApplicationModel();
         this.Users = new UserModel_1.UserModel();
     }
     // Configure Express middleware.
@@ -104,7 +104,7 @@ var App = /** @class */ (function () {
             _this.Jobs.retrieveJobDetails(res, { jobPosterId: id });
         });
         //get all applications
-        router.get('/app/applications/', function (req, res) {
+        router.get('/app/application/', function (req, res) {
             console.log('Query All Applications');
             _this.Applications.retrieveAllApplications(res);
         });

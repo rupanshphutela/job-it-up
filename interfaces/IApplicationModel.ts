@@ -1,6 +1,6 @@
 import Mongoose = require("mongoose");
 
-interface IApplicationsModel extends Mongoose.Document {
+interface IApplicationModel extends Mongoose.Document {
       jobId : string;
       jobSeekerId: string;
 	  applicationId: string;
@@ -9,6 +9,6 @@ interface IApplicationsModel extends Mongoose.Document {
 	  workAuthorization:string;
 	  status: string;
 }
-export {IApplicationsModel};
+export {IApplicationModel};
 
 

@@ -340,8 +340,8 @@ jobCollection.insert(
    experienceNeeded:"0-1 year"
 }
 )
-db.createCollection('applications')
-applicantsCollection = db.getCollection("applications")
+db.createCollection('application')
+applicantsCollection = db.getCollection("application")
 applicantsCollection.remove({})
 applicantsCollection.insert(
 {

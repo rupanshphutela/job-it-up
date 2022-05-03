@@ -4,7 +4,7 @@ import {JobModel} from './model/JobModel';
 import * as crypto from 'crypto';
 import { JobSeekerModel } from './model/JobSeekerModel';
 import { JobPosterModel } from './model/JobPosterModel';
-import {ApplicationsModel} from './model/ApplicationsModel';
+import {ApplicationModel} from './model/ApplicationModel';
 import {UserModel} from './model/UserModel';
 
 // Creates and configures an ExpressJS web server.
@@ -15,7 +15,7 @@ class App {
   public Jobs:JobModel;
   public JobSeekers:JobSeekerModel;
   public JobPosters:JobPosterModel;
-  public Applications:ApplicationsModel;
+  public Applications:ApplicationModel;
   public Users:UserModel;
 
   //Run configuration methods on the Express instance.
@@ -26,7 +26,7 @@ class App {
     this.Jobs = new JobModel();
     this.JobSeekers = new JobSeekerModel();
     this.JobPosters = new JobPosterModel();
-    this.Applications=new ApplicationsModel();
+    this.Applications=new ApplicationModel();
     this.Users = new UserModel();
   }
 
@@ -122,7 +122,7 @@ router.get('/app/job/jobPoster/:jobPosterId', (req, res) => {
 });
 
 //get all applications
-router.get('/app/applications/', (req, res) => {
+router.get('/app/application/', (req, res) => {
   console.log('Query All Applications');
   this.Applications.retrieveAllApplications(res);
 });

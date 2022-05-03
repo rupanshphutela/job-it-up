@@ -1,12 +1,12 @@
 import Mongoose = require("mongoose");
-import {DataAccess} from './../DataAccess';
-import {IApplicationsModel} from '../interfaces/IApplicationsModel';
+import {DataAccess} from '../DataAccess';
+import {IApplicationModel} from '../interfaces/IApplicationModel';
 import { STATUS_CODES } from "http";
 
 let mongooseConnection = DataAccess.mongooseConnection;
 let mongooseObj = DataAccess.mongooseInstance;
 
-class ApplicationsModel {
+class ApplicationModel {
     public schema:any;
     public innerSchema:any;
     public model:any;
@@ -26,12 +26,12 @@ class ApplicationsModel {
                 resume:String,
                 workAuthorization:String,
                 status: String
-            }, {collection: 'applications'}
+            }, {collection: 'application'}
         );
     }
 
     public createModel(): void {
-        this.model = mongooseConnection.model<IApplicationsModel>("Applications", this.schema);
+        this.model = mongooseConnection.model<IApplicationModel>("Application", this.schema);
     }
     
     public retrieveApplicationDetails(response:any, filter:Object) {
@@ -57,4 +57,4 @@ class ApplicationsModel {
   
 
 }
-export {ApplicationsModel};
+export {ApplicationModel};
