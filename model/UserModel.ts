@@ -17,6 +17,7 @@ class UserModel {
     public createSchema(): void {
         this.schema = new Mongoose.Schema(
             {
+                userId: String,
                 userName: String,
                 
             }, {collection: 'users'}
