@@ -174,6 +174,14 @@ router.post('/app/user/', (req, res) => {
     res.send('{"id":"' + id + '"}');
 });
 
+//get a single user
+router.get('/app/user/:userId', (req, res) => {
+  var id = req.params.userId;
+  console.log('Query Single user with id: ' + id);
+  this.Users.retrieveUserDetails(res, {userId: id});
+});
+
+
     this.expressApp.use('/', router);
     this.expressApp.use('/app/json/', express.static(__dirname+'/app/json'));
     this.expressApp.use('/images', express.static(__dirname+'/img'));

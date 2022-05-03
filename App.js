@@ -151,6 +151,12 @@ var App = /** @class */ (function () {
             });
             res.send('{"id":"' + id + '"}');
         });
+        //get a single user
+        router.get('/app/user/:userId', function (req, res) {
+            var id = req.params.userId;
+            console.log('Query Single user with id: ' + id);
+            _this.Users.retrieveUserDetails(res, { userId: id });
+        });
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
         this.expressApp.use('/images', express.static(__dirname + '/img'));
