@@ -16,7 +16,23 @@ jobSeekerCollection.insert(
 	email: "john.smith@email.com",
 	referralCode: "RS2804221238",
 	primarySkills: [ "Node", "Angular", "Express" ],
-	otherSkills: [ "React", "MongoDB", "Mongoose" ]
+	otherSkills: [ "React", "MongoDB", "Mongoose" ],
+	education: [
+		{
+			educationId: 1,
+			universityName: "Seattle University",
+			degree:"Masters in Computer Science",
+			fromDate:"08-16-2016",
+			toDate:"05-06-2018"
+		},
+		{
+			educationId: 2,
+			universityName: "Seattle University",
+			degree:"Bachelors in Computer Science",
+			fromDate:"08-16-2012",
+			toDate:"05-06-2016"
+		}
+	]
 }
 )
 jobSeekerCollection.insert(
@@ -33,7 +49,23 @@ jobSeekerCollection.insert(
 	email: "chloe.decker@email.com",
 	referralCode: "RP2804228914",
 	primarySkills: [ "Office Assitance", "Hygienist", "Dental Medicine" ],
-	otherSkills: [ "Good Judgement", "Customer Service", "Administration" ]
+	otherSkills: [ "Good Judgement", "Customer Service", "Administration" ],
+	education: [
+		{
+			educationId: 1,
+			universityName: "Columbia University",
+			degree:"Doctor Of Medicine",
+			fromDate:"08-16-2016",
+			toDate:"05-06-2020"
+		},
+		{
+			educationId: 2,
+			universityName: "Columbia University",
+			degree:"Bachelors Of Medicine",
+			fromDate:"08-16-2012",
+			toDate:"05-06-2026"
+		}
+	]
 }
 )
 jobSeekerCollection.insert(
@@ -50,7 +82,16 @@ jobSeekerCollection.insert(
 	email: "lockie.walsh@email.com",
 	referralCode: "RP2804227392",
 	primarySkills: [ "Algebra", "Calculus", "Probability" ],
-	otherSkills: [ "Vedic Maths", "Number Theory", "Analysis" ]
+	otherSkills: [ "Vedic Maths", "Number Theory", "Analysis" ],
+	education: [
+		{
+			educationId: 1,
+			universityName: "Indiana University",
+			degree:"Bachelors in Mathematics",
+			fromDate:"08-16-2016",
+			toDate:"05-06-2020"
+		}
+	]
 }
 )
 db.createCollection('jobPoster')
@@ -137,70 +178,7 @@ usersCollection.insert(
 	userName: "Yaline Zee",
 }
 )
-db.createCollection('education')
-educationCollection = db.getCollection("education")
-educationCollection.remove({})
-educationCollection.insert(
-{
-	jobSeekerId: 1,
-	education: [
-		{
-			educationId: 1,
-			universityName: "Seattle University",
-			degree:"Masters in Computer Science",
-			fromDate:"08-16-2016",
-			toDate:"05-06-2018"
-		},
-		{
-			educationId: 2,
-			universityName: "Seattle University",
-			degree:"Bachelors in Computer Science",
-			fromDate:"08-16-2012",
-			toDate:"05-06-2016"
-		}
 
-	]
-	
-}
-)
-educationCollection.insert(
-{
-	jobSeekerId: 2,
-	education: [
-		{
-			educationId: 1,
-			universityName: "Columbia University",
-			degree:"Doctor Of Medicine",
-			fromDate:"08-16-2016",
-			toDate:"05-06-2020"
-		},
-		{
-			educationId: 2,
-			universityName: "Columbia University",
-			degree:"Bachelors Of Medicine",
-			fromDate:"08-16-2012",
-			toDate:"05-06-2026"
-		}
-
-	]
-	
-}
-)
-educationCollection.insert(
-{
-	jobSeekerId: 3,
-	education: [
-		{
-			educationId: 1,
-			universityName: "Indiana University",
-			degree:"Bachelors in Mathematics",
-			fromDate:"08-16-2016",
-			toDate:"05-06-2020"
-		}
-	]
-	
-}
-)
 db.createCollection('work')
 workCollection = db.getCollection("work")
 workCollection.remove({})
