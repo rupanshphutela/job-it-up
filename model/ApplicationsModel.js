@@ -12,9 +12,9 @@ var ApplicationsModel = /** @class */ (function () {
     }
     ApplicationsModel.prototype.createSchema = function () {
         this.schema = new Mongoose.Schema({
-            jobId: Number,
-            jobSeekerId: Number,
-            applicationId: Number,
+            jobId: String,
+            jobSeekerId: String,
+            applicationId: String,
             expectedSalary: String,
             resume: String,
             workAuthorization: String,

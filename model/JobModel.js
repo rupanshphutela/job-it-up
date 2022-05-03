@@ -14,8 +14,8 @@ var JobModel = /** @class */ (function () {
         this.schema = new Mongoose.Schema({
             title: String,
             skills: [String],
-            jobId: Number,
-            jobPosterId: Number,
+            jobId: String,
+            jobPosterId: String,
             location: String,
             description: String,
             salary: String,

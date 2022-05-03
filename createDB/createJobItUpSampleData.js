@@ -215,15 +215,7 @@ usersCollection.insert(
 	userName: "Yaline Zee",
 }
 )
-workCollection.insert(
-    {
-        jobSeekerId: 3,
-        companyName: "Bellevue Coaching",
-        role: "Math Tutor",
-        fromDate: "06-27-2022",
-        toDate: "07-27-2022",
-    }
-)
+
 db.createCollection('job')
 jobCollection = db.getCollection("job")
 jobCollection.remove({})
@@ -231,8 +223,8 @@ jobCollection.insert(
 {
 	  title: "Software Tester",
 	  skills: ["JavaScript","Angular"],
-	  jobId:1,
-	  jobPosterId: 1,
+	  jobId:"1",
+	  jobPosterId: "1",
 	  location:"Seattle, WA",
 	  description:"Job Requirements:"+
 	  "\n1.Assists in the distribution of all Quality Assurance practices, standards, methodologies and metrics"+
@@ -259,8 +251,8 @@ jobCollection.insert(
 {
 	title: "Dental Assistant",
 	skills: ["Idaho Expanded Functions certificate(s)","Oregon Dental Radiologic Proficiency certificate","Oregon EFDA"],
-	jobId:2,
-	jobPosterId: 2,
+	jobId:"2",
+	jobPosterId: "2",
 	location:"Seattle,WA",
 	description:"To learn more about how Willamette Dental Group is keeping our employees safe, please visit https://willamettedental.com/safety/"+
 
@@ -318,8 +310,8 @@ jobCollection.insert(
 {
 	title: "Maths Tutor",
 	skills: ["Allgebra", "Geometry"],
-	jobId:3,
-	jobPosterId: 3,
+	jobId:"3",
+	jobPosterId: "3",
 	location:"Renton,WA",
 	description:"Job Description"+
 
@@ -353,9 +345,9 @@ applicantsCollection = db.getCollection("applications")
 applicantsCollection.remove({})
 applicantsCollection.insert(
 {
-	  jobId : 1,
-	  jobSeekerId: 1,
-	  applicationId: 1,
+	  jobId : "1",
+	  jobSeekerId: "1",
+	  applicationId: "1",
 	  expectedSalary: "25/hr",
 	  resume:"http:localhost:8080/resume/seeker/jsmith.pdf",
 	  workAuthorization:"Yes",
@@ -366,9 +358,9 @@ applicantsCollection.insert(
 )
 applicantsCollection.insert(
 {
-	    jobId : 2,
-		jobSeekerId: 2,
-		applicationId: 2,		
+	    jobId : "2",
+		jobSeekerId: "2",
+		applicationId: "2",		
 		expectedSalary: "20/hr",
 		resume:"http:localhost:8080/resume/seeker/cdecker.doc",
 		workAuthorization:"yes",
@@ -378,9 +370,9 @@ applicantsCollection.insert(
 )
 applicantsCollection.insert(
 {
-	    jobId : 3,
-		jobSeekerId: 3,
-		applicationId: 3,
+	    jobId : "3",
+		jobSeekerId: "3",
+		applicationId: "3",
 		expectedSalary: "20/hr",
 		resume:"http:localhost:8080/resume/seeker/lwalsh.pdf",
 		workAuthorization:"yes",

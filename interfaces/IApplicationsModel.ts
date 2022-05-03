@@ -1,9 +1,9 @@
 import Mongoose = require("mongoose");
 
 interface IApplicationsModel extends Mongoose.Document {
-      jobId : number;
-      jobSeekerId: number;
-	  applicationId: number;
+      jobId : string;
+      jobSeekerId: string;
+	  applicationId: string;
 	  expectedSalary: string;
       resume:string;
 	  workAuthorization:string;

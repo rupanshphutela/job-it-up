@@ -21,8 +21,8 @@ class JobModel {
             {
                 title: String,
                 skills: [String],
-                jobId: Number,
-                jobPosterId: Number,
+                jobId: String,
+                jobPosterId: String,
                 location: String,
                 description: String,
                 salary: String,
