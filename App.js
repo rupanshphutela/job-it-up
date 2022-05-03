@@ -8,8 +8,8 @@ var crypto = require("crypto");
 var JobSeekerModel_1 = require("./model/JobSeekerModel");
 var JobPosterModel_1 = require("./model/JobPosterModel");
 var ApplicationsModel_1 = require("./model/ApplicationsModel");
-var EducationModel_1 = require("./model/EducationModel");
 var UserModel_1 = require("./model/UserModel");
+var WorkExpModel_1 = require("./model/WorkExpModel");
 // Creates and configures an ExpressJS web server.
 var App = /** @class */ (function () {
     //Run configuration methods on the Express instance.
@@ -21,8 +21,8 @@ var App = /** @class */ (function () {
         this.JobSeekers = new JobSeekerModel_1.JobSeekerModel();
         this.JobPosters = new JobPosterModel_1.JobPosterModel();
         this.Applications = new ApplicationsModel_1.ApplicationsModel();
-        this.Educations = new EducationModel_1.EducationModel();
         this.Users = new UserModel_1.UserModel();
+        this.WorkExperience = new WorkExpModel_1.WorkExperienceModel();
     }
     // Configure Express middleware.
     App.prototype.middleware = function () {
@@ -153,29 +153,28 @@ var App = /** @class */ (function () {
             });
             res.send('{"id":"' + id + '"}');
         });
-        //Get list of educations
-        router.get('/app/education/', function (req, res) {
-            console.log('Query All educations');
-            _this.Educations.retrieveAllEducations(res);
+        //get work exp. list
+        router.get('/app/workExp/', function (req, res) {
+            console.log('Query All list');
+            _this.WorkExperience.retrieveAllWorkExp(res);
         });
-        //Create a new Education
-        router.post('/app/education/', function (req, res) {
+        //get work exp for job seeker by id.
+        router.get('/app/workExp/:jobSeekerId', function (req, res) {
+            var id = req.params.jobSeekerId;
+            _this.WorkExperience.retrieveWorkExpDetailsById(res, { jobSeekerId: id });
+        });
+        //Create a new workExp.
+        router.post('/app/workExp/', function (req, res) {
             var id = crypto.randomBytes(16).toString("hex");
             console.log(req.body);
             var jsonObj = req.body;
-            jsonObj.educationId = id;
-            _this.Educations.model.create(jsonObj, function (err) {
+            jsonObj.workExp = id;
+            _this.WorkExperience.model.create(jsonObj, function (err) {
                 if (err) {
                     console.log('object creation failed');
                 }
             });
             res.send('{"id":"' + id + '"}');
-        });
-        //get education for job seeker 
-        router.get('/app/education/jobSeeker/:jobSeekerId', function (req, res) {
-            var id = req.params.jobSeekerId;
-            console.log('Query education for jobSeeker with id: ' + id);
-            _this.Educations.retrieveEducationDetails(res, { jobSeekerId: id });
         });
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
