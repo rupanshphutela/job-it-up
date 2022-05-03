@@ -1,8 +1,8 @@
 import Mongoose = require("mongoose");
 
 interface IJobSeekerModel extends Mongoose.Document {
-    userId: number,
-    jobSeekerId: number,
+    userId: string,
+    jobSeekerId: string,
     bio: string,
     resume: string,
     picture: string,
@@ -16,7 +16,7 @@ interface IJobSeekerModel extends Mongoose.Document {
     otherSkills: [string],
     education: 
     {
-        educationId: number,
+        educationId: string,
 		universityName: string,
 		degree: string,
 		fromDate: string,

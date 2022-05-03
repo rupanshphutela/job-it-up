@@ -12,8 +12,8 @@ var JobPosterModel = /** @class */ (function () {
     }
     JobPosterModel.prototype.createSchema = function () {
         this.schema = new Mongoose.Schema({
-            userId: Number,
-            jobPosterId: Number,
+            userId: String,
+            jobPosterId: String,
             contactNo: String,
             fname: String,
             lname: String,

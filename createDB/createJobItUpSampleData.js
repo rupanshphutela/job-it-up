@@ -4,8 +4,8 @@ jobSeekerCollection = db.getCollection("jobSeeker")
 jobSeekerCollection.remove({})
 jobSeekerCollection.insert(
 {
-	userId: 1,
-    jobSeekerId: 1,
+	userId: "1",
+    jobSeekerId: "1",
 	bio: "A software engineer looking for freelance opportunities in Angular",
 	resume: "http:localhost:8080/resume/seeker/jsmith.pdf",
 	picture: "http:localhost:8080/images/seeker/jsmith.jpg",
@@ -19,14 +19,14 @@ jobSeekerCollection.insert(
 	otherSkills: [ "React", "MongoDB", "Mongoose" ],
 	education: [
 		{
-			educationId: 1,
+			educationId: "1",
 			universityName: "Seattle University",
 			degree:"Masters in Computer Science",
 			fromDate:"08-16-2016",
 			toDate:"05-06-2018"
 		},
 		{
-			educationId: 2,
+			educationId: "2",
 			universityName: "Seattle University",
 			degree:"Bachelors in Computer Science",
 			fromDate:"08-16-2012",
@@ -37,8 +37,8 @@ jobSeekerCollection.insert(
 )
 jobSeekerCollection.insert(
 {
-	userId: 2,
-    jobSeekerId: 2,
+	userId: "2",
+    jobSeekerId: "2",
 	bio: "A seasoned dental assistant looking looking for work on MWF from June to September",
 	resume: "http:localhost:8080/resume/seeker/cdecker.doc",
 	picture: "http:localhost:8080/images/seeker/cdecker.jpg",
@@ -52,14 +52,14 @@ jobSeekerCollection.insert(
 	otherSkills: [ "Good Judgement", "Customer Service", "Administration" ],
 	education: [
 		{
-			educationId: 1,
+			educationId: "1",
 			universityName: "Columbia University",
 			degree:"Doctor Of Medicine",
 			fromDate:"08-16-2016",
 			toDate:"05-06-2020"
 		},
 		{
-			educationId: 2,
+			educationId: "2",
 			universityName: "Columbia University",
 			degree:"Bachelors Of Medicine",
 			fromDate:"08-16-2012",
@@ -70,8 +70,8 @@ jobSeekerCollection.insert(
 )
 jobSeekerCollection.insert(
 {
-	userId: 3,
-    jobSeekerId: 3,
+	userId: "3",
+    jobSeekerId: "3",
 	bio: "Exceptional Math Tutor with 6 years instruction experience looking for a change",
 	resume: "http:localhost:8080/resume/seeker/lwalsh.pdf",
 	picture: "http:localhost:8080/images/seeker/lwalsh.jpg",
@@ -85,7 +85,7 @@ jobSeekerCollection.insert(
 	otherSkills: [ "Vedic Maths", "Number Theory", "Analysis" ],
 	education: [
 		{
-			educationId: 1,
+			educationId: "1",
 			universityName: "Indiana University",
 			degree:"Bachelors in Mathematics",
 			fromDate:"08-16-2016",
@@ -99,8 +99,8 @@ jobPosterCollection = db.getCollection("jobPoster")
 jobPosterCollection.remove({})
 jobPosterCollection.insert(
 {
-	userId: 4,
-    jobPosterId: 1,
+	userId: "4",
+    jobPosterId: "1",
 	contactNo: "4258810000",
 	fname: "Johnny",
 	lname: "Rose",
@@ -120,8 +120,8 @@ jobPosterCollection.insert(
 )
 jobPosterCollection.insert(
 {
-	userId: 5,
-    jobPosterId: 2,
+	userId: "5",
+    jobPosterId: "2",
 	contactNo: "9092020000",
 	fname: "Walter",
 	lname: "White",
@@ -141,8 +141,8 @@ jobPosterCollection.insert(
 )
 jobPosterCollection.insert(
 {
-	userId: 6,
-    jobPosterId: 3,
+	userId: "6",
+    jobPosterId: "3",
 	contactNo: "9094710000",
 	fname: "Manny",
 	lname: "Singh",

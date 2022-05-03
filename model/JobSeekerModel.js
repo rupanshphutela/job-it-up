@@ -12,8 +12,8 @@ var JobSeekerModel = /** @class */ (function () {
     }
     JobSeekerModel.prototype.createSchema = function () {
         this.schema = new Mongoose.Schema({
-            userId: Number,
-            jobSeekerId: Number,
+            userId: String,
+            jobSeekerId: String,
             bio: String,
             resume: String,
             picture: String,
@@ -26,7 +26,7 @@ var JobSeekerModel = /** @class */ (function () {
             primarySkills: [String],
             otherSkills: [String],
             education: {
-                educationId: Number,
+                educationId: String,
                 universityName: String,
                 degree: String,
                 fromDate: String,

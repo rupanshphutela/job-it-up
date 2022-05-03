@@ -20,8 +20,8 @@ class JobSeekerModel {
         this.schema = new Mongoose.Schema(
             {
                 
-                userId: Number,
-                jobSeekerId: Number,
+                userId: String,
+                jobSeekerId: String,
                 bio: String,
                 resume: String,
                 picture: String,
@@ -35,7 +35,7 @@ class JobSeekerModel {
                 otherSkills: [String],
                 education: 
                 {
-                    educationId: Number,
+                    educationId: String,
                     universityName: String,
                     degree: String,
                     fromDate: String,
