@@ -388,35 +388,3 @@ applicantsCollection.insert(
 	
 }
 )
-
-db.createCollection('workExp')
-workExpCollection = db.getCollection("workExp")
-workExpCollection.remove({})
-workExpCollection.insert(
-	{
-		jobSeekerId: 1,
-		companyName: "Tim's Co-op.",
-		role: "Software Engineer",
-		fromDate: "06-27-2022",
-		toDate: "07-27-2022",
-	}
-)
-workExpCollection.insert(
-	{
-		jobSeekerId: 2,
-		companyName: "Sunrise Pvt. Ltd.",
-		role: "Dental Assistant",
-		fromDate: "06-27-2022",
-		toDate: "07-27-2022",
-	}
-)
-workExpCollection.insert(
-	{
-		jobSeekerId: 3,
-		companyName: "Bellevue Coaching",
-		role: "Math Tutor",
-		fromDate: "06-27-2022",
-		toDate: "07-27-2022",
-	}
-)
-
