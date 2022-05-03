@@ -194,22 +194,22 @@ jobPosterCollection.insert(
 	founded: "2017"
 }
 )
-db.createCollection('users')
-usersCollection = db.getCollection("users")
-usersCollection.remove({})
-usersCollection.insert(
+db.createCollection('user')
+userCollection = db.getCollection("user")
+userCollection.remove({})
+userCollection.insert(
 {
 	userId: "1",
 	userName: "Sam Trabor",
 }
 )
-usersCollection.insert(
+userCollection.insert(
 {
 	userId: "2",
 	userName: "Jonathan Trace",
 }
 )
-usersCollection.insert(
+userCollection.insert(
 {
 	userId: "3",
 	userName: "Yaline Zee",

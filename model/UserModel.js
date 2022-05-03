@@ -14,10 +14,10 @@ var UserModel = /** @class */ (function () {
         this.schema = new Mongoose.Schema({
             userId: String,
             userName: String
-        }, { collection: 'users' });
+        }, { collection: 'user' });
     };
     UserModel.prototype.createModel = function () {
-        this.model = mongooseConnection.model("Users", this.schema);
+        this.model = mongooseConnection.model("User", this.schema);
     };
     UserModel.prototype.retrieveAllUsers = function (response) {
         var query = this.model.find({});
