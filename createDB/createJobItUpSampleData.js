@@ -215,28 +215,6 @@ usersCollection.insert(
 	userName: "Yaline Zee",
 }
 )
-
-db.createCollection('work')
-workCollection = db.getCollection("work")
-workCollection.remove({})
-workCollection.insert(
-    {
-        jobSeekerId: 1,
-        companyName: "Tim's Co-op.",
-        role: "Software Engineer",
-        fromDate: "06-27-2022",
-        toDate: "07-27-2022",
-    }
-)
-workCollection.insert(
-    {
-        jobSeekerId: 2,
-        companyName: "Sunrise Pvt. Ltd.",
-        role: "Dental Assistant",
-        fromDate: "06-27-2022",
-        toDate: "07-27-2022",
-    }
-)
 workCollection.insert(
     {
         jobSeekerId: 3,
