@@ -165,16 +165,19 @@ usersCollection = db.getCollection("users")
 usersCollection.remove({})
 usersCollection.insert(
 {
+	userId: "1",
 	userName: "Sam Trabor",
 }
 )
 usersCollection.insert(
 {
+	userId: "2",
 	userName: "Jonathan Trace",
 }
 )
 usersCollection.insert(
 {
+	userId: "3",
 	userName: "Yaline Zee",
 }
 )
