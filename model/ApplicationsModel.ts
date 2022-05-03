@@ -19,17 +19,13 @@ class ApplicationsModel {
     public createSchema(): void {
         this.schema = new Mongoose.Schema(
             {
-                jobId: Number,
-                appplications: [
-                    {
-                        jobSeekerId: Number,
-                        applicationId: Number,
-                        expectedSalary: String,
-                        resume:String,
-                        workAuthorization:String,
-                        status: String
-                    }        
-                ]
+                jobId : Number,
+                jobSeekerId: Number,
+                applicationId: Number,
+                expectedSalary: String,
+                resume:String,
+                workAuthorization:String,
+                status: String
             }, {collection: 'applications'}
         );
     }
