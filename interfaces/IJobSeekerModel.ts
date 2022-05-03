@@ -13,6 +13,14 @@ interface IJobSeekerModel extends Mongoose.Document {
     email: string,
     referralCode: string,
     primarySkills: [string],
-    otherSkills: [string]
+    otherSkills: [string],
+    education: 
+    {
+        educationId: number,
+		universityName: string,
+		degree: string,
+		fromDate: string,
+		toDate: string
+    }
 }
 export {IJobSeekerModel};

@@ -24,7 +24,14 @@ var JobSeekerModel = /** @class */ (function () {
             email: String,
             referralCode: String,
             primarySkills: [String],
-            otherSkills: [String]
+            otherSkills: [String],
+            education: {
+                educationId: Number,
+                universityName: String,
+                degree: String,
+                fromDate: String,
+                toDate: String
+            }
         }, { collection: 'jobSeeker' });
     };
     JobSeekerModel.prototype.createModel = function () {
