@@ -8,7 +8,6 @@ let mongooseObj = DataAccess.mongooseInstance;
 
 class ApplicationModel {
     public schema:any;
-    public innerSchema:any;
     public model:any;
 
     public constructor() {
