@@ -24,20 +24,27 @@ var JobApplicationModel = /** @class */ (function () {
     JobApplicationModel.prototype.createModel = function () {
         this.model = mongooseConnection.model("JobApplication", this.schema);
     };
-    JobApplicationModel.prototype.retrieveApplicationDetails = function (response, filter) {
+    JobApplicationModel.prototype.retrieveJobApplicationDetails = function (response, filter) {
         var query = this.model.findOne(filter);
         query.exec(function (err, itemArray) {
             response.json(itemArray);
         });
     };
-    JobApplicationModel.prototype.retrieveApplicationsOfSeeker = function (response, filter) {
+    JobApplicationModel.prototype.retrieveJobApplications = function (response, filter) {
         var query = this.model.find(filter);
+        query.exec(function (err, itemArray) {
+            console.log(itemArray);
+            response.json(itemArray);
+        });
+    };
+    JobApplicationModel.prototype.retrieveAllJobApplications = function (response) {
+        var query = this.model.find({});
         query.exec(function (err, itemArray) {
             response.json(itemArray);
         });
     };
-    JobApplicationModel.prototype.retrieveAllApplications = function (response) {
-        var query = this.model.find({});
+    JobApplicationModel.prototype.deleteJobApplications = function (response, filter) {
+        var query = this.model.deleteOne(filter);
         query.exec(function (err, itemArray) {
             response.json(itemArray);
         });

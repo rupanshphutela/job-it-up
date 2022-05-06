@@ -121,19 +121,19 @@ router.get('/app/job/jobPoster/:jobPosterId', (req, res) => {
   this.Jobs.retrieveJobDetails(res, {jobPosterId: id});
 });
 
-//get all applications
+//get all job applications
 router.get('/app/jobApplication/', (req, res) => {
   console.log('Query All Applications');
-  this.JobApplications.retrieveAllApplications(res);
+  this.JobApplications.retrieveAllJobApplications(res);
 });
 
 
-//create a new application
+//create a new job application
 router.post('/app/jobApplication/', (req, res) => {
   const id = crypto.randomBytes(16).toString("hex");
   console.log(req.body);
     var jsonObj = req.body;
-    jsonObj.jobApplicationId = id;
+    jsonObj.jobApplicationId = id; 
     this.JobApplications.model.create(jsonObj, (err) => {
         if (err) {
             console.log('object creation failed');
@@ -141,18 +141,56 @@ router.post('/app/jobApplication/', (req, res) => {
     });
     res.send('{"id":"' + id + '"}');
 });
-//get applications for a job 
+//get job applications for a job 
 router.get('/app/jobApplication/job/:jobId', (req, res) => {
   var id = req.params.jobId;
   console.log('Query applications for job  with id: ' + id);
-  this.JobApplications.retrieveApplicationDetails(res, {jobId: id});
+  this.JobApplications.retrieveJobApplications(res, {jobId: id});
 });
 //get a single application
 router.get('/app/jobApplication/:jobApplicationId', (req, res) => {
   var id = req.params.jobApplicationId;
   console.log('Query Single application with id: ' + id);
-  this.JobApplications.retrieveApplicationDetails(res, {jobApplicationId: id});
+  this.JobApplications.retrieveJobApplications(res, {jobApplicationId: id});
 });
+
+//get job applications for a job seeker
+router.get('/app/jobApplication/jobSeeker/:jobSeekerId', (req, res) => {
+  var id = req.params.jobSeekerId;
+  console.log('Query Single application with id: ' + id);
+  this.JobApplications.retrieveJobApplications(res, {jobSeekerId: id});
+});
+
+//update job application
+router.put('/app/jobApplication/:jobApplicationId', (req, res) => {
+
+  this.JobApplications.model.findOneAndUpdate({jobApplicationId: req.params.jobApplicationId}, req.body, function (err, jobApp)  {   
+    if (!jobApp)
+    console.log('Could not fetch specified job application');
+    else {
+      jobApp.status =req.body.status;  
+      jobApp.save(function(err) {
+        if (err){
+          console.log('error');
+          res.send('Error : Status not updated');
+        }
+        else
+        {
+          console.log('success')
+          res.send('Status updated');
+        }
+      });
+    }
+  });
+});
+
+//delete job application
+router.delete('/app/jobApplication/:jobApplicationId', (req, res) => {
+  var id = req.params.jobApplicationId;
+  console.log('Query Single application with id: ' + id);
+  this.JobApplications.deleteJobApplications(res, {jobApplicationId: id});
+});
+
 
 //Get list of users
 router.get('/app/user/', (req, res) => {

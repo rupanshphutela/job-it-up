@@ -32,28 +32,33 @@ class JobApplicationModel {
     public createModel(): void {
         this.model = mongooseConnection.model<IJobApplicationModel>("JobApplication", this.schema);
     }
-    
-    public retrieveApplicationDetails(response:any, filter:Object) {
+   
+    public retrieveJobApplicationDetails(response:any, filter:Object) {
         var query = this.model.findOne(filter);
         query.exec( (err, itemArray) => {
             response.json(itemArray);
         });
     }
 
-    public retrieveApplicationsOfSeeker(response:any, filter:Object) {
+    public retrieveJobApplications(response:any, filter:Object) {
         var query = this.model.find(filter);
         query.exec( (err, itemArray) => {
+            console.log(itemArray);
             response.json(itemArray);
         });
     }
-    public retrieveAllApplications(response:any): any {
+    public retrieveAllJobApplications(response:any): any {
         var query = this.model.find({});
         query.exec( (err, itemArray) => {
             response.json(itemArray) ;
         });
     }
-   
-  
 
+    public deleteJobApplications(response:any, filter:Object) {
+        var query = this.model.deleteOne(filter);
+        query.exec( (err, itemArray) => {
+            response.json(itemArray);
+        });
+    }
 }
 export {JobApplicationModel};
