@@ -7,7 +7,7 @@ var JobModel_1 = require("./model/JobModel");
 var crypto = require("crypto");
 var JobSeekerModel_1 = require("./model/JobSeekerModel");
 var JobPosterModel_1 = require("./model/JobPosterModel");
-var ApplicationModel_1 = require("./model/ApplicationModel");
+var JobApplicationModel_1 = require("./model/JobApplicationModel");
 var UserModel_1 = require("./model/UserModel");
 // Creates and configures an ExpressJS web server.
 var App = /** @class */ (function () {
@@ -19,7 +19,7 @@ var App = /** @class */ (function () {
         this.Jobs = new JobModel_1.JobModel();
         this.JobSeekers = new JobSeekerModel_1.JobSeekerModel();
         this.JobPosters = new JobPosterModel_1.JobPosterModel();
-        this.Applications = new ApplicationModel_1.ApplicationModel();
+        this.JobApplications = new JobApplicationModel_1.JobApplicationModel();
         this.Users = new UserModel_1.UserModel();
     }
     // Configure Express middleware.
@@ -104,17 +104,17 @@ var App = /** @class */ (function () {
             _this.Jobs.retrieveJobDetails(res, { jobPosterId: id });
         });
         //get all applications
-        router.get('/app/application/', function (req, res) {
+        router.get('/app/jobApplication/', function (req, res) {
             console.log('Query All Applications');
-            _this.Applications.retrieveAllApplications(res);
+            _this.JobApplications.retrieveAllApplications(res);
         });
         //create a new application
-        router.post('/app/application/', function (req, res) {
+        router.post('/app/jobApplication/', function (req, res) {
             var id = crypto.randomBytes(16).toString("hex");
             console.log(req.body);
             var jsonObj = req.body;
-            jsonObj.applicationId = id;
-            _this.Applications.model.create(jsonObj, function (err) {
+            jsonObj.jobApplicationId = id;
+            _this.JobApplications.model.create(jsonObj, function (err) {
                 if (err) {
                     console.log('object creation failed');
                 }
@@ -122,16 +122,16 @@ var App = /** @class */ (function () {
             res.send('{"id":"' + id + '"}');
         });
         //get applications for a job 
-        router.get('/app/application/job/:jobId', function (req, res) {
+        router.get('/app/jobApplication/job/:jobId', function (req, res) {
             var id = req.params.jobId;
             console.log('Query applications for job  with id: ' + id);
-            _this.Applications.retrieveApplicationDetails(res, { jobId: id });
+            _this.JobApplications.retrieveApplicationDetails(res, { jobId: id });
         });
         //get a single application
-        router.get('/app/application/:applicationId', function (req, res) {
-            var id = req.params.applicationId;
+        router.get('/app/jobApplication/:jobApplicationId', function (req, res) {
+            var id = req.params.jobApplicationId;
             console.log('Query Single application with id: ' + id);
-            _this.Applications.retrieveApplicationDetails(res, { applicationId: id });
+            _this.JobApplications.retrieveApplicationDetails(res, { jobApplicationId: id });
         });
         //Get list of users
         router.get('/app/user/', function (req, res) {

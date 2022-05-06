@@ -340,14 +340,14 @@ jobCollection.insert(
    experienceNeeded:"0-1 year"
 }
 )
-db.createCollection('application')
-applicantsCollection = db.getCollection("application")
-applicantsCollection.remove({})
-applicantsCollection.insert(
+db.createCollection('jobApplication')
+jobApplicantsCollection = db.getCollection("jobApplication")
+jobApplicantsCollection.remove({})
+jobApplicantsCollection.insert(
 {
 	  jobId : "1",
 	  jobSeekerId: "1",
-	  applicationId: "1",
+	  jobApplicationId: "1",
 	  expectedSalary: "25/hr",
 	  resume:"http:localhost:8080/resume/seeker/jsmith.pdf",
 	  workAuthorization:"Yes",
@@ -356,11 +356,11 @@ applicantsCollection.insert(
 	
 }
 )
-applicantsCollection.insert(
+jobApplicantsCollection.insert(
 {
 	    jobId : "2",
 		jobSeekerId: "2",
-		applicationId: "2",		
+		jobApplicationId: "2",		
 		expectedSalary: "20/hr",
 		resume:"http:localhost:8080/resume/seeker/cdecker.doc",
 		workAuthorization:"yes",
@@ -368,11 +368,11 @@ applicantsCollection.insert(
 
 }
 )
-applicantsCollection.insert(
+jobApplicantsCollection.insert(
 {
 	    jobId : "3",
 		jobSeekerId: "3",
-		applicationId: "3",
+		jobApplicationId: "3",
 		expectedSalary: "20/hr",
 		resume:"http:localhost:8080/resume/seeker/lwalsh.pdf",
 		workAuthorization:"yes",

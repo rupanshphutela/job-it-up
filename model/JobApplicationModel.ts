@@ -1,12 +1,12 @@
 import Mongoose = require("mongoose");
 import {DataAccess} from '../DataAccess';
-import {IApplicationModel} from '../interfaces/IApplicationModel';
+import {IJobApplicationModel} from '../interfaces/IJobApplicationModel';
 import { STATUS_CODES } from "http";
 
 let mongooseConnection = DataAccess.mongooseConnection;
 let mongooseObj = DataAccess.mongooseInstance;
 
-class ApplicationModel {
+class JobApplicationModel {
     public schema:any;
     public model:any;
 
@@ -20,17 +20,17 @@ class ApplicationModel {
             {
                 jobId : String,
                 jobSeekerId: String,
-                applicationId: String,
+                jobApplicationId: String,
                 expectedSalary: String,
                 resume:String,
                 workAuthorization:String,
                 status: String
-            }, {collection: 'application'}
+            }, {collection: 'jobApplication'}
         );
     }
 
     public createModel(): void {
-        this.model = mongooseConnection.model<IApplicationModel>("Application", this.schema);
+        this.model = mongooseConnection.model<IJobApplicationModel>("JobApplication", this.schema);
     }
     
     public retrieveApplicationDetails(response:any, filter:Object) {
@@ -56,4 +56,4 @@ class ApplicationModel {
   
 
 }
-export {ApplicationModel};
+export {JobApplicationModel};
