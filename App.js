@@ -57,9 +57,15 @@ var App = /** @class */ (function () {
         });
         /* Retrieve Jobs by Job Poster*/
         router.get('/app/job/jobposter/:jobPosterId', function (req, res) {
-            var jobPosterId = req.params.jobPosterId;
-            console.log('Query applications for job  with id: ' + jobPosterId);
-            _this.Jobs.retrieveJobsByJobPoster(res, { jobId: jobPosterId });
+            var id = req.params.jobPosterId;
+            console.log('Query Jobs for Job Poster with id: ' + id);
+            _this.Jobs.retrieveJobsByJobPoster(res, { jobId: id });
+        });
+        /*Delete Job */
+        router["delete"]('/app/job/:jobId', function (req, res) {
+            var id = req.params.jobId;
+            console.log('Delete Job Post with id: ' + id);
+            _this.Jobs.deleteJob(res, { jobId: id });
         });
         /*Job Seeker*/
         router.get('/app/jobseeker/', function (req, res) {
