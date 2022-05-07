@@ -71,7 +71,7 @@ class App {
   router.get('/app/job/jobposter/:jobPosterId', (req, res) => {
     var id = req.params.jobPosterId;
     console.log('Query Jobs for Job Poster with id: ' + id);
-    this.Jobs.retrieveJobsByJobPoster(res, {jobId: id});
+    this.Jobs.retrieveJobsByJobPoster(res, {jobPosterId: id});
   });
 
 /* Retrieve Jobs by Search Criteria*/
@@ -82,7 +82,7 @@ router.get('/app/jobs/', (req, res) => {
     this.Jobs.retrieveJobsBySearch(res, query);  
 });
 
-  /*Delete Job */
+  /*Delete Job and related Job Applications*/
   router.delete('/app/job/:jobId', (req, res) => {
     try{
       var id = req.params.jobId;

@@ -60,7 +60,7 @@ var App = /** @class */ (function () {
         router.get('/app/job/jobposter/:jobPosterId', function (req, res) {
             var id = req.params.jobPosterId;
             console.log('Query Jobs for Job Poster with id: ' + id);
-            _this.Jobs.retrieveJobsByJobPoster(res, { jobId: id });
+            _this.Jobs.retrieveJobsByJobPoster(res, { jobPosterId: id });
         });
         /* Retrieve Jobs by Search Criteria*/
         router.get('/app/jobs/', function (req, res) {
