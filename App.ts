@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import {JobModel} from './model/JobModel';
 import * as crypto from 'crypto';
+import * as url from 'url';
 import { JobSeekerModel } from './model/JobSeekerModel';
 import { JobPosterModel } from './model/JobPosterModel';
 import {JobApplicationModel} from './model/JobApplicationModel';
@@ -71,6 +72,14 @@ class App {
     console.log('Query Jobs for Job Poster with id: ' + id);
     this.Jobs.retrieveJobsByJobPoster(res, {jobId: id});
   });
+
+/* Retrieve Jobs by Search Criteria*/
+router.get('/app/jobs/', (req, res) => {
+  var urlParts = url.parse(req.url, true);
+  var query = urlParts.query;
+  console.log(query)
+    this.Jobs.retrieveJobsBySearch(res, query);  
+});
 
   /*Delete Job */
   router.delete('/app/job/:jobId', (req, res) => {

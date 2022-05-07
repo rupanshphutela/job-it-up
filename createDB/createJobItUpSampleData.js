@@ -223,6 +223,7 @@ jobCollection.insert(
 {
 	  title: "Software Tester",
 	  skills: ["JavaScript","Angular"],
+	  domain: "Software",
 	  jobId:"1",
 	  jobPosterId: "1",
 	  location:"Seattle, WA",
@@ -251,6 +252,7 @@ jobCollection.insert(
 {
 	title: "Dental Assistant",
 	skills: ["Idaho Expanded Functions certificate(s)","Oregon Dental Radiologic Proficiency certificate","Oregon EFDA"],
+	domain: "Dental",
 	jobId:"2",
 	jobPosterId: "2",
 	location:"Seattle,WA",
@@ -310,6 +312,7 @@ jobCollection.insert(
 {
 	title: "Maths Tutor",
 	skills: ["Allgebra", "Geometry"],
+	domain: "Tutor",
 	jobId:"3",
 	jobPosterId: "3",
 	location:"Renton,WA",

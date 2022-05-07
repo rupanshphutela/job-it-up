@@ -48,6 +48,13 @@ var JobModel = /** @class */ (function () {
             response.json(itemArray);
         });
     };
+    JobModel.prototype.retrieveJobsBySearch = function (response, filter) {
+        var query = this.model.find(filter);
+        console.log('Query  ' + query);
+        query.exec(function (err, itemArray) {
+            response.json(itemArray);
+        });
+    };
     JobModel.prototype.deleteJob = function (response, filter) {
         var query = this.model.deleteOne(filter);
         query.exec(function (err, itemArray) {

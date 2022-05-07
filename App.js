@@ -5,6 +5,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var JobModel_1 = require("./model/JobModel");
 var crypto = require("crypto");
+var url = require("url");
 var JobSeekerModel_1 = require("./model/JobSeekerModel");
 var JobPosterModel_1 = require("./model/JobPosterModel");
 var JobApplicationModel_1 = require("./model/JobApplicationModel");
@@ -60,6 +61,13 @@ var App = /** @class */ (function () {
             var id = req.params.jobPosterId;
             console.log('Query Jobs for Job Poster with id: ' + id);
             _this.Jobs.retrieveJobsByJobPoster(res, { jobId: id });
+        });
+        /* Retrieve Jobs by Search Criteria*/
+        router.get('/app/jobs/', function (req, res) {
+            var urlParts = url.parse(req.url, true);
+            var query = urlParts.query;
+            console.log(query);
+            _this.Jobs.retrieveJobsBySearch(res, query);
         });
         /*Delete Job */
         router["delete"]('/app/job/:jobId', function (req, res) {

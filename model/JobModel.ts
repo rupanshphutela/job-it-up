@@ -61,6 +61,14 @@ class JobModel {
         });
     }
 
+    public retrieveJobsBySearch(response:any, filter:Object) {
+        var query = this.model.find(filter);
+        console.log('Query  ' + query);
+        query.exec( (err, itemArray) => {
+            response.json(itemArray);
+        });
+    }
+
     public deleteJob(response:any, filter:Object) {
         var query = this.model.deleteOne(filter);
         query.exec( (err, itemArray) => {
