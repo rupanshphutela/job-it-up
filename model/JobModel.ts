@@ -44,6 +44,15 @@ class JobModel {
             response.json(itemArray) ;
         });
     }
+
+    public retrieveJobsByJobPoster(response:any, filter:Object) {
+        var query = this.model.find(filter);
+        query.exec( (err, itemArray) => {
+            console.log(itemArray);
+            response.json(itemArray);
+        });
+    }
+
     public retrieveJobDetails(response:any, filter:Object) {
         var query = this.model.findOne(filter);
         console.log('Query  ' + query);

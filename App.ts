@@ -45,7 +45,7 @@ class App {
     console.log('Query All Jobs');
     this.Jobs.retrieveAllJobs(res);
   });
-
+  /*Create a Job Post*/
   router.post('/app/job/', (req, res) => {
     const id = crypto.randomBytes(16).toString("hex");
     console.log(req.body);
@@ -58,12 +58,19 @@ class App {
       });
       res.send('{"id":"' + id + '"}');
   });
-
+  /* Retrieve One Job Details*/
   router.get('/app/job/:jobId', (req, res) => {
     var id = req.params.jobId;
     console.log('Query Single job with id: ' + id);
     this.Jobs.retrieveJobDetails(res, {jobId: id});
 });
+
+/* Retrieve Jobs by Job Poster*/
+  router.get('/app/job/jobposter/:jobPosterId', (req, res) => {
+    var jobPosterId = req.params.jobPosterId;
+    console.log('Query applications for job  with id: ' + jobPosterId);
+    this.Jobs.retrieveJobsByJobPoster(res, {jobId: jobPosterId});
+  });
 
   /*Job Seeker*/
   router.get('/app/jobseeker/', (req, res) => {

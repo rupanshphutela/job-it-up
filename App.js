@@ -36,6 +36,7 @@ var App = /** @class */ (function () {
             console.log('Query All Jobs');
             _this.Jobs.retrieveAllJobs(res);
         });
+        /*Create a Job Post*/
         router.post('/app/job/', function (req, res) {
             var id = crypto.randomBytes(16).toString("hex");
             console.log(req.body);
@@ -48,10 +49,17 @@ var App = /** @class */ (function () {
             });
             res.send('{"id":"' + id + '"}');
         });
+        /* Retrieve One Job Details*/
         router.get('/app/job/:jobId', function (req, res) {
             var id = req.params.jobId;
             console.log('Query Single job with id: ' + id);
             _this.Jobs.retrieveJobDetails(res, { jobId: id });
+        });
+        /* Retrieve Jobs by Job Poster*/
+        router.get('/app/job/jobposter/:jobPosterId', function (req, res) {
+            var jobPosterId = req.params.jobPosterId;
+            console.log('Query applications for job  with id: ' + jobPosterId);
+            _this.Jobs.retrieveJobsByJobPoster(res, { jobId: jobPosterId });
         });
         /*Job Seeker*/
         router.get('/app/jobseeker/', function (req, res) {

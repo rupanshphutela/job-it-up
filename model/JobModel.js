@@ -34,6 +34,13 @@ var JobModel = /** @class */ (function () {
             response.json(itemArray);
         });
     };
+    JobModel.prototype.retrieveJobsByJobPoster = function (response, filter) {
+        var query = this.model.find(filter);
+        query.exec(function (err, itemArray) {
+            console.log(itemArray);
+            response.json(itemArray);
+        });
+    };
     JobModel.prototype.retrieveJobDetails = function (response, filter) {
         var query = this.model.findOne(filter);
         console.log('Query  ' + query);
