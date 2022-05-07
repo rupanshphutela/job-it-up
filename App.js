@@ -119,6 +119,25 @@ var App = /** @class */ (function () {
             console.log('Query Single Job Poster with id: ' + id);
             _this.JobPosters.retrieveJobPosterDetails(res, { jobPosterId: id });
         });
+        // delete job poster and all related jobs 
+        router["delete"]('/app/jobposter/:jobPosterId', function (req, res) {
+            var id = req.params.jobPosterId;
+            var input = { jobPosterId: id };
+            try {
+                console.log('Deleting jobs posted by jobposterid:' + id);
+                _this.Jobs.deleteManyJobs(null, input);
+            }
+            catch (err) {
+                console.error('Error occurred while deleting jobs posted by jobposter with id:' + id);
+            }
+            try {
+                console.log('Delete Single jobPoster with id: ' + id);
+                _this.JobPosters.deleteJobPoster(res, input);
+            }
+            catch (err) {
+                console.error('Error occurred while deleting jobposter with id:' + id);
+            }
+        });
         //get all jobs posted by job poster
         router.get('/app/job/jobPoster/:jobPosterId', function (req, res) {
             var id = req.params.jobPosterId;
