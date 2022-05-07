@@ -57,5 +57,13 @@ class JobPosterModel {
             response.json(itemArray);
         });
     }
+
+    public deleteJobPoster(response:any, filter:Object) {
+        var query = this.model.deleteOne(filter);
+        query.exec( (err, itemArray) => {
+        response.json(itemArray);
+        });
+    }
+
 }
 export {JobPosterModel};

@@ -46,6 +46,12 @@ var JobPosterModel = /** @class */ (function () {
             response.json(itemArray);
         });
     };
+    JobPosterModel.prototype.deleteJobPoster = function (response, filter) {
+        var query = this.model.deleteOne(filter);
+        query.exec(function (err, itemArray) {
+            response.json(itemArray);
+        });
+    };
     return JobPosterModel;
 }());
 exports.JobPosterModel = JobPosterModel;
