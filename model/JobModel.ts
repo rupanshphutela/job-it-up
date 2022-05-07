@@ -75,5 +75,12 @@ class JobModel {
             response.json(itemArray);
         });
     }
+
+    public deleteManyJobs(response:any, filter:Object) {
+        var query = this.model.deleteMany(filter);
+        query.exec( (err, itemArray) => {
+        });
+    }  
+    
 }
 export {JobModel};

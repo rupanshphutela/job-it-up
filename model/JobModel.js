@@ -61,6 +61,11 @@ var JobModel = /** @class */ (function () {
             response.json(itemArray);
         });
     };
+    JobModel.prototype.deleteManyJobs = function (response, filter) {
+        var query = this.model.deleteMany(filter);
+        query.exec(function (err, itemArray) {
+        });
+    };
     return JobModel;
 }());
 exports.JobModel = JobModel;
