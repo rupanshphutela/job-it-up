@@ -60,5 +60,11 @@ class JobApplicationModel {
             response.json(itemArray);
         });
     }
+
+    public deleteJobApplicationsByJobId(response:any, filter:Object) {
+        var query = this.model.deleteMany(filter);
+        query.exec( (err, itemArray) => {
+        });
+    }
 }
 export {JobApplicationModel};

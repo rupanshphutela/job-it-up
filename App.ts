@@ -84,9 +84,20 @@ router.get('/app/jobs/', (req, res) => {
 
   /*Delete Job */
   router.delete('/app/job/:jobId', (req, res) => {
-    var id = req.params.jobId;
-    console.log('Delete Job Post with id: ' + id);
-    this.Jobs.deleteJob(res, {jobId: id});
+    try{
+      var id = req.params.jobId;
+      console.log('Delete Job Application with jobId: ' + id);
+      this.JobApplications.deleteJobApplicationsByJobId(null, {jobId: id});
+  
+      console.log('Delete Job Post with id: ' + id);
+      this.Jobs.deleteJob(res, {jobId: id});
+      }
+      catch(err)
+      {
+        res.send('{"Error":"' + err + '"}');
+      console.error('{"Error":"' + err + '"}');
+  
+      }
   });
 
   /*Job Seeker*/
