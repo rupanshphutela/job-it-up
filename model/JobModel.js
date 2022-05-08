@@ -66,6 +66,42 @@ var JobModel = /** @class */ (function () {
         query.exec(function (err, itemArray) {
         });
     };
+    JobModel.prototype.updateJob = function (response, jobId, body) {
+        this.model.findOneAndUpdate({ jobId: jobId }, body, function (err, job) {
+            if (!job)
+                console.log('Could not fetch specified job');
+            else {
+                if (body.skills)
+                    job.skills = body.skills;
+                if (body.title)
+                    job.title = body.title;
+                if (body.domain)
+                    job.domain = body.domain;
+                if (body.location)
+                    job.location = body.location;
+                if (body.salary)
+                    job.salary = body.salary;
+                if (body.applyDeadline)
+                    job.applyDeadline = body.applyDeadline;
+                if (body.startDate)
+                    job.startDate = body.startDate;
+                if (body.endDate)
+                    job.endDate = body.endDate;
+                if (body.experienceNeeded)
+                    job.experienceNeeded = body.experienceNeeded;
+                job.save(function (err) {
+                    if (err) {
+                        console.log('error');
+                        response.send('Error : Job not updated');
+                    }
+                    else {
+                        console.log('success');
+                        response.send('Job object updated');
+                    }
+                });
+            }
+        });
+    };
     return JobModel;
 }());
 exports.JobModel = JobModel;

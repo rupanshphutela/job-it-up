@@ -37,19 +37,6 @@ var App = /** @class */ (function () {
             console.log('Query All Jobs');
             _this.Jobs.retrieveAllJobs(res);
         });
-        /*Create a Job Post*/
-        router.post('/app/job/', function (req, res) {
-            var id = crypto.randomBytes(16).toString("hex");
-            console.log(req.body);
-            var jsonObj = req.body;
-            jsonObj.jobId = id;
-            _this.Jobs.model.create(jsonObj, function (err) {
-                if (err) {
-                    console.log('object creation failed');
-                }
-            });
-            res.send('{"id":"' + id + '"}');
-        });
         /* Retrieve One Job Details*/
         router.get('/app/job/:jobId', function (req, res) {
             var id = req.params.jobId;
@@ -68,6 +55,24 @@ var App = /** @class */ (function () {
             var query = urlParts.query;
             console.log(query);
             _this.Jobs.retrieveJobsBySearch(res, query);
+        });
+        /*Create a Job Post*/
+        router.post('/app/job/', function (req, res) {
+            var id = crypto.randomBytes(16).toString("hex");
+            console.log(req.body);
+            var jsonObj = req.body;
+            jsonObj.jobId = id;
+            _this.Jobs.model.create(jsonObj, function (err) {
+                if (err) {
+                    console.log('object creation failed');
+                }
+            });
+            res.send('{"id":"' + id + '"}');
+        });
+        router.put('/app/job/:jobId', function (req, res) {
+            var jobId = req.params.jobId;
+            var body = req.body;
+            _this.Jobs.updateJob(res, jobId, body);
         });
         /*Delete Job and related Job Applications*/
         router["delete"]('/app/job/:jobId', function (req, res) {

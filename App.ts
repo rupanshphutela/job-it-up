@@ -47,19 +47,6 @@ class App {
     this.Jobs.retrieveAllJobs(res);
   });
 
-  /*Create a Job Post*/
-  router.post('/app/job/', (req, res) => {
-    const id = crypto.randomBytes(16).toString("hex");
-    console.log(req.body);
-      var jsonObj = req.body;
-      jsonObj.jobId = id;
-      this.Jobs.model.create(jsonObj, (err) => {
-          if (err) {
-              console.log('object creation failed');
-          }
-      });
-      res.send('{"id":"' + id + '"}');
-  });
   /* Retrieve One Job Details*/
   router.get('/app/job/:jobId', (req, res) => {
     var id = req.params.jobId;
@@ -74,13 +61,34 @@ class App {
     this.Jobs.retrieveJobsByJobPoster(res, {jobPosterId: id});
   });
 
-/* Retrieve Jobs by Search Criteria*/
-router.get('/app/jobs/', (req, res) => {
+  /* Retrieve Jobs by Search Criteria*/
+  router.get('/app/jobs/', (req, res) => {
   var urlParts = url.parse(req.url, true);
   var query = urlParts.query;
   console.log(query)
     this.Jobs.retrieveJobsBySearch(res, query);  
-});
+  });
+
+  /*Create a Job Post*/
+  router.post('/app/job/', (req, res) => {
+    const id = crypto.randomBytes(16).toString("hex");
+    console.log(req.body);
+      var jsonObj = req.body;
+      jsonObj.jobId = id;
+      this.Jobs.model.create(jsonObj, (err) => {
+          if (err) {
+              console.log('object creation failed');
+          }
+      });
+      res.send('{"id":"' + id + '"}');
+  });
+
+  router.put('/app/job/:jobId', (req, res) => {
+
+    var jobId = req.params.jobId;
+    var body = req.body;
+    this.Jobs.updateJob(res, jobId, body);
+  });
 
   /*Delete Job and related Job Applications*/
   router.delete('/app/job/:jobId', (req, res) => {
