@@ -54,6 +54,11 @@ var JobApplicationModel = /** @class */ (function () {
         query.exec(function (err, itemArray) {
         });
     };
+    JobApplicationModel.prototype.deleteManyApplications = function (response, filter) {
+        var query = this.model.deleteMany(filter);
+        query.exec(function (err, itemArray) {
+        });
+    };
     return JobApplicationModel;
 }());
 exports.JobApplicationModel = JobApplicationModel;

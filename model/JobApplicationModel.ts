@@ -66,5 +66,11 @@ class JobApplicationModel {
         query.exec( (err, itemArray) => {
         });
     }
+
+    public deleteManyApplications(response:any, filter:Object) {
+        var query = this.model.deleteMany(filter);
+        query.exec( (err, itemArray) => {
+        });
+    } 
 }
 export {JobApplicationModel};
