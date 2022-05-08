@@ -152,6 +152,15 @@ class App {
     res.send('{"id":"' + id + '"}');
   });
 
+  // update details for specified job poster
+  router.put('/app/jobPoster/:jobPosterId', (req, res) => 
+  {
+    var jobPosterId = req.params.jobPosterId;
+    var body = req.body;
+    this.JobPosters.updateJobPosterDetails(res, jobPosterId, body);
+  });
+  
+  // get details for specified job poster
   router.get('/app/jobposter/:jobPosterId', (req, res) => {
   var id = req.params.jobPosterId;
   console.log('Query Single Job Poster with id: ' + id);
