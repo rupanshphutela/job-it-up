@@ -69,7 +69,7 @@ var App = /** @class */ (function () {
             console.log(query);
             _this.Jobs.retrieveJobsBySearch(res, query);
         });
-        /*Delete Job */
+        /*Delete Job and related Job Applications*/
         router["delete"]('/app/job/:jobId', function (req, res) {
             try {
                 var id = req.params.jobId;
@@ -127,10 +127,17 @@ var App = /** @class */ (function () {
             console.log('Query Single Job Poster with id: ' + id);
             _this.JobPosters.retrieveJobPosterDetails(res, { jobPosterId: id });
         });
-        // delete job poster and all related jobs 
+        // delete job poster and all related jobs and applications
         router["delete"]('/app/jobposter/:jobPosterId', function (req, res) {
             var id = req.params.jobPosterId;
             var input = { jobPosterId: id };
+            try {
+                console.log('Deleting applications for jobs posted by jobposterid:' + id);
+                _this.JobApplications.deleteManyApplications(null, { jobId: id });
+            }
+            catch (err) {
+                console.error('Error occurred while deleting applications for jobs posted by jobposter with id:' + id);
+            }
             try {
                 console.log('Deleting jobs posted by jobposterid:' + id);
                 _this.Jobs.deleteManyJobs(null, input);

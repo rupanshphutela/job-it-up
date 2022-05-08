@@ -150,11 +150,19 @@ router.get('/app/jobs/', (req, res) => {
   this.JobPosters.retrieveJobPosterDetails(res, {jobPosterId: id});
   });
 
-  // delete job poster and all related jobs 
+  // delete job poster and all related jobs and applications
   router.delete('/app/jobposter/:jobPosterId', (req, res) => 
   {
     var id = req.params.jobPosterId;
     var input={jobPosterId: id};
+    try
+    {
+      console.log('Deleting applications for jobs posted by jobposterid:' + id) 
+      this.JobApplications.deleteManyApplications(null, {jobId: id});
+    }catch(err)
+    {
+      console.error('Error occurred while deleting applications for jobs posted by jobposter with id:'+id);
+    }
     try
     {
       console.log('Deleting jobs posted by jobposterid:' + id) 
