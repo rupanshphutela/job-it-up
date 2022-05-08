@@ -11,7 +11,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/app/job/1/",
+					"raw": "localhost:8080/app/job/0c2e58bfc1e3e54d1d7cb03f9915757b/",
 					"host": [
 						"localhost"
 					],
@@ -19,7 +19,7 @@
 					"path": [
 						"app",
 						"job",
-						"1",
+						"0c2e58bfc1e3e54d1d7cb03f9915757b",
 						""
 					]
 				}
@@ -41,6 +41,69 @@
 						"app",
 						"job",
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchJobs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/app/jobs?title=Dental%20Assistant&domain=Dental&startDate=05/09/2022&endDate=05/13/2022&location=Seattle,WA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"app",
+						"jobs"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Dental%20Assistant"
+						},
+						{
+							"key": "domain",
+							"value": "Dental"
+						},
+						{
+							"key": "startDate",
+							"value": "05/09/2022"
+						},
+						{
+							"key": "endDate",
+							"value": "05/13/2022"
+						},
+						{
+							"key": "location",
+							"value": "Seattle,WA"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getJobsbyJobPoster",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/app/job/jobposter/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"app",
+						"job",
+						"jobposter",
+						"1"
 					]
 				}
 			},
@@ -70,6 +133,55 @@
 						"app",
 						"job",
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateJob",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"skills\": [\r\n        \"JavaScript\",\r\n        \"Angular\"\r\n    ],\r\n    \"title\": \"SoftwarTest e Developer\",\r\n    \"jobPosterId\": \"2\",\r\n    \"location\": \"Seattle, WA\",\r\n    \"description\": \"Job Requirements:Test\",\r\n    \"salary\": \"$23/hr\",\r\n    \"applyDeadline\": \"05/11/2022\",\r\n    \"startDate\": \"05/16/2022\",\r\n    \"endDate\": \"05/30/2022\",\r\n    \"experienceNeeded\": \"3 years\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/app/job/0c2e58bfc1e3e54d1d7cb03f9915757b",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"app",
+						"job",
+						"0c2e58bfc1e3e54d1d7cb03f9915757b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteJob",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/app/job/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"app",
+						"job",
+						"1"
 					]
 				}
 			},
@@ -287,14 +399,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/app/applications",
+					"raw": "localhost:8080/app/application",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"app",
-						"applications"
+						"application"
 					]
 				}
 			},
@@ -348,7 +460,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"jobId\": \"1\",\r\n        \"jobSeekerId\": \"1\",\r\n        \"expectedSalary\": \"25/hr\",\r\n        \"resume\": \"http:localhost:8080/resume/seeker/jsmith.pdf\",\r\n        \"workAuthorization\": \"Yes\",\r\n        \"status\": \"Applied\"\r\n}",
+					"raw": "{\r\n        \"jobId\": \"2\",\r\n        \"jobSeekerId\": \"3\",\r\n        \"expectedSalary\": \"20/hr\",\r\n        \"resume\": \"http:localhost:8080/resume/seeker/cdecker.doc\",\r\n        \"workAuthorization\": \"yes\",\r\n        \"status\": \"Applied\"\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -356,14 +468,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/app/application/",
+					"raw": "localhost:8080/app/jobApplication/",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"app",
-						"application",
+						"jobApplication",
 						""
 					]
 				}
