@@ -29,7 +29,8 @@ class JobModel {
                 applyDeadline:String,
                 startDate:String,
                 endDate:String,
-                experienceNeeded:String
+                experienceNeeded:String,
+                hasApplicants:String
             }, {collection: 'job'}
         );
     }
@@ -49,6 +50,14 @@ class JobModel {
         var query = this.model.find(filter);
         query.exec( (err, itemArray) => {
             console.log(itemArray);
+            response.json(itemArray);
+        });
+    }
+
+    public retrieveJobsWithApplicants(response:any, filter:Object) {
+        var query = this.model.find(filter);
+        console.log('Query  ' + query);
+        query.exec( (err, itemArray) => {
             response.json(itemArray);
         });
     }
@@ -109,12 +118,12 @@ class JobModel {
                 job.save(function(err) {
                     if (err){
                     console.log('error');
-                    response.send('Error : Job not updated');
+                    //response.send('Error : Job not updated');
                     }
                     else
                     {
                     console.log('success')
-                    response.send('Job object updated');
+                    //response.send('Job object updated');
                     }
               });
             }

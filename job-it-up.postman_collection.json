@@ -110,13 +110,34 @@
 			"response": []
 		},
 		{
+			"name": "getJobsWithApplicants",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/app/job/jobposter/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"app",
+						"job",
+						"jobposter",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "createJob",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"skills\": [\r\n            \"JavaScript\",\r\n            \"Angular\"\r\n        ],\r\n        \"title\": \"Software Developer\",\r\n        \"jobPosterId\": \"4\",\r\n        \"location\": \"Seattle, WA\",\r\n        \"description\": \"Job Requirements:Test\",\r\n        \"salary\": \"$23/hr\",\r\n        \"applyDeadline\": \"05/11/2022\",\r\n        \"startDate\": \"05/16/2022\",\r\n        \"endDate\": \"05/30/2022\",\r\n        \"experienceNeeded\": \"3 years\"\r\n    }",
+					"raw": "{\r\n        \"skills\": [\r\n            \"JavaScript\",\r\n            \"Angular\"\r\n        ],\r\n        \"title\": \"SoftwarTest e Developer\",\r\n        \"jobPosterId\": \"2\",\r\n        \"location\": \"Seattle, WA\",\r\n        \"description\": \"Job Requirements:Test\",\r\n        \"salary\": \"$23/hr\",\r\n        \"applyDeadline\": \"05/11/2022\",\r\n        \"startDate\": \"05/16/2022\",\r\n        \"endDate\": \"05/30/2022\",\r\n        \"experienceNeeded\": \"3 years\",\r\n        \"hasApplicants\": \"N\"\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -208,6 +229,27 @@
 		},
 		{
 			"name": "getJobPosterbyId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/app/jobposter/1/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"app",
+						"jobposter",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteJobPoster",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -394,26 +436,26 @@
 			"response": []
 		},
 		{
-			"name": "getAllApplications",
+			"name": "getAllJobApplications",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/app/application",
+					"raw": "localhost:8080/app/jobApplication",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"app",
-						"application"
+						"jobApplication"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "getApplicationById",
+			"name": "getJobApplicationById",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -433,7 +475,7 @@
 			"response": []
 		},
 		{
-			"name": "getApplicationByJobId",
+			"name": "getJobApplicationByJobId",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -454,7 +496,7 @@
 			"response": []
 		},
 		{
-			"name": "createApplication",
+			"name": "createJobApplication",
 			"request": {
 				"method": "POST",
 				"header": [],

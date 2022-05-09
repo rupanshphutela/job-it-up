@@ -12,5 +12,6 @@ interface IJobModel extends Mongoose.Document {
 	startDate:string;
 	endDate:string;
 	experienceNeeded:string;
+    hasApplicants:String
 }
 export {IJobModel};

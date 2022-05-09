@@ -63,10 +63,17 @@ class App {
 
   /* Retrieve Jobs by Search Criteria*/
   router.get('/app/jobs/', (req, res) => {
-  var urlParts = url.parse(req.url, true);
-  var query = urlParts.query;
-  console.log(query)
-    this.Jobs.retrieveJobsBySearch(res, query);  
+    var urlParts = url.parse(req.url, true);
+    var query = urlParts.query;
+    console.log(query)
+      this.Jobs.retrieveJobsBySearch(res, query);  
+  });
+
+  /* Retrieve Jobs with Applicants*/
+  router.get('/app/job/jobApplications/jobposter/:jobPosterId', (req, res) => {
+    var id = req.params.jobPosterId;
+    console.log('Query Jobs with Applicants for jobposter with id: ' + id);
+    this.Jobs.retrieveJobsWithApplicants(res, {jobPosterId: id, hasApplicants: "Y"});
   });
 
   /*Create a Job Post*/
@@ -78,11 +85,16 @@ class App {
       this.Jobs.model.create(jsonObj, (err) => {
           if (err) {
               console.log('object creation failed');
+              res.send('{"status":"' + 'failed to create job post' + '"}');
+          }
+          else{
+            res.send('{"id":"' + id + '"}');
           }
       });
-      res.send('{"id":"' + id + '"}');
+      
   });
-
+  
+  /*Update a Job*/
   router.put('/app/job/:jobId', (req, res) => {
 
     var jobId = req.params.jobId;
@@ -221,9 +233,14 @@ router.post('/app/jobApplication/', (req, res) => {
     this.JobApplications.model.create(jsonObj, (err) => {
         if (err) {
             console.log('object creation failed');
+            res.send('{"status":"' + 'failed to create job application' + '"}');
+        }
+        else{
+          res.send('{"id":"' + id + '"}');
+          var jobId = req.body.jobId;
+          this.Jobs.updateJob(null, jobId, {hasApplicants:"Y"});
         }
     });
-    res.send('{"id":"' + id + '"}');
 });
 //get job applications for a job 
 router.get('/app/jobApplication/job/:jobId', (req, res) => {

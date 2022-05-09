@@ -56,6 +56,12 @@ var App = /** @class */ (function () {
             console.log(query);
             _this.Jobs.retrieveJobsBySearch(res, query);
         });
+        /* Retrieve Jobs with Applicants*/
+        router.get('/app/job/jobApplications/jobposter/:jobPosterId', function (req, res) {
+            var id = req.params.jobPosterId;
+            console.log('Query Jobs with Applicants for jobposter with id: ' + id);
+            _this.Jobs.retrieveJobsWithApplicants(res, { jobPosterId: id, hasApplicants: "Y" });
+        });
         /*Create a Job Post*/
         router.post('/app/job/', function (req, res) {
             var id = crypto.randomBytes(16).toString("hex");
@@ -65,10 +71,14 @@ var App = /** @class */ (function () {
             _this.Jobs.model.create(jsonObj, function (err) {
                 if (err) {
                     console.log('object creation failed');
+                    res.send('{"status":"' + 'failed to create job post' + '"}');
+                }
+                else {
+                    res.send('{"id":"' + id + '"}');
                 }
             });
-            res.send('{"id":"' + id + '"}');
         });
+        /*Update a Job*/
         router.put('/app/job/:jobId', function (req, res) {
             var jobId = req.params.jobId;
             var body = req.body;
@@ -185,9 +195,14 @@ var App = /** @class */ (function () {
             _this.JobApplications.model.create(jsonObj, function (err) {
                 if (err) {
                     console.log('object creation failed');
+                    res.send('{"status":"' + 'failed to create job application' + '"}');
+                }
+                else {
+                    res.send('{"id":"' + id + '"}');
+                    var jobId = req.body.jobId;
+                    _this.Jobs.updateJob(null, jobId, { hasApplicants: "Y" });
                 }
             });
-            res.send('{"id":"' + id + '"}');
         });
         //get job applications for a job 
         router.get('/app/jobApplication/job/:jobId', function (req, res) {

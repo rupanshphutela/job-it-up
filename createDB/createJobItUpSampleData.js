@@ -245,7 +245,8 @@ jobCollection.insert(
 	  applyDeadline:"05/11/2022",
 	  startDate:"05/16/2022",
 	  endDate:"05/30/2022",
-	 experienceNeeded:"3 years"
+	  experienceNeeded:"3 years",
+	  hasApplicants:"N"
 }
 )
 jobCollection.insert(
@@ -305,7 +306,8 @@ jobCollection.insert(
 	applyDeadline:"05/05/2022",
 	startDate:"05/09/2022",
 	endDate:"05/13/2022",
-   experienceNeeded:"2 years"
+   experienceNeeded:"2 years",
+   hasApplicants:"N"
 }
 )
 jobCollection.insert(
@@ -340,7 +342,8 @@ jobCollection.insert(
 	applyDeadline:"05/02/2022",
 	startDate:"05/09/2022",
 	endDate:"05/27/2022",
-   experienceNeeded:"0-1 year"
+   experienceNeeded:"0-1 year",
+   hasApplicants:"N"
 }
 )
 db.createCollection('jobApplication')

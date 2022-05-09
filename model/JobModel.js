@@ -22,7 +22,8 @@ var JobModel = /** @class */ (function () {
             applyDeadline: String,
             startDate: String,
             endDate: String,
-            experienceNeeded: String
+            experienceNeeded: String,
+            hasApplicants: String
         }, { collection: 'job' });
     };
     JobModel.prototype.createModel = function () {
@@ -38,6 +39,13 @@ var JobModel = /** @class */ (function () {
         var query = this.model.find(filter);
         query.exec(function (err, itemArray) {
             console.log(itemArray);
+            response.json(itemArray);
+        });
+    };
+    JobModel.prototype.retrieveJobsWithApplicants = function (response, filter) {
+        var query = this.model.find(filter);
+        console.log('Query  ' + query);
+        query.exec(function (err, itemArray) {
             response.json(itemArray);
         });
     };
@@ -92,11 +100,11 @@ var JobModel = /** @class */ (function () {
                 job.save(function (err) {
                     if (err) {
                         console.log('error');
-                        response.send('Error : Job not updated');
+                        //response.send('Error : Job not updated');
                     }
                     else {
                         console.log('success');
-                        response.send('Job object updated');
+                        //response.send('Job object updated');
                     }
                 });
             }
