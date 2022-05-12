@@ -41,6 +41,11 @@ class App {
   private routes(): void {
     let router = express.Router();
 
+    router.use((req, res, next) => {
+      res.header('Access-Control-Allow-Origin', '*');
+      next();
+    });
+    
   /*Job*/
   router.get('/app/job/', (req, res) => {
     console.log('Query All Jobs');
