@@ -15,20 +15,20 @@ interface IJobSeekerModel extends Mongoose.Document {
     primarySkills: [string],
     otherSkills: [string],
     education: 
-    {
+    [ {
         educationId: string,
 		universityName: string,
 		degree: string,
 		fromDate: string,
-		toDate: string
-    },
+		toDate: string}
+    ],
     workExperience:
-    {
+    [{
         workExperienceId: string,
         companyName: string,
         role: string,
         fromDate: string,
-        toDate: string,
-    }
+        toDate: string}
+    ]
 }
 export {IJobSeekerModel};

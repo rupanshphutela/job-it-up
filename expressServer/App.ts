@@ -145,6 +145,55 @@ class App {
   this.JobSeekers.retrieveJobSeekerDetails(res, {jobSeekerId: id});
   });
 
+
+   /*Update a JobSeeker profile*/
+   router.put('/app/JobSeeker/:JobSeekerId', (req, res) => {
+     console.log("151: res", res);
+     console.log("152: req", req);
+     
+    var JobSeekerId = req.params.JobSeekerId;
+    console.log("155: JobSeekerId", JobSeekerId);
+
+    var body = req.body;
+    console.log("158: res.body", body);
+
+    this.JobSeekers.updateJobSeekerProfile(res, JobSeekerId, body);
+  });   
+  
+  /*Update a JobSeeker work experience*/
+  router.put('/app/JobSeeker/:JobSeekerId/workExperience/:workExperienceId', (req, res) => {
+
+    var JobSeekerId = req.params.JobSeekerId;
+    var workExperienceId = req.params.workExperienceId;
+    var body = req.body;
+    this.JobSeekers.updateJobSeekerWorkExperience(res, JobSeekerId,workExperienceId, body);
+  });
+
+  /*Update a JobSeeker Education*/
+  router.put('/app/JobSeeker/:JobSeekerId/education/:educationId', (req, res) => {
+
+    var JobSeekerId = req.params.JobSeekerId;
+    var educationId = req.params.educationId;
+    var body = req.body;
+    this.JobSeekers.updateJobSeekerEducation(res, JobSeekerId,educationId, body);
+  });
+
+
+  // delete job seeker profile.
+  router.delete('/app/jobSeeker/:jobSeekerId', (req, res) => 
+  {
+    var id = req.params.jobSeekerId;
+    var input={jobSeekerId: id};
+    try
+    {
+      console.log('Delete Single Job seeker with id: ' + id);
+      this.JobSeekers.deleteJobSeeker(res, input);
+    }catch(err)
+    {
+      console.error('Error occurred while deleting job seeker with id:'+id);
+    }
+  });
+
   /*Job Poster*/
   router.get('/app/jobposter/', (req, res) => {
     console.log('Query All Job Posters');
