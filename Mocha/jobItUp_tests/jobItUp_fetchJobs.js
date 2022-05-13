@@ -28,7 +28,7 @@ describe('Test fetch all jobs', function () {
     
     it('API should return a list of all jobs', function (){
 		expect(response).to.have.status(200);
-        expect(response.body).to.be.a('array'); //.to.be.json //an.object
+        expect(response).to.be.json; // or an.object
 		expect(response.body).to.have.length.above(2);
 		expect(response).to.have.headers;
         expect(response.body).to.not.be.a.string;
@@ -49,7 +49,7 @@ describe('Test fetch all jobs', function () {
         expect(requestResult[0]).to.include.keys('experienceNeeded');
         expect(requestResult[0]).to.include.keys('hasApplicants');
 	});
-	it('All arrays of jobs should have the expected properties', function(){
+	it('All arrays of jobs should have the expected properties, expected field value lengths and expected field types', function(){
 		expect(response.body).to.satisfy(
 			function (body) {
 				for (var i = 0; i < body.length; i++) {
