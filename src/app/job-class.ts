@@ -1,6 +1,7 @@
 export interface JobClass {
     title: string;
-   skills:string[];
+    skills:string[];
+    domain: string;
     jobId: string;
     jobPosterId: string;
     location: string;
