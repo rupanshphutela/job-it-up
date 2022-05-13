@@ -54,15 +54,16 @@
     <div class="row ml-1" style="margin: 10px">
         <div class='col-lg-3'>
             <ul class='list-group'>
-              <div *ngFor="let job of results; let i = index"> 
-                <li class="list-group-item">
+              <div *ngFor="let job of results; let i = index "> 
+                <li class="list-group-item " let first="first" [ngClass]="{'active': selectedJob == job}" (click)="listClick(job)">
                   <div class="media-left"> 
                 <img class="media-object" src="data:image/jpeg;base64,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" />
                   </div>
                 <div class="media-body">
                   <a href="#job1" data-toggle='tab' style="color:black;"> 
-                    <h4 class="media-heading"><a routerLink={{link(i)}}>{{job.title}}</a></h4>
-                  </a>
+                    <h4 class="media-heading">{{job.title}}</h4></a>
+                    <!-- <h4 class="media-heading"><a routerLink={{link(i)}}>{{job.title}}</a></h4> -->
+                  <!-- </a> -->
                   <p class="list-group-item-text" style="color:black;">{{job.domain}}</p>
                    <p class="list-group-item-text" style="color:black;">{{job.location}}</p>
                 </div>
@@ -72,12 +73,14 @@
           </div> 
 
           <div class='col-lg-9 tab-content active'>
+           
             <div class='panel tab-pane active' id='job1'>
+                <div *ngIf="selectedJob">
             <div class='col-lg-2'>
             <div class="text-center" role="group">
                   <h3><strong><img src="data:image/jpeg;base64,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" /></strong></h3>
-                <h5 class='list-group-item-text'>Protingent</h5>
-                <h5 class='list-group-item-text'>Tucson, AZ</h5>
+                <h5 class='list-group-item-text'>{{selectedJob.title}}</h5>
+                <h5 class='list-group-item-text'>{{selectedJob.location}}</h5>
                 <br>
                 <div class="text-center" role="group">
                 <a class="btn btn-lg btn-primary" href="#" >Apply Now</a>
@@ -87,37 +90,22 @@
             
             <div class='col-lg-10'>
             <ul class='list-group'>
-                <h3><strong>Front End Developer</strong></h3>
+                <h3><strong>{{selectedJob.title}}</strong></h3>
                 <h4><strong>Salary</strong></h4>
-                <p>$25-30 per hour</p>
+                <p>{{selectedJob.salary}}</p>
                 <h4><strong>Deadline</strong></h4>
-                <p>15th May 2022</p>
+                <p>{{selectedJob.applyDeadline}}</p>
                 <h4><strong>Experience</strong></h4>
-                <p>3-4 years</p>
+                <p>{{selectedJob.experienceNeeded}}</p>
+                <h4><strong>Skills</strong></h4>
+                
+                <p>{{selectedJob.skills}}</p>
                 <h4><strong>Job Description</strong></h4>
-                <p>1. Determining the structure and design of web pages.<br>
-                2. Ensuring user experience determines design choices.<br>
-                3. Developing features to enhance the user experience.<br>
-                4. Striking a balance between functional and aesthetic design.<br>
-                5. Ensuring web design is optimized for smartphones.<br>
-                6. Building reusable code for future use.<br>
-                7. Optimizing web pages for maximum speed and scalability.<br>
-                8. Utilizing a variety of markup languages to write web pages<br>
-                <br>
-                Job Qualifications:<br>
-                1. 4+ years of experience as a Front End Java Developer.<br>
-                2. Proficiency in Java, HTML, CSS, JavaScript, and modern front end technologies like Angular, [website] or React.<br>
-                3. Experience with responsive and adaptive design.<br>
-                4. Good problem-solving skills.<br>
-                <br>
-                About Protingent: 
-                <br>
-                Protingent is a niche provider of top Engineering and IT talent to Software, Electronics, Medical Device, Telecom and Aerospace companies nationwide. Protingent exists to make a positive impact and contribution to the lives of others as well as our community by providing relevant, rewarding and exciting work opportunities for our candidates
-                </p>
+                 <div *ngFor="let desc of getDescription(selectedJob.description)">{{desc}}</div> 
               </ul>
               </div>
               </div>
-       
+            </div>
         
         </div>
     </div>

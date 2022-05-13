@@ -18,4 +18,8 @@ export class JobItUpApisService {
   getSpecificJob(id:number){
     return this.http.get<any>(this.hostUrl + 'app/job/' + id );
   }
+
+  getSpecificJobPoster(id:string){
+    return this.http.get<any>(this.hostUrl + 'app/job/jobPoster/' + id );
+  }
 }
