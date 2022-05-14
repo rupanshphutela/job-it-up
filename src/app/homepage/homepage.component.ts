@@ -22,20 +22,18 @@ export class HomepageComponent implements OnInit {
     this.apiService.getJobs().subscribe( (result: JobClass[]) =>
       {
         this.results = result;
-        this.selectedJob=this.results[0];
-        console.log("job results:" + JSON.stringify(result));
+        this.selectedJob=result[0];
+        console.log("job results:" +  this.results);
+        //setting the first job poster
+        this.apiService.getSpecificJobPoster(this.selectedJob.jobPosterId).subscribe((poster: JobPosterClass) => 
+    { 
+      this.selectedJobPoster=poster;     
+      console.log('poster' + JSON.stringify(poster));
+      
+    });
       }
     );
-    
-    // this.apiService.getSpecificJob(this.jobId).subscribe((result: JobClass) => 
-    // {
-  
-    //   this.selectedJob=result;
-      
-    //   console.log('detail result' + JSON.stringify(result));
-    //   console.log('name'+this.selectedJob.title);
-      
-    // });
+   
   
   }
 
@@ -47,8 +45,15 @@ export class HomepageComponent implements OnInit {
     
     //setting the selected job to model
     this.selectedJob = newValue; 
-    console.log(newValue);
+
+  this.apiService.getSpecificJobPoster(this.selectedJob.jobPosterId).subscribe((poster: JobPosterClass) => 
+    {
   
+      this.selectedJobPoster=poster;
+      
+      console.log('poster' + JSON.stringify(poster));
+      
+    });
 }
 
 //split the description string using new line to preserve format
