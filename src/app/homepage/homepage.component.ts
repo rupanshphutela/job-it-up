@@ -15,49 +15,47 @@ export class HomepageComponent implements OnInit {
   selectedJob!: JobClass;
   selectedJobPoster!: JobPosterClass;
   constructor(private apiService: JobItUpApisService) {
-  
-   }
+
+  }
 
   ngOnInit(): void {
-    this.apiService.getJobs().subscribe( (result: JobClass[]) =>
-      {
-        this.results = result;
-        this.selectedJob=result[0];
-        console.log("job results:" +  this.results);
-        //setting the first job poster
-        this.apiService.getSpecificJobPoster(this.selectedJob.jobPosterId).subscribe((poster: JobPosterClass) => 
-    { 
-      this.selectedJobPoster=poster;     
-      console.log('poster' + JSON.stringify(poster));
-      
-    });
-      }
+    this.apiService.getJobs().subscribe((result: JobClass[]) => {
+      this.results = result;
+      this.selectedJob = result[0];
+      console.log("job results:" + this.results);
+      //setting the first job poster
+      this.apiService.getSpecificJobPoster(this.selectedJob.jobPosterId).subscribe((poster: JobPosterClass) => {
+        this.selectedJobPoster = poster;
+        console.log('poster' + JSON.stringify(poster));
+
+      });
+    }
     );
-   
-  
+
+
   }
 
-  link(index:number): void {
-    this.jobId=index;
+  link(index: number): string {
+    this.jobId = index;
     console.log(this.jobId);
+    return "/applyjob/" + (index);
   }
-  listClick(newValue:JobClass) {
-    
+  listClick(newValue: JobClass) {
+
     //setting the selected job to model
-    this.selectedJob = newValue; 
+    this.selectedJob = newValue;
 
-  this.apiService.getSpecificJobPoster(this.selectedJob.jobPosterId).subscribe((poster: JobPosterClass) => 
-    {
-  
-      this.selectedJobPoster=poster;
-      
+    this.apiService.getSpecificJobPoster(this.selectedJob.jobPosterId).subscribe((poster: JobPosterClass) => {
+
+      this.selectedJobPoster = poster;
+
       console.log('poster' + JSON.stringify(poster));
-      
-    });
-}
 
-//split the description string using new line to preserve format
-getDescription(desc : string): string[]{
-return desc.split("\n");
-}
+    });
+  }
+
+  //split the description string using new line to preserve format
+  getDescription(desc: string): string[] {
+    return desc.split("\n");
+  }
 }
