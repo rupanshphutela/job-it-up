@@ -11,20 +11,26 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./apply-job-page.component.css']
 })
 export class ApplyJobPageComponent implements OnInit {
-  jobId: number = 0;
-  form: FormGroup;
-  constructor(public fb: FormBuilder, private route: ActivatedRoute, private apiService: JobItUpApisService, private http: HttpClient) {
-    this.form = this.fb.group({
-      fname: '',
-      lname: '',
-      email: '',
-      phone: '',
-      auth: '',
-      ExpSalary: '',
-      resume: '',
-      jobSeekerId: ''
-    });
-  }
+  jobId: string = "";
+ // form: FormGroup;
+
+  checkoutForm = this.fb.group({
+    fname: '',
+    lname: '',
+    email: '',
+    phone: '',
+    jobId: '',
+    workAuthorization: '',
+    expectedSalary: '',
+    resume: '',
+    jobSeekerId: ''
+  });
+
+  constructor(
+    private fb: FormBuilder, 
+    private route: ActivatedRoute, 
+    private apiService: JobItUpApisService, 
+    private http: HttpClient) {}
 
   ngOnInit(): void {
     this.jobId = this.route.snapshot.params['id'];
@@ -35,30 +41,19 @@ export class ApplyJobPageComponent implements OnInit {
   }
 
   submitForm(Values: any) {
-    // need to fix this code.
-    var formData: any = new FormData();
-    formData.append('fname', this.form.get('fname')?.value);
-    formData.append('lname', this.form.get('lname')?.value);
-    formData.append('email', this.form.get('email')?.value);
-    formData.append('phone', this.form.get('phone')?.value);
-    formData.append('workAuthorization', this.form.get('auth')?.value);
-    formData.append('expectedSalary', this.form.get('ExpSalary')?.value);
-    formData.append('resume', this.form.get('resume')?.value);
-    formData.append('jobSeekerId', "1");
-    
-    console.log("this.form.get('fname')?.value",this.form.get('lname')?.value)
-    console.log("this.form.get('fname')?.value",this.form.get('email')?.value)
-    console.log("this.form.get('fname')?.value",this.form.get('resume')?.value)
-    console.log("values.....", Values)
-    // getting empty obj in formData
-    console.log("values.....", formData)
+    console.log("job is passed to form group is ", this.jobId)
 
-    // console.log("values", typeof Values)
+    this.checkoutForm.patchValue({
+      jobId: this.jobId,
+      jobSeekerId: "1"
+    });
 
-    this.http.post<any>('http://localhost:8080/app/jobapplication/', (formData)).subscribe({
+    console.log("values.....", this.checkoutForm.value)
+    this.apiService.createJobApplication(this.checkoutForm.value).subscribe({
       next: (response: any) => console.log(response),
       error: (error: any) => console.log(error),
     });
   }
+  
 
 }

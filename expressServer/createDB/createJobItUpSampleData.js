@@ -357,9 +357,9 @@ jobApplicantsCollection.insert(
 	  expectedSalary: "25/hr",
 	  resume:"http:localhost:8080/resume/seeker/jsmith.pdf",
 	  workAuthorization:"Yes",
-	  status: "Applied"
-	 
-	
+	  status: "Applied",
+	  email: "john.doe@gmail.com",
+	  phone: "+14254420191"
 }
 )
 jobApplicantsCollection.insert(
@@ -370,8 +370,9 @@ jobApplicantsCollection.insert(
 		expectedSalary: "20/hr",
 		resume:"http:localhost:8080/resume/seeker/cdecker.doc",
 		workAuthorization:"yes",
-		status: "Applied"
-
+		status: "Applied",
+		email: "john.doe@gmail.com",
+		phone: "+14254420191"
 }
 )
 jobApplicantsCollection.insert(
@@ -382,7 +383,8 @@ jobApplicantsCollection.insert(
 		expectedSalary: "20/hr",
 		resume:"http:localhost:8080/resume/seeker/lwalsh.pdf",
 		workAuthorization:"yes",
-		status: "UnderReview"
-	
+		status: "UnderReview",
+		email: "john.doe@gmail.com",
+		phone: "+14254420191"	
 }
 )

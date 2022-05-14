@@ -43,6 +43,7 @@ class App {
 
     router.use((req, res, next) => {
       res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Headers','content-type');
       next();
     });
     
@@ -75,7 +76,7 @@ class App {
   });
 
   /* Retrieve Jobs with Applicants*/
-  router.get('/app/job/jobApplications/jobposter/:jobPosterId', (req, res) => {
+  router.get('/app/job/jobposter/:jobPosterId', (req, res) => {
     var id = req.params.jobPosterId;
     console.log('Query Jobs with Applicants for jobposter with id: ' + id);
     this.Jobs.retrieveJobsWithApplicants(res, {jobPosterId: id, hasApplicants: "Y"});
@@ -290,6 +291,7 @@ router.post('/app/jobApplication/', (req, res) => {
             res.send('{"status":"' + 'failed to create job application' + '"}');
         }
         else{
+          console.log('job id from request body is ', req.body.jobId);
           res.send('{"id":"' + id + '"}');
           var jobId = req.body.jobId;
           this.Jobs.updateJob(null, jobId, {hasApplicants:"Y"});

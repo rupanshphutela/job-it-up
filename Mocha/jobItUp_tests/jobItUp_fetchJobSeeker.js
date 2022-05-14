@@ -34,7 +34,7 @@ describe('Test fetch all jobs', function () {
         expect(response.body).to.not.be.a.string;
     });
     
-	it('The Job Seeker JSON of the should have all keys/properties, expected field value lengths and expected field types', function(){
+	it('The Job Seeker JSON should have all keys/properties, expected field value lengths and expected field types', function(){
 
         /*Checking all fields being present */
         expect(requestResult).to.include.keys('primarySkills');

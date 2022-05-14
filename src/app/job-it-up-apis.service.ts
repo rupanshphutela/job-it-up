@@ -15,11 +15,16 @@ export class JobItUpApisService {
     return this.http.get<JobClass[]>(this.hostUrl + 'app/job');
   }
 
-  getSpecificJob(id:number){
+  getSpecificJob(id:string){
     return this.http.get<any>(this.hostUrl + 'app/job/' + id );
   }
 
   getSpecificJobPoster(id:string){
     return this.http.get<any>(this.hostUrl + 'app/jobposter/' + id );
+  }
+
+  createJobApplication (checkoutForm: FormData){
+    return this.http.post<any>(this.hostUrl + 'app/jobApplication/',checkoutForm);
+
   }
 }

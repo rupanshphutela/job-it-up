@@ -4,16 +4,16 @@
     &nbsp;
     <div class="row justify-content-center">
         <div class="col-md-12 align-center">
-            <form [formGroup]="form" (ngSubmit)="submitForm(form.value)">
+            <form [formGroup]="checkoutForm" (ngSubmit)="submitForm(checkoutForm.value)">
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-6">
                             <label class="control-label">First Name</label>
-                            <input type="text" class="form-control" formControlName="fname" required>
+                            <input type="text" class="form-control" formControlName="fname" value="John" readonly="readonly" required>
                         </div>
                         <div class="col-md-6">
                             <label class="control-label">Last Name</label>
-                            <input type="text" class="form-control" formControlName="lname" required>
+                            <input type="text" class="form-control" formControlName="lname" value= "Doe" readonly="readonly" required>
                         </div>
                         &nbsp;
                     </div>
@@ -31,11 +31,11 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label class="control-label">Authorized to work in USA</label>
-                            <input type="tel" class="form-control" formControlName="auth" required>
+                            <input type="tel" class="form-control" formControlName="workAuthorization" required>
                         </div>
                         <div class="col-md-6">
                             <label class="control-label">Expected Salary (per hour) </label>
-                            <input class="form-control" rows="5" formControlName="ExpSalary" required>
+                            <input type="number" class="form-control" rows="5" formControlName="expectedSalary" required>
                         </div>
                     </div>
                     &nbsp;
@@ -51,7 +51,7 @@
                 <div class="form-group">
                     <div class="row text-center">
                         <div class="col-md-12" >
-                            <button class="btn btn-primary btn-lg click">Apply</button>
+                            <button class="btn btn-primary btn-lg click" type="submit">Apply</button>
                             &nbsp; &nbsp; &nbsp; &nbsp;
                             &nbsp; &nbsp; &nbsp; &nbsp;
                             <button class="btn btn-cancel btn-lg" routerLink="" >Cancel</button>

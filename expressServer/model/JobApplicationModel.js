@@ -18,7 +18,9 @@ var JobApplicationModel = /** @class */ (function () {
             expectedSalary: String,
             resume: String,
             workAuthorization: String,
-            status: String
+            status: String,
+            email: String,
+            phone: String
         }, { collection: 'jobApplication' });
     };
     JobApplicationModel.prototype.createModel = function () {

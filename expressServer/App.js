@@ -34,6 +34,7 @@ var App = /** @class */ (function () {
         var router = express.Router();
         router.use(function (req, res, next) {
             res.header('Access-Control-Allow-Origin', '*');
+            res.header('Access-Control-Allow-Headers', 'content-type');
             next();
         });
         /*Job*/
@@ -61,7 +62,7 @@ var App = /** @class */ (function () {
             _this.Jobs.retrieveJobsBySearch(res, query);
         });
         /* Retrieve Jobs with Applicants*/
-        router.get('/app/job/jobApplications/jobposter/:jobPosterId', function (req, res) {
+        router.get('/app/job/jobposter/:jobPosterId', function (req, res) {
             var id = req.params.jobPosterId;
             console.log('Query Jobs with Applicants for jobposter with id: ' + id);
             _this.Jobs.retrieveJobsWithApplicants(res, { jobPosterId: id, hasApplicants: "Y" });
@@ -238,6 +239,7 @@ var App = /** @class */ (function () {
                     res.send('{"status":"' + 'failed to create job application' + '"}');
                 }
                 else {
+                    console.log('job id from request body is ', req.body.jobId);
                     res.send('{"id":"' + id + '"}');
                     var jobId = req.body.jobId;
                     _this.Jobs.updateJob(null, jobId, { hasApplicants: "Y" });

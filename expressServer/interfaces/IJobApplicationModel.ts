@@ -8,6 +8,8 @@ interface IJobApplicationModel extends Mongoose.Document {
       resume:string;
 	  workAuthorization:string;
 	  status: string;
+	  email: string;
+	  phone: string;	  
 }
 export {IJobApplicationModel};
 
