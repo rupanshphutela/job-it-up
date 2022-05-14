@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApplyJobPageComponent implements OnInit {
   jobId: string = "";
+  response_id: string="";
  // form: FormGroup;
 
   checkoutForm = this.fb.group({
@@ -49,9 +50,9 @@ export class ApplyJobPageComponent implements OnInit {
     });
 
     console.log("values.....", this.checkoutForm.value)
-    this.apiService.createJobApplication(this.checkoutForm.value).subscribe({
-      next: (response: any) => console.log(response),
-      error: (error: any) => console.log(error),
+    this.apiService.createJobApplication(this.checkoutForm.value).subscribe((response) =>{
+      this.response_id = response.id;
+      console.log(response);
     });
   }
   
