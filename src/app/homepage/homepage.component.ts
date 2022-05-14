@@ -12,6 +12,7 @@ export class HomepageComponent implements OnInit {
 
   results: Array<JobClass> = [];
   companyLogo: Array<String>= [];
+  companyName: Array<String>= [];
   jobId: number = 0;
   selectedJob!: JobClass;
   selectedJobPoster!: JobPosterClass;
@@ -30,10 +31,13 @@ export class HomepageComponent implements OnInit {
         this.apiService.getSpecificJobPoster(element.jobPosterId).subscribe((poster: JobPosterClass) => 
           { 
             this.companyLogo[index] = poster.companyLogo
+            this.companyName[index] = poster.companyName
             console.log('company logo path at index ' + [index] + ' is ' + (this.companyLogo[index]));
+            console.log('company name path at index ' + [index] + ' is ' + (this.companyName[index]));
             
           });
         });
+       
 
       //setting the first job poster
       this.apiService.getSpecificJobPoster(this.selectedJob.jobPosterId).subscribe((poster: JobPosterClass) => {
