@@ -15,7 +15,8 @@ export class HomepageComponent implements OnInit {
   companyName: Array<String>= [];
   jobId: number = 0;
   selectedJob!: JobClass;
-  selectedJobPoster!: JobPosterClass;
+  selectedCompanyLogo!: String;
+  selectedCompanyName!: String;
   constructor(private apiService: JobItUpApisService) {
 
   }
@@ -34,17 +35,14 @@ export class HomepageComponent implements OnInit {
             this.companyName[index] = poster.companyName
             console.log('company logo path at index ' + [index] + ' is ' + (this.companyLogo[index]));
             console.log('company name path at index ' + [index] + ' is ' + (this.companyName[index]));
-            
+            //to display the first job details when page is loaded
+            if(index==0){
+            this.selectedCompanyLogo=this.companyLogo[index];
+            this.selectedCompanyName=this.companyName[index];
+            }
           });
         });
-       
-
-      //setting the first job poster
-      this.apiService.getSpecificJobPoster(this.selectedJob.jobPosterId).subscribe((poster: JobPosterClass) => {
-        this.selectedJobPoster = poster;
-        console.log('poster' + JSON.stringify(poster));
-
-      });
+      
     }
     );
 
@@ -56,18 +54,12 @@ export class HomepageComponent implements OnInit {
     console.log(this.jobId);
     return "/applyjob/" + (index);
   }
-  listClick(newValue: JobClass) {
+  listClick(newValue: JobClass,index: number) {
 
     //setting the selected job to model
     this.selectedJob = newValue;
-
-    this.apiService.getSpecificJobPoster(this.selectedJob.jobPosterId).subscribe((poster: JobPosterClass) => {
-
-      this.selectedJobPoster = poster;
-
-      console.log('poster' + JSON.stringify(poster));
-
-    });
+    this.selectedCompanyLogo=this.companyLogo[index];
+    this.selectedCompanyName=this.companyName[index];
   }
 
   //split the description string using new line to preserve format
