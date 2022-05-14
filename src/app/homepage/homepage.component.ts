@@ -11,6 +11,7 @@ import { JobItUpApisService } from '../job-it-up-apis.service';
 export class HomepageComponent implements OnInit {
 
   results: Array<JobClass> = [];
+  companyLogo: Array<String>= [];
   jobId: number = 0;
   selectedJob!: JobClass;
   selectedJobPoster!: JobPosterClass;
@@ -23,6 +24,17 @@ export class HomepageComponent implements OnInit {
       this.results = result;
       this.selectedJob = result[0];
       console.log("job results:" + this.results);
+
+      //setting company logo at each index
+      result.forEach((element, index) => {
+        this.apiService.getSpecificJobPoster(element.jobPosterId).subscribe((poster: JobPosterClass) => 
+          { 
+            this.companyLogo[index] = poster.companyLogo
+            console.log('company logo path at index ' + [index] + ' is ' + (this.companyLogo[index]));
+            
+          });
+        });
+
       //setting the first job poster
       this.apiService.getSpecificJobPoster(this.selectedJob.jobPosterId).subscribe((poster: JobPosterClass) => {
         this.selectedJobPoster = poster;
