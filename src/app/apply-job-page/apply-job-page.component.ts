@@ -24,7 +24,8 @@ export class ApplyJobPageComponent implements OnInit {
     workAuthorization: '',
     expectedSalary: '',
     resume: '',
-    jobSeekerId: ''
+    jobSeekerId: '',
+    status: ''
   });
 
   constructor(
@@ -42,11 +43,12 @@ export class ApplyJobPageComponent implements OnInit {
   }
 
   submitForm(Values: any) {
-    console.log("job is passed to form group is ", this.jobId)
+    console.log("job id passed to form group is ", this.jobId)
 
     this.checkoutForm.patchValue({
       jobId: this.jobId,
-      jobSeekerId: "1"
+      jobSeekerId: "1",
+      status: "Applied"
     });
 
     console.log("values.....", this.checkoutForm.value)
