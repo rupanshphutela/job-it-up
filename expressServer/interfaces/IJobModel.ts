@@ -3,6 +3,7 @@ import Mongoose = require("mongoose");
 interface IJobModel extends Mongoose.Document {
     title: string;
    skills:string[];
+    domain: string;
     jobId: string;
     jobPosterId: string;
     location: string;

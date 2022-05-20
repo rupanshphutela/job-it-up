@@ -21,6 +21,7 @@ class JobModel {
             {
                 title: String,
                 skills: [String],
+                domain: String,
                 jobId: String,
                 jobPosterId: String,
                 location: String,
