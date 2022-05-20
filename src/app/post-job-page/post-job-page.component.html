@@ -1,0 +1,77 @@
+<div class="container">
+    <h1 class="text-center">Post a Job</h1>
+    &nbsp;
+    &nbsp;
+    <div class="row justify-content-center">
+        <div class="col-md-12 align-center">
+            <form [formGroup]="checkoutForm" (ngSubmit)="submitForm(checkoutForm.value)">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label">Job Title</label>
+                            <input type="text" class="form-control" formControlName="title" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Job Domain</label>
+                            <input type="text" class="form-control" formControlName="domain" required>
+                        </div>
+                        &nbsp;
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label">Skills</label>
+                            <input type="email" class="form-control" formControlName="skills" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Experience</label>
+                            <input type="tel" class="form-control" formControlName="experienceNeeded" required>
+                        </div>
+                    </div>
+                    &nbsp;
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label">Location</label>
+                            <input type="email" class="form-control" formControlName="location" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Expected Salary (per hour) </label>
+                            <input type="number" class="form-control" rows="5" formControlName="salary" required>
+                        </div>
+                    </div>
+                    &nbsp;
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label">Start date</label>
+                            <input type="date" class="form-control search-slt" formControlName="startDate" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">End Date</label>
+                            <input type="date" class="form-control search-slt" formControlName="endDate" required>
+                        </div>
+                    </div>
+                    &nbsp;
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label">Job Description</label>
+                            <input type="email" class="form-control" formControlName="description" required>
+                        </div>
+                    </div>
+                </div>
+                &nbsp; &nbsp; &nbsp; &nbsp;
+
+                <div class="form-group">
+                    <div class="row text-center">
+                        <div class="col-md-12" >
+                            <button class="btn btn-primary btn-lg click" type="submit">Post</button>
+                            &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp;
+                            <button class="btn btn-cancel btn-lg" routerLink="" >Back</button>
+                            <div *ngIf="response_id.length>0">
+                                <h4>The job post has been added successfully!</h4>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>

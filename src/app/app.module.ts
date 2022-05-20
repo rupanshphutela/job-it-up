@@ -8,12 +8,14 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApplyJobPageComponent } from './apply-job-page/apply-job-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PostJobPageComponent } from './post-job-page/post-job-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
     ApplyJobPageComponent,
+    PostJobPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -27,4 +27,7 @@ export class JobItUpApisService {
     return this.http.post<any>(this.hostUrl + 'app/jobApplication/',checkoutForm);
 
   }
+  createJobPost (checkoutForm: FormData){
+    return this.http.post<any>(this.hostUrl + 'app/job/',checkoutForm);
+  }
 }
