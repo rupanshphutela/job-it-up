@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'jobItUp';
+  isJobSeeker!: String;
+
+  ngOnInit(): void {
+    this.isJobSeeker='N';
+  }
 }

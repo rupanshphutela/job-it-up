@@ -10,12 +10,11 @@
         <div class="container">
                 <form action="#" method="post" novalidate="novalidate" style="width:100%">
                     <div class="row" style=" margin-top:15%;margin-left:8%">
-                        <div class="col-lg-12" style="width:100%">
-                            <div class="row" style="width:100%">
+                        <div class="col-lg-10" style="width:100%">
                                 <div  class="col-md-2 col-sm-12 p-0"  style="padding:0px;width:15%">
                                     <input type="text" class=" form-control search-slt" style="padding:0px;width:100% " placeholder="Enter job role" >
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 p-0" style="padding:0px;width:15% " >
+                                <div class="col-lg-2 col-md-3 col-sm-12 p-0" style="padding:0px;width:15% " >
                                     <select class="form-control search-slt " style="padding:0px;width:100%" id="exampleFormControlSelect1" >
                                         <option>Select Domain</option>
                                         <option>Dentist</option>
@@ -24,20 +23,25 @@
                                         <option>Third Choice</option>
                                     </select>
                                 </div>
-                                <div  class="col-lg-3 col-md-3 col-sm-12 p-0" style="padding:0px;width:15%" >
+                                <div  class="col-lg-2 col-md-3 col-sm-12 p-0" style="padding:0px;width:15%" >
                                     <input input type="date" id="startDate" class="form-control search-slt " />
                                 </div>
-                                <div  class="col-lg-3 col-md-3 col-sm-12 p-0" style="padding:0px;width:15%" >
+                                <div  class="col-lg-2 col-md-3 col-sm-12 p-0" style="padding:0px;width:15%" >
                                     <input input type="date" id="endDate" class="form-control search-slt " />
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 p-0" style="padding:0px;width:15%" >
+                                <div class="col-lg-2 col-md-3 col-sm-12 p-0" style="padding:0px;width:15%" >
                                     <input type="text" class="form-control search-slt" style="padding:0px;width:100%" placeholder="Enter Location" >
                                 </div>
-                              
-                                <div class="col-lg-3 col-md-3 col-sm-12 p-0" style="padding:0px; width:120px;">
+                                <div class="col-lg-2 col-md-3 col-sm-12 p-0" style="padding:0px; width:120px;">
                                     <button type="button" class="btn wrn-btn" style="background-color:#3E9AE9;color:white" >Search</button>
                                 </div>
-                            </div>
+                        </div>
+                        <div class="col-lg-2" *ngIf="isJobSeeker == 'N'" style="width:100%">
+                        <div>
+                            <br>
+                            <input class="form-check-input" type="checkbox" id="check1" name="JobsWithAppplicants" value="something" checked>
+                            <label class="form-check-label" style="color:white">Show Jobs with Applicants</label>
+                          </div>
                         </div>
                     </div>
                 </form>
@@ -84,9 +88,17 @@
                 <h5 class='list-group-item-text'>{{this.selectedCompanyName}}</h5>
                 <h5 class='list-group-item-text'>{{selectedJob.location}}</h5>
                 <br>
-                <div class="text-center" role="group">
-                <a class="btn btn-lg btn-primary" routerLink={{link((selectedJob.jobId))}}>Apply Now</a>
+                <div id="applyJob" class="text-center" role="group">
+                <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'Y'" routerLink={{link((selectedJob.jobId))}}>Apply Now</a>
                 </div>
+                <br>
+                <div id="applyJob" class="text-center" role="group">
+                    <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'N'" routerLink={{link((selectedJob.jobId))}}>View Applicants</a>
+                    </div>
+                    <br>
+                <div id="editJob" class="text-center" role="group">
+                    <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'N'" routerLink={{link((selectedJob.jobId))}}>Edit Job</a>
+                    </div>
             </div>
             </div>
             

@@ -19,7 +19,8 @@
                   <li class="active"><a href="#">
                           HOME
                       </a></li>
-                  <li><a href="#" class="text-white">APPLIED JOBS</a></li>
+                  <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'Y'">APPLIED JOBS</a></li>
+                  <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'">POSTED JOBS</a></li>
                   <li><a href="#" class="text-white">PROFILE</a></li>
                   <li><a href="#" class="text-white">ACCOUNT DATA</a></li>
                   <li><a href="#" class="text-white">LOG OUT</a></li>

@@ -17,11 +17,13 @@ export class HomepageComponent implements OnInit {
   selectedJob!: JobClass;
   selectedCompanyLogo!: String;
   selectedCompanyName!: String;
+  isJobSeeker!: String;
   constructor(private apiService: JobItUpApisService) {
 
   }
 
   ngOnInit(): void {
+    this.isJobSeeker='N';
     this.apiService.getJobs().subscribe((result: JobClass[]) => {
       this.results = result;
       this.selectedJob = result[0];
