@@ -44,8 +44,9 @@ table.table td a {
     display: inline-block;
     margin: 0 50px;
 }
-table.table td a.delete {
+table.table td button.delete {
     color: #E34724;
+    border: 0ch;
 }
 table.table td i {
     font-size: 19px;

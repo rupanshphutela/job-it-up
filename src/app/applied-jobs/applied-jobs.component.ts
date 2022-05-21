@@ -12,4 +12,10 @@ export class AppliedJobsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  deleteBtn(){
+    if(confirm('Are you sure to delete Application?'))
+    console.log('delete pressed....')
+    // call delete api here.
+  }
+
 }
