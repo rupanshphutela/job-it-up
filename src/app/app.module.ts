@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApplyJobPageComponent } from './apply-job-page/apply-job-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostJobPageComponent } from './post-job-page/post-job-page.component';
+import { AppliedJobsComponent } from './applied-jobs/applied-jobs.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { PostJobPageComponent } from './post-job-page/post-job-page.component';
     HomepageComponent,
     ApplyJobPageComponent,
     PostJobPageComponent,
+    AppliedJobsComponent,
   ],
   imports: [
     BrowserModule,

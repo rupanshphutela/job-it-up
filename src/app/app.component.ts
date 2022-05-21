@@ -10,6 +10,6 @@ export class AppComponent {
   isJobSeeker!: String;
 
   ngOnInit(): void {
-    this.isJobSeeker='N';
+    this.isJobSeeker='Y';
   }
 }
