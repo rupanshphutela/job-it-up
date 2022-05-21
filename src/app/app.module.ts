@@ -10,6 +10,7 @@ import { ApplyJobPageComponent } from './apply-job-page/apply-job-page.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostJobPageComponent } from './post-job-page/post-job-page.component';
 import { AppliedJobsComponent } from './applied-jobs/applied-jobs.component';
+import { JobSeekerProfileComponent } from './job-seeker-profile/job-seeker-profile.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AppliedJobsComponent } from './applied-jobs/applied-jobs.component';
     ApplyJobPageComponent,
     PostJobPageComponent,
     AppliedJobsComponent,
+    JobSeekerProfileComponent,
   ],
   imports: [
     BrowserModule,

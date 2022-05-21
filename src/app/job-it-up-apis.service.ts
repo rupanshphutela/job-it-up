@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { JobClass } from './job-class';
+import { JobSeekerClass } from './jobseeker-class';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,9 @@ export class JobItUpApisService {
   }
   createJobPost (checkoutForm: FormData){
     return this.http.post<any>(this.hostUrl + 'app/job/',checkoutForm);
+  }
+
+  getJobSeekerProfile (id: string){
+    return this.http.get<JobSeekerClass>(this.hostUrl + 'app/jobseeker/' + id );
   }
 }
