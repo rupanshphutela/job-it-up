@@ -25,3 +25,31 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## 1. To start mongo demon 
+mongod -port 3000 -dbpath ".\expressServer\createDB"
+
+## 2. To start mongo server
+cd expressServer
+mongo --port 3000 --authenticationDatabase admin
+
+## 3. To load the database
+load ('createDB/createJobItUpSampleData.js');
+load ('createDB/createAdminUser.js');
+exit
+
+## 4. Compile Node/Express Server.  You may need to go to all subdirectories and compile the ts files.
+tsc AppServer.ts
+
+## 5. Execute Node/Express server on port 8080
+node AppServer.js 
+
+## 6. To test server #3, try the following URL on the browser, while the server is running:
+* http://localhost:8080/
+* http://localhost:8080/app/jobposter
+
+## 7. To start angular
+ng serve
+http://localhost:4200/
+http://localhost:4200/appliedJob
+http://localhost:4200/applyjob/1
