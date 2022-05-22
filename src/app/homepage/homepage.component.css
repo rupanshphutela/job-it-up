@@ -10,6 +10,13 @@
 .row{
     width:100%
 }
+#block2
+{
+   
+    /* margin: 10px 20px; */
+    /* padding: 20px; */
+    width: 180px;
+}
 
 .text-over-img {
     position: absolute;
