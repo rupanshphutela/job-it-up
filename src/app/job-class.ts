@@ -8,7 +8,7 @@ export interface JobClass {
     description: string;
     salary: string;
     applyDeadline:string;
-	startDate:Date;
+	startDate:string;
 	endDate:string;
 	experienceNeeded:string;
     hasApplicants:String

@@ -15,8 +15,6 @@ export class PostJobPageComponent implements OnInit {
   jobId: string = "";
   response_id: string="";
   selectedJob!: JobClass;
-  startDate!: Date;
-  endDate!:Date;
   checkoutForm = this.fb.group({
     title: '',
     domain: '',
@@ -44,9 +42,6 @@ export class PostJobPageComponent implements OnInit {
       this.apiService.getSpecificJob(this.jobId).subscribe((result: JobClass) => {
         console.log('detail result' + JSON.stringify(result));
         this.selectedJob=result;
-       this.startDate=new Date(this.selectedJob.startDate);
-       this.endDate=new Date(this.selectedJob.endDate);
-      console.log(this.startDate);
       });
      }
   }
@@ -77,9 +72,7 @@ export class PostJobPageComponent implements OnInit {
     
   }
 
-  // format date in typescript
-getFormatedDate(date: Date, format: string) {
-  const datePipe = new DatePipe('en-US');
-  return datePipe.transform(date, format);
-}
+ 
+
+
 }
