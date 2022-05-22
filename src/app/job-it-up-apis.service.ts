@@ -38,6 +38,12 @@ export class JobItUpApisService {
 
   updateJobPost (checkoutForm: FormData,id:string){
     console.log(checkoutForm);
-    return this.http.put<any>(this.hostUrl + 'app/job/'+id,checkoutForm);
+    return this.http.put<any>(this.hostUrl + 'app/job/'+id,checkoutForm);}
+  getJobSeekerAppliedJobs (id: string){
+    return this.http.get<any>(this.hostUrl + 'app/jobApplication/jobSeeker/' + id );
+  }
+
+  deleteJobApplication (id: string){
+    return this.http.delete<number>(this.hostUrl + "app/jobApplication/" +id);
   }
 }
