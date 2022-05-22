@@ -112,7 +112,7 @@
                
                 <p>{{selectedJob.salary}}</p>
               </div>
-              <div id="block1" style="float:right;">
+              <div id="block2" style="float:right;">
                 <h4><strong>Duration</strong></h4>
                
                 <p>{{selectedJob.startDate}} to {{selectedJob.endDate}}</p> 
@@ -133,7 +133,7 @@
               <div id="block1" style="float:left;">
                 <h4><strong>Job Description</strong></h4>
                  <div *ngFor="let desc of getDescription(selectedJob.description)">{{desc}}</div> 
-                 </div>
+              </div>
               </ul>
               </div>
               </div>

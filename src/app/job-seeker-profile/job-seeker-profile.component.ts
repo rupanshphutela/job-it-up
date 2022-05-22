@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class JobSeekerProfileComponent implements OnInit {
   jobSeekerResults!: JobSeekerClass;
   jobSeekerId: string="";
-  isJobSeeker: string="N";
+  isJobSeeker: string="Y";
   jobSeekerWorkExperience!: JobSeekerClass["workExperience"];
   jobSeekerEducation!: JobSeekerClass["education"];
    
