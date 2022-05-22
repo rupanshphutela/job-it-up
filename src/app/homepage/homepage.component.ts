@@ -17,20 +17,21 @@ export class HomepageComponent implements OnInit {
   selectedJob!: JobClass;
   selectedCompanyLogo!: String;
   selectedCompanyName!: String;
-  isJobSeeker!: String;
+  isJobSeeker!: string;
   constructor(private apiService: JobItUpApisService) {
 
   }
 
   ngOnInit(): void {
     this.isJobSeeker='Y';
-    this.apiService.getJobs().subscribe((result: JobClass[]) => {
+    this.apiService.getJobs(this.isJobSeeker).subscribe((result: JobClass[]) => {
       this.results = result;
       this.selectedJob = result[0];
       console.log("job results:" + this.results);
 
       //setting company logo at each index
       result.forEach((element, index) => {
+     
         this.apiService.getSpecificJobPoster(element.jobPosterId).subscribe((poster: JobPosterClass) => 
           { 
             this.companyLogo[index] = poster.companyLogo
@@ -44,6 +45,7 @@ export class HomepageComponent implements OnInit {
             }
           });
         });
+        
       
     }
     );

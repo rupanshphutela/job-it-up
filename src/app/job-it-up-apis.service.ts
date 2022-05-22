@@ -9,11 +9,15 @@ import { JobSeekerClass } from './jobseeker-class';
 export class JobItUpApisService {
 
   hostUrl:string = 'http://localhost:8080/';
-
+  jobPostedId:string='1';
   constructor(private http: HttpClient) { }
 
-  getJobs(){
-    return this.http.get<JobClass[]>(this.hostUrl + 'app/job');
+  getJobs(isJobSeeker:string){
+    if(isJobSeeker=='Y'){
+      return this.http.get<JobClass[]>(this.hostUrl + 'app/job');
+    }
+    
+    return this.http.get<JobClass[]>(this.hostUrl + 'app/job/jobPoster/'+this.jobPostedId);
   }
 
   getSpecificJob(id:string){
