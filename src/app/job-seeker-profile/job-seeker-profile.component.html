@@ -8,11 +8,11 @@
             </div>
 
             <div class='col-md-10'>
-                <h3><strong>About</strong></h3>
+                <h3 class="section-header"><strong>About</strong></h3>
             </div>
 
             <div id="editJob" class="col-md-2">
-                <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'Y'" style="float: right;">Edit Profile</a>
+                <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'Y'" style="float: right;" routerLink={{jobSeekerEditLink((jobSeekerResults.jobSeekerId))}}>Edit Profile</a>
                 <!-- <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'Y'" routerLink={{link((selectedJob.jobId))}}>Edit Job</a> -->
                 </div>
 
@@ -71,7 +71,7 @@
             </div>
 
             <div class='col-md-12'>
-                <h3><strong>Skills</strong></h3>
+                <h3 class="section-header"><strong>Skills</strong></h3>
             </div>
 
             <div class='col-md-12'>
@@ -115,7 +115,7 @@
             </div>
 
             <div class='col-md-12'>
-                <h3><strong>Work Experience</strong></h3>
+                <h3 class="section-header"><strong>Work Experience</strong></h3>
             </div>
 
             <div class='col-md-12'>
@@ -157,7 +157,7 @@
 
 
             <div class='col-md-12'>
-                <h3><strong>Education</strong></h3>
+                <h3 class="section-header"><strong>Education</strong></h3>
             </div>
 
             <div class='col-md-12'>

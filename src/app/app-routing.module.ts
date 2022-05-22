@@ -5,6 +5,8 @@ import { ApplyJobPageComponent } from './apply-job-page/apply-job-page.component
 import { HomepageComponent } from './homepage/homepage.component';
 import { PostJobPageComponent } from './post-job-page/post-job-page.component';
 import { JobSeekerProfileComponent } from './job-seeker-profile/job-seeker-profile.component';
+import { JobSeekerEditProfileComponent } from './job-seeker-edit-profile/job-seeker-edit-profile.component';
+
 
 const routes: Routes = [  
   { path: '', component: HomepageComponent },
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'appliedJob', component: AppliedJobsComponent },
   { path: 'jobSeekerProfile/:id', component: JobSeekerProfileComponent},
   { path: 'editjob/:id', component: PostJobPageComponent },
+  { path: 'jobSeekerEditProfile/:id', component: JobSeekerEditProfileComponent},
+
 ];
 
 @NgModule({

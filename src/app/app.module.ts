@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostJobPageComponent } from './post-job-page/post-job-page.component';
 import { AppliedJobsComponent } from './applied-jobs/applied-jobs.component';
 import { JobSeekerProfileComponent } from './job-seeker-profile/job-seeker-profile.component';
+import { JobSeekerEditProfileComponent } from './job-seeker-edit-profile/job-seeker-edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { JobSeekerProfileComponent } from './job-seeker-profile/job-seeker-profi
     PostJobPageComponent,
     AppliedJobsComponent,
     JobSeekerProfileComponent,
+    JobSeekerEditProfileComponent,
   ],
   imports: [
     BrowserModule,

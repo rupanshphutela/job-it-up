@@ -1,0 +1,226 @@
+<div class="container">
+    <div class='col-md-12'>
+        <h1 class="text-center">Edit Profile</h1>
+    </div>
+        <form [formGroup]="checkoutForm" (ngSubmit)="submitForm(checkoutForm.value)">
+
+            <div class='col-md-12'>
+                <div class="col-md-2">
+                    <h4><strong>First Name</strong></h4>
+                </div>
+
+                <div class="col-md-4">
+                    <h4><input type="text" class="form-control" formControlName="fname" [(ngModel)]=jobSeekerResults.fname required></h4>
+                </div>
+
+                <div class="col-md-2">
+                    <h4><strong>Last Name</strong></h4>
+                </div>
+
+                <div class="col-md-4">
+                    <h4><input type="text" class="form-control" formControlName="lname" [(ngModel)]=jobSeekerResults.lname required></h4>
+                </div>
+            </div>
+
+            <div class='col-md-12'>
+                <h3 class="section-header"><strong>About</strong></h3>
+            </div>
+
+            <div class='col-md-12'>
+                <div class="col-md-2">
+                    <h4><strong>Bio</strong></h4>
+                </div>
+
+                <div class="col-md-10">
+                    <h4><input type="text" class="form-control" formControlName="bio" [(ngModel)]=jobSeekerResults.bio required></h4>
+                </div>
+
+                <div class='col-md-12'>
+                    <hr class="bg-danger border-2 border-top border-danger">
+                </div>
+            </div>
+
+                <div class='col-md-12'>
+                    <div class="col-md-1">
+                        <h4><strong>Resume</strong></h4>
+                    </div>
+
+                    <div class="col-md-3">
+                        <h4><input type="file" class="form-control" formControlName="resume" [(ngModel)]=jobSeekerResults.resume required></h4>
+                    </div>
+
+                    <div class="col-md-1">
+                        <h4><strong>Contact</strong></h4>
+                    </div>
+
+                    <div class="col-md-3">
+                        <h4><input type="tel" class="form-control" formControlName="contactNo" [(ngModel)]=jobSeekerResults.contactNo required></h4>
+                    </div>
+
+                    <div class="col-md-1">
+                        <h4><strong>Email</strong></h4>
+                    </div>
+
+                    <div class="col-md-3">
+                        <h4><input type="email" class="form-control" formControlName="email" [(ngModel)]=jobSeekerResults.email required></h4>
+                    </div>
+
+                    <div class="col-md-1">
+                        <h4><strong>Location</strong></h4>
+                    </div>
+
+                    <div class="col-md-3">
+                        <h4><input type="text" class="form-control" formControlName="location" [(ngModel)]=jobSeekerResults.location required></h4>
+                    </div>
+                </div>
+            <div class='col-md-12'>
+                <hr class="bg-danger border-2 border-top border-danger">
+            </div>
+
+            <div class='col-md-12'>
+                <h3 class="section-header"><strong>Skills</strong></h3>
+            </div>
+
+            <div class='col-md-12'>
+                <div class='col-md-12'>
+                    <h4><strong>Primary Skills</strong></h4>
+                </div>
+
+                <div class='col-md-12'>
+                    <div *ngFor="let skill of jobSeekerResults.primarySkills; let i = index ">
+                        <div class='col-md-6' >
+                            <h4><input type="text" class="form-control" formControlName="primarySkills" [(ngModel)]=jobSeekerResults.primarySkills[i] required></h4>
+                        </div>
+                        <div class='col-md-1' >
+                            <h4></h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-md-12'>
+                    <hr class="bg-danger border-2 border-top border-danger">
+                </div>
+                
+                <div class='col-md-12'>
+                    <h4><strong>Other Skills</strong></h4>
+                </div>
+
+                <div class='col-md-12'>
+                    <div *ngFor="let skill of jobSeekerResults.otherSkills; let i = index ">
+                        <div class='col-md-6' >
+                            <h4><input type="text" class="form-control" formControlName="otherSkills" [(ngModel)]=jobSeekerResults.otherSkills[i] required></h4>
+                        </div>
+                        <div class='col-md-1' >
+                            <h4></h4>
+                        </div> 
+                     </div>
+                </div>
+            </div>
+
+            <div class='col-md-12'>
+                <hr class="bg-danger border-2 border-top border-danger">
+            </div>
+
+            <div class='col-md-12'>
+                <h3 class="section-header"><strong>Work Experience</strong></h3>
+            </div>
+
+            <div class='col-md-12'>
+                <div *ngFor="let work of jobSeekerResults.workExperience; let i = index " formGroupName="workExperience">
+
+                    <div class='col-md-2'>
+                        <h4><strong>Company Name</strong></h4>
+                    </div>
+
+                    <div class='col-md-4'>
+                        <h4><input type="text" class="form-control" formControlName="companyName" [(ngModel)]=work.companyName required></h4>
+                    </div>
+
+                    <div class='col-md-2'>
+                        <h4><strong>Role</strong></h4>
+                    </div>
+
+                    <div class='col-md-4'>
+                        <h4><input type="text" class="form-control" formControlName="role[index]" [(ngModel)]=work.role required></h4>
+                    </div>
+
+                    <div class='col-md-2'>
+                        <h4><strong>From Date</strong></h4>
+                    </div>
+
+                    <div class='col-md-4'>
+                        <h4><input type="text" class="form-control" formControlName="fromDate[index]" [(ngModel)]=work.fromDate required></h4>
+                    </div>
+                   
+                    <div class='col-md-2'>
+                        <h4><strong>To Date</strong></h4>
+                    </div>
+
+                    <div class='col-md-4'>
+                        <h4><input type="text" class="form-control" formControlName="toDate[index]" [(ngModel)]=work.toDate required></h4>
+                    </div>
+
+                    <div class='col-md-12'>
+                        <hr class="bg-danger border-2 border-top border-danger">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class='col-md-12'>
+                <h3 class="section-header"><strong>Education</strong></h3>
+            </div>
+
+            <div class='col-md-12'>
+                <div *ngFor="let education of jobSeekerEducation; let i = index ">
+                    
+                    <div class='col-md-2' >
+                        <h4><strong>University Name</strong></h4>
+                    </div>
+                    
+                    <div class='col-md-4' >
+                        <h4><input type="text" class="form-control" formControlName="universityName[index]" [(ngModel)]=education.universityName required></h4>
+                    </div>
+
+                    <div class='col-md-2' >
+                        <h4><strong>Degree</strong></h4>
+                    </div>
+                    
+                    <div class='col-md-4' >
+                    <h4><input type="text" class="form-control" formControlName="degree[index]" [(ngModel)]=education.degree required></h4>
+                    </div>
+                    
+                    <div class='col-md-2'>
+                        <h4><strong>Start Date</strong></h4>
+                    </div>
+                    
+                    <div class='col-md-4'>
+                    <h4><input type="text" class="form-control" formControlName="fromDate[index]" [(ngModel)]=education.fromDate required></h4>
+                    </div>
+
+                    <div class='col-md-2'>
+                        <h4><strong>End Date</strong></h4>
+                    </div>
+                    
+                    <div class='col-md-4'>
+                        <h4><input type="text" class="form-control" formControlName="toDate[index]" [(ngModel)]=education.toDate required></h4>
+                    </div>
+
+                    <div class='col-md-12'>
+                        <hr class="bg-danger border-2 border-top border-danger">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12" >
+                <button class="btn btn-primary btn-lg click" type="submit">Update</button>
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <button class="btn btn-cancel btn-lg" routerLink="" >Back</button>
+                <div *ngIf="response_id.length>0">
+                    <h4>The profile has been updated successfully!</h4>
+                 </div>
+            </div>
+
+        </form>
+        </div>

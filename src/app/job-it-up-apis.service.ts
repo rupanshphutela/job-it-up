@@ -40,6 +40,11 @@ export class JobItUpApisService {
     return this.http.get<JobSeekerClass>(this.hostUrl + 'app/jobseeker/' + id );
   }
 
+  
+  editJobSeekerProfile (checkoutForm: FormData){
+    return this.http.put<JobSeekerClass>(this.hostUrl + 'app/jobseeker/',checkoutForm);
+  }
+
   updateJobPost (checkoutForm: FormData,id:string){
     console.log(checkoutForm);
     return this.http.put<any>(this.hostUrl + 'app/job/'+id,checkoutForm);}
@@ -50,4 +55,5 @@ export class JobItUpApisService {
   deleteJobApplication (id: string){
     return this.http.delete<number>(this.hostUrl + "app/jobApplication/" +id);
   }
+  
 }

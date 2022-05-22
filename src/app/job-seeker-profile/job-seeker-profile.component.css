@@ -1,9 +1,10 @@
 .bio {
-    overflow-y: scroll;
     height: 100px;
-    background-color:lightgrey;
     margin-left: 15px;
-
+    border:1px; 
+    border-radius: 15px;
+    border-style:solid; 
+    border-color:black;
 }
 
 .skill {
@@ -13,4 +14,10 @@
 
 hr {
     border-bottom: 1px solid var(--color-border-faint);
+  }
+
+h3.section-header strong {
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+
   }

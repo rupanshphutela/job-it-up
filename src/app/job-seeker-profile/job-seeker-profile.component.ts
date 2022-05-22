@@ -35,4 +35,10 @@ export class JobSeekerProfileComponent implements OnInit {
     });
   }
 
+  jobSeekerEditLink(id: string): string {
+    this.jobSeekerId = id;
+    console.log(this.jobSeekerId);
+    return "/jobSeekerEditProfile/" + (id);
+    }
+
 }
