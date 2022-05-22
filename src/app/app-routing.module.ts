@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'postJob', component: PostJobPageComponent },
   { path: 'appliedJob', component: AppliedJobsComponent },
   { path: 'jobSeekerProfile/:id', component: JobSeekerProfileComponent},
+  { path: 'editjob/:id', component: PostJobPageComponent },
 ];
 
 @NgModule({

@@ -22,7 +22,8 @@
                   <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'Y'" routerLink="appliedJob">APPLIED JOBS</a></li>
                   <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'" routerLink="postJob" >POST JOB</a></li>
                   <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'Y'" routerLink={{jobSeekerLink((1))}}>PROFILE</a></li>
-                  <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'" routerLink={{jobPosterLink((jobPoster.jobPosterId))}}>PROFILE</a></li>
+                  <!-- <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'"  routerLink={{jobPosterLink((jobPoster.jobPosterId))}}>PROFILE</a></li> -->
+                  <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'"  >PROFILE</a></li>
                   <li><a href="#" class="text-white">ACCOUNT DATA</a></li>
                   <li><a href="#" class="text-white">LOG OUT</a></li>
               </ul>

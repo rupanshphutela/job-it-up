@@ -35,4 +35,9 @@ export class JobItUpApisService {
   getJobSeekerProfile (id: string){
     return this.http.get<JobSeekerClass>(this.hostUrl + 'app/jobseeker/' + id );
   }
+
+  updateJobPost (checkoutForm: FormData,id:string){
+    console.log(checkoutForm);
+    return this.http.put<any>(this.hostUrl + 'app/job/'+id,checkoutForm);
+  }
 }

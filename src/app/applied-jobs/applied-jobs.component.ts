@@ -14,7 +14,7 @@ export class AppliedJobsComponent implements OnInit {
   constructor(private apiService: JobItUpApisService) {}
 
   ngOnInit(): void {
-    this.isJobSeeker = 'Y';
+    this.isJobSeeker = 'N';
     this.apiService.getJobs().subscribe((result: JobClass[]) => {
       this.results = result;
     });

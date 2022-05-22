@@ -34,6 +34,7 @@ var App = /** @class */ (function () {
         var router = express.Router();
         router.use(function (req, res, next) {
             res.header('Access-Control-Allow-Origin', '*');
+            res.header('Access-Control-Allow-Methods', 'GET, OPTIONS, POST, PUT');
             res.header('Access-Control-Allow-Headers', 'content-type');
             next();
         });
@@ -85,6 +86,7 @@ var App = /** @class */ (function () {
         });
         /*Update a Job*/
         router.put('/app/job/:jobId', function (req, res) {
+            console.log("im in");
             var jobId = req.params.jobId;
             var body = req.body;
             _this.Jobs.updateJob(res, jobId, body);

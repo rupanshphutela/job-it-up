@@ -13,7 +13,7 @@ export class HomepageComponent implements OnInit {
   results: Array<JobClass> = [];
   companyLogo: Array<String>= [];
   companyName: Array<String>= [];
-  jobId: number = 0;
+  jobId!: string ;
   selectedJob!: JobClass;
   selectedCompanyLogo!: String;
   selectedCompanyName!: String;
@@ -23,7 +23,7 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isJobSeeker='Y';
+    this.isJobSeeker='N';
     this.apiService.getJobs().subscribe((result: JobClass[]) => {
       this.results = result;
       this.selectedJob = result[0];
@@ -51,10 +51,15 @@ export class HomepageComponent implements OnInit {
 
   }
 
-  link(index: number): string {
+  link(index: string): string {
     this.jobId = index;
     console.log(this.jobId);
     return "/applyjob/" + (index);
+  }
+  editJobLink(index: string): string {
+    this.jobId = index;
+    console.log(this.jobId);
+    return "/editjob/" + (index);
   }
   listClick(newValue: JobClass,index: number) {
 
