@@ -252,7 +252,7 @@ jobCollection.insert(
 jobCollection.insert(
 {
 	title: "Dental Assistant",
-	skills: ["Idaho Expanded Functions certificate(s)","Oregon Dental Radiologic Proficiency certificate","Oregon EFDA"],
+	skills: ["Idaho Functions certificate(s)","EFDA"],
 	domain: "Dental",
 	jobId:"2",
 	jobPosterId: "2",
@@ -346,6 +346,66 @@ jobCollection.insert(
    hasApplicants:"N"
 }
 )
+jobCollection.insert(
+	{
+		  title: "Angular Developer",
+		  skills: ["HTML","Angular","TypeScript"],
+		  domain: "Software",
+		  jobId:"1",
+		  jobPosterId: "1",
+		  location:"Seattle, WA",
+		  description:"Job Requirements: "+
+		  "\n1.Delivering a complete and functioning front end application. "+
+				+" \n2.Ensuring the high performance of said application across all platforms, including desktop and mobile. "+
+				" \n3.Writing tested, idiomatic, and documented elements of JavaScript, HTML, and CSS. "+
+				" \n4.Coordinating the workflow between the Angular developers and the HTML coder and graphic designer. "+
+		  "\nJob Qualifications:"+
+		  "\n1.Proven development and project analysis experience. "+
+		  "\n2.Extensive JavaScript & Angular development hands-on experience. "+
+		  "\n3.Cooperating with the back-end developers while building the RESTful API. "+
+		  "\n4.Staying in close communication with external web services. "+
+		  "\n5.Knowledge of adjacent technologies (e.g., Node and Webpack). "+
+		  "\n6.Having a good eye for detail. "+
+		  "\nAbout Protingent: Protingent is a niche provider of top Engineering and IT talent to Software, Electronics, Medical Device, Telecom and Aerospace companies nationwide. Protingent exists to make a positive impact and contribution to the lives of others as well as our community by providing relevant, rewarding and exciting work opportunities for our candidates",
+		  
+		  salary:"$48/hr",
+		  applyDeadline:"05/22/2022",
+		  startDate:"06/11/2022",
+		  endDate:"09/22/2022",
+		  experienceNeeded:"5 years",
+		  hasApplicants:"N"
+	}
+	)
+	jobCollection.insert(
+		{
+			  title: "Node Developer",
+			  skills: ["Express","Node","TypeScript"],
+			  domain: "Software",
+			  jobId:"1",
+			  jobPosterId: "1",
+			  location:"Seattle, WA",
+			  description:"Job Requirements: "+
+			  "\n1.Delivering a complete and functioning Node application. "+
+					+" \n2.Ensuring the high performance of said application across all platforms, including desktop and mobile. "+
+					" \n3.Writing tested, idiomatic, and documented elements of Node, TypeScript, and Express. "+
+					" \n4.Coordinating the workflow between the Angular developers and the HTML coder and graphic designer. "+
+			  "\nJob Qualifications:"+
+			  "\n1.Proven development and project analysis experience. "+
+			  "\n2.Extensive Node,Express & TypeScript development hands-on experience. "+
+			  "\n3.Cooperating with the front-end developers while building the RESTful API. "+
+			  "\n4.Staying in close communication with Angular services and components. "+
+			  "\n5.Knowledge of adjacent technologies (e.g., Angular and Mocha). "+
+			  "\n6.Having a good eye for detail. "+
+			  "\nAbout Protingent: Protingent is a niche provider of top Engineering and IT talent to Software, Electronics, Medical Device, Telecom and Aerospace companies nationwide. Protingent exists to make a positive impact and contribution to the lives of others as well as our community by providing relevant, rewarding and exciting work opportunities for our candidates",
+			  
+			  salary:"$48/hr",
+			  applyDeadline:"05/29/2022",
+			  startDate:"06/11/2022",
+			  endDate:"09/22/2022",
+			  experienceNeeded:"8 years",
+			  hasApplicants:"N"
+		}
+		)
 db.createCollection('jobApplication')
 jobApplicantsCollection = db.getCollection("jobApplication")
 jobApplicantsCollection.remove({})

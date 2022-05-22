@@ -104,40 +104,44 @@
             
             <div class='col-lg-10'>
             <ul class='list-group'>
-            
+              <div class="col-md-12">
                 <h3><strong>{{selectedJob.title}}</strong></h3>
-                <div id="block1" style="float:left;">
+                </div>
+                <div class="col-md-4">
+
                 <h4><strong>Salary</strong></h4>
-               
-               
                 <p>{{selectedJob.salary}}</p>
+                </div>
+                <div class="col-md-4">
+                <h4><strong>Skills</strong></h4>
+                <p>{{selectedJob.skills}}</p>
               </div>
-              <div id="block2" style="float:right;">
-                <h4><strong>Duration</strong></h4>
-               
-                <p>{{selectedJob.startDate}} to {{selectedJob.endDate}}</p> 
-              </div>
-              <div id="block2" style="float:right;">
-                <h4><strong>Deadline</strong></h4>
-                <p>{{selectedJob.applyDeadline}}</p>
-              </div>
-              <div id="block2" style="float:right;">
+              <div class="col-md-4">
                 <h4><strong>Experience</strong></h4>
                 <p>{{selectedJob.experienceNeeded}}</p>
               </div>
-              <div id="block2" style="float:right;">
-                <h4><strong>Skills</strong></h4>
+
+
+              <div class="col-md-4">
+                <h4><strong>Deadline</strong></h4>
+                <p>{{selectedJob.applyDeadline}}</p>
+                </div>
+
+                <div class="col-md-4">
+                  <h4><strong>Duration</strong></h4>
+                  <p>{{selectedJob.startDate}} to {{selectedJob.endDate}}</p> 
+                  </div>
                 
-                <p>{{selectedJob.skills}}</p>
-              </div>
-              <div id="block1" style="float:left;">
+
+              <div class="col-md-12">
                 <h4><strong>Job Description</strong></h4>
                  <div *ngFor="let desc of getDescription(selectedJob.description)">{{desc}}</div> 
               </div>
-              </ul>
-              </div>
-              </div>
+
+            </ul>           
             </div>
+            </div>
+          </div>
         
         </div>
     </div>

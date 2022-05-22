@@ -12,14 +12,14 @@ export class AppComponent {
   isJobSeeker!: String;
   jobSeeker!: JobSeekerClass;
   jobPoster!: JobPosterClass;
-  jobSeekerId: number=0;
+  jobSeekerId: string="";
   jobPosterId: string="";
 
   ngOnInit(): void {
     this.isJobSeeker='Y';
   }
 
-  jobSeekerLink(id: number): string {
+  jobSeekerLink(id: string): string {
     this.jobSeekerId = id;
     console.log(this.jobSeekerId);
     return "/jobSeekerProfile/" + (id);
