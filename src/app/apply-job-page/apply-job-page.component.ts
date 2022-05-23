@@ -37,9 +37,6 @@ export class ApplyJobPageComponent implements OnInit {
   ngOnInit(): void {
     this.jobId = this.route.snapshot.params['id'];
     console.log("this is id. in apply job cmpt 16:", this.jobId);
-    this.apiService.getSpecificJob(this.jobId).subscribe((result: any) => {
-      console.log('detail result' + JSON.stringify(result));
-    });
   }
 
   submitForm(Values: any) {

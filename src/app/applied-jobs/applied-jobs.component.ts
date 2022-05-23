@@ -36,6 +36,7 @@ export class AppliedJobsComponent implements OnInit {
     this.jobSeekerId = '1';
 
     this.apiService.getJobSeekerAppliedJobs(this.jobSeekerId).subscribe((result: JobApplicationClass[]) => {
+      console.log("The list of applied jobs are: ",result);
       result.forEach((element, index) => {
         this.results = result;
         this.jobId = result[index].jobId;

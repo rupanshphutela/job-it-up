@@ -25,6 +25,7 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     this.isJobSeeker='Y';
     this.apiService.getJobs(this.isJobSeeker).subscribe((result: JobClass[]) => {
+      console.log("The response for all jobs is",result);
       this.results = result;
       this.selectedJob = result[0];
       console.log("job results:" + this.results);

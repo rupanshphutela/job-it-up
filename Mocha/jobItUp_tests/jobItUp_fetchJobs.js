@@ -15,7 +15,7 @@ describe('Test fetch all jobs', function () {
 	var response;
 		 
     before(function (done) {
-        /*Make Node Server call */
+        /*Make Node Server route call */
         chai.request("http://localhost:8080")
 			.get("/app/job")
 			.end(function (err, res) {
@@ -27,16 +27,18 @@ describe('Test fetch all jobs', function () {
 			});
         });
     
+    /*Checking the response and its body*/
     it('API should return a list of all jobs', function (){
-        /*Checking the response body*/
 		expect(response).to.have.status(200);
-        expect(response).to.be.json; // or an.object
-		expect(response.body).to.have.length.above(2);
+        expect(response).to.be.json; 
+        expect(response).to.be.an('object');
+        expect(response.body).to.be.an('array').to.have.length.above(0);
 		expect(response).to.have.headers;
         expect(response.body).to.not.be.a.string;
     });
-    /*Checking keys/properties for the jobs array */
-	it('The first array of the job array should have all keys/properties', function(){
+
+    /*Checking keys for the jobs array */
+	it('The first array of the job array should have all keys', function(){
         expect(requestResult[0]).to.include.keys('skills');
         expect(requestResult[0]).to.include.keys('title');
         expect(requestResult[0]).to.include.keys('domain');
@@ -51,13 +53,12 @@ describe('Test fetch all jobs', function () {
         expect(requestResult[0]).to.include.keys('experienceNeeded');
         expect(requestResult[0]).to.include.keys('hasApplicants');
 	});
-    /*Checking expected properties, value lengths and field types for all job arrays */
-	it('All arrays of jobs should have the expected properties, expected field value lengths and expected field types', function(){
+
+    /*Checking expected properties for all arrays */
+	it('All arrays of jobs should have the expected properties', function(){
 		expect(response.body).to.satisfy(
 			function (body) {
 				for (var i = 0; i < body.length; i++) {
-
-                    /*Checking all array fields being present */
 					expect(body[i]).to.have.property('skills');
 					expect(body[i]).to.have.property('title');
 					expect(body[i]).to.have.property('domain');
@@ -71,11 +72,20 @@ describe('Test fetch all jobs', function () {
                     expect(body[i]).to.have.property('endDate');
                     expect(body[i]).to.have.property('experienceNeeded');
                     expect(body[i]).to.have.property('hasApplicants');
+                }
+                return true;
 
-                    /*Checking field value lengths of all arrays */
+            })
+        });
+
+    /*Checking property value lengths of all arrays */
+    it('All arrays of jobs should have the expected property value lengths', function(){
+        expect(response.body).to.satisfy(
+			function (body) {
+				for (var i = 0; i < body.length; i++) {
                     expect(body[i]).to.have.property('skills').to.have.length.above(0);
-					expect(body[i]).to.have.property('title').to.have.length.above(0);
-					expect(body[i]).to.have.property('domain').to.have.length.above(0);
+                    expect(body[i]).to.have.property('title').to.have.length.above(0);
+                    expect(body[i]).to.have.property('domain').to.have.length.above(0);
                     expect(body[i]).to.have.property('jobId').to.have.length.above(0);
                     expect(body[i]).to.have.property('jobPosterId').to.have.length.above(0);
                     expect(body[i]).to.have.property('location').to.have.length.above(0);
@@ -86,10 +96,16 @@ describe('Test fetch all jobs', function () {
                     expect(body[i]).to.have.property('endDate').to.have.length.above(0);
                     expect(body[i]).to.have.property('experienceNeeded').to.have.length.above(0);
                     expect(body[i]).to.have.property('hasApplicants').to.have.length.above(0);
+                    }
+                    return true;
+                    })
+                });
 
-//			expect(res.body[0]).to.have.deep.property('description').that.is.a('string');
-
-                    /*Checking types of fields in response */
+    /** Checking property types */
+    it('All arrays of jobs should have the expected field types', function(){
+        expect(response.body).to.satisfy(
+            function (body) {
+                for (var i = 0; i < body.length; i++) {
                     expect(body[i]).to.have.property('skills').that.is.a('array');
 					expect(body[i]).to.have.property('title').that.is.a('string');
 					expect(body[i]).to.have.property('domain').that.is.a('string');
@@ -107,5 +123,4 @@ describe('Test fetch all jobs', function () {
 				return true;
 			});
 	});	
-	
 });

@@ -351,7 +351,7 @@ jobCollection.insert(
 		  title: "Angular Developer",
 		  skills: ["HTML","Angular","TypeScript"],
 		  domain: "Software",
-		  jobId:"1",
+		  jobId:"4",
 		  jobPosterId: "1",
 		  location:"Seattle, WA",
 		  description:"Job Requirements: "+
@@ -381,7 +381,7 @@ jobCollection.insert(
 			  title: "Node Developer",
 			  skills: ["Express","Node","TypeScript"],
 			  domain: "Software",
-			  jobId:"1",
+			  jobId:"5",
 			  jobPosterId: "1",
 			  location:"Seattle, WA",
 			  description:"Job Requirements: "+
@@ -448,3 +448,29 @@ jobApplicantsCollection.insert(
 		phone: "+14254420191"	
 }
 )
+jobApplicantsCollection.insert(
+{
+		  jobId : "4",
+		  jobSeekerId: "1",
+		  jobApplicationId: "4",
+		  expectedSalary: "25/hr",
+		  resume:"http:localhost:8080/resume/seeker/jsmith.pdf",
+		  workAuthorization:"Yes",
+		  status: "Rejected",
+		  email: "john.doe@gmail.com",
+		  phone: "+14254420191"
+}
+)
+jobApplicantsCollection.insert(
+	{
+			  jobId : "5",
+			  jobSeekerId: "1",
+			  jobApplicationId: "5",
+			  expectedSalary: "25/hr",
+			  resume:"http:localhost:8080/resume/seeker/jsmith.pdf",
+			  workAuthorization:"Yes",
+			  status: "Under Review",
+			  email: "john.doe@gmail.com",
+			  phone: "+14254420191"
+	}
+	)
