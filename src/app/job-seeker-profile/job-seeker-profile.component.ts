@@ -28,9 +28,6 @@ export class JobSeekerProfileComponent implements OnInit {
     this.apiService.getJobSeekerProfile(this.jobSeekerId).subscribe((jobSeeker: JobSeekerClass) => 
     {
       this.jobSeekerResults = jobSeeker;
-      this.jobSeekerWorkExperience = jobSeeker.workExperience;
-      this.jobSeekerEducation = jobSeeker.education;
-
       console.log('API Service Result for this Job Seeker is: ' + JSON.stringify(jobSeeker));
     });
   }
