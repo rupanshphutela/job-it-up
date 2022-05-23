@@ -13,8 +13,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class JobSeekerEditProfileComponent implements OnInit {
   jobSeekerResults!: JobSeekerClass;
   isJobSeeker: string="Y";
-  jobSeekerWorkExperience!: JobSeekerClass["workExperience"];
-  jobSeekerEducation!: JobSeekerClass["education"];
   jobSeekerId: string="";
   response_id: string="";
 
@@ -29,20 +27,24 @@ export class JobSeekerEditProfileComponent implements OnInit {
     lname: '',
     contactNo: '',
     email: '',
-    education: [this.fb.group({
-      universityName: '',
-      degree: '',
-      fromDate: '',
-      toDate: ''
-    })
-    ],
-    workExperience: [this.fb.group({
+    workExperience: [this.fb.array([
+      this.fb.group({
       companyName: '',
       role: '',
       fromDate: '',
       toDate: ''
-    })
-    ],
+      })
+    ])
+  ],
+    education: [this.fb.array([
+      this.fb.group({
+      universityName: '',
+      degree: '',
+      fromDate: '',
+      toDate: ''
+      })
+    ])
+    ]
   }); 
 
   constructor(
@@ -58,9 +60,6 @@ export class JobSeekerEditProfileComponent implements OnInit {
     this.apiService.getJobSeekerProfile(this.jobSeekerId).subscribe((jobSeeker: JobSeekerClass) => 
     {
       this.jobSeekerResults = jobSeeker;
-      this.jobSeekerWorkExperience = jobSeeker.workExperience;
-      this.jobSeekerEducation = jobSeeker.education;
-
       console.log('API Service Result for this Job Seeker is: ' + JSON.stringify(jobSeeker));
     });
   }
@@ -77,8 +76,6 @@ export class JobSeekerEditProfileComponent implements OnInit {
 
     this.apiService.editJobSeekerProfile(this.checkoutForm.value).subscribe((jobSeeker: JobSeekerClass) => 
     {
-      this.jobSeekerWorkExperience = jobSeeker.workExperience;
-      this.jobSeekerEducation = jobSeeker.education;
       this.response_id = jobSeeker.jobSeekerId;
       console.log('API Service Result for this Job Seeker is: ' + JSON.stringify(jobSeeker));
     });

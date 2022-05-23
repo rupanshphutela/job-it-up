@@ -15,6 +15,7 @@ describe('Test fetch all jobs', function () {
 	var response;
 		 
     before(function (done) {
+        /*Make Node Server call */
         chai.request("http://localhost:8080")
 			.get("/app/jobseeker/1")
 			.end(function (err, res) {
@@ -26,7 +27,9 @@ describe('Test fetch all jobs', function () {
 			});
         });
     
+        /*Check response fields */
     it('API should return one Job Seeker JSON', function (){
+        /*Checking the response body */
 		expect(response).to.have.status(200);
         expect(response).to.be.json;//an.object
 		// expect(response.body).to.have.length(1);

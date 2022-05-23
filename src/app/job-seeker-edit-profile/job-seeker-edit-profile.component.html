@@ -117,26 +117,26 @@
 
             <div class='col-md-12'>
                 <h3 class="section-header"><strong>Work Experience</strong></h3>
-                <div *ngFor="let work of jobSeekerResults.workExperience; let i = index " formGroupName="workExperience">
+                <div *ngFor="let work of jobSeekerResults.workExperience; let i = index " formGroupName=workExperience>
                     <div class="row">
                     <div class='col-md-3'>
                         <h4><strong><label class="control-label">Company Name</label></strong></h4>
-                        <input type="text" class="form-control" formControlName="companyName" [(ngModel)]=work.companyName required>
+                        <input type="text" class="form-control" formControlName=companyName [(ngModel)]=work.companyName required>
                     </div>
 
                     <div class='col-md-3'>
                         <h4><strong><label class="control-label">Role</label></strong></h4>
-                        <input type="text" class="form-control" formControlName="role[index]" [(ngModel)]=work.role required>
+                        <input type="text" class="form-control" formControlName=role [(ngModel)]=work.role required>
                     </div>
 
                     <div class='col-md-3'>
                         <h4><strong><label class="control-label">From Date</label></strong></h4>
-                        <input type="text" class="form-control" formControlName="fromDate[index]" [(ngModel)]=work.fromDate required>
+                        <input type="text" class="form-control" formControlName="fromDate[i]" [(ngModel)]=work.fromDate required>
                     </div>
                    
                     <div class='col-md-3'>
                         <h4><strong><label class="control-label">To Date</label></strong></h4>
-                        <input type="text" class="form-control" formControlName="toDate[index]" [(ngModel)]=work.toDate required>
+                        <input type="text" class="form-control" formControlName="toDate[i]" [(ngModel)]=work.toDate required>
                     </div>
                     </div>
 
@@ -152,7 +152,7 @@
             </div>
 
             <div class='col-md-12'>
-                <div *ngFor="let education of jobSeekerEducation; let i = index ">
+                <div *ngFor="let education of jobSeekerResults.education; let i = index ">
                     <div class="row">
                     <div class='col-md-3'>
                         <h4><strong><label class="control-label">University Name</label></strong></h4>

@@ -13,9 +13,6 @@ export class JobSeekerProfileComponent implements OnInit {
   jobSeekerResults!: JobSeekerClass;
   jobSeekerId: string="";
   isJobSeeker: string="Y";
-  jobSeekerWorkExperience!: JobSeekerClass["workExperience"];
-  jobSeekerEducation!: JobSeekerClass["education"];
-   
 
   constructor(
     private route: ActivatedRoute, 

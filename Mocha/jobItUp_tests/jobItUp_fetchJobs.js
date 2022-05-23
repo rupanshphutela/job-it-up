@@ -15,6 +15,7 @@ describe('Test fetch all jobs', function () {
 	var response;
 		 
     before(function (done) {
+        /*Make Node Server call */
         chai.request("http://localhost:8080")
 			.get("/app/job")
 			.end(function (err, res) {
@@ -27,13 +28,14 @@ describe('Test fetch all jobs', function () {
         });
     
     it('API should return a list of all jobs', function (){
+        /*Checking the response body*/
 		expect(response).to.have.status(200);
         expect(response).to.be.json; // or an.object
 		expect(response.body).to.have.length.above(2);
 		expect(response).to.have.headers;
         expect(response.body).to.not.be.a.string;
     });
-    
+    /*Checking keys/properties for the jobs array */
 	it('The first array of the job array should have all keys/properties', function(){
         expect(requestResult[0]).to.include.keys('skills');
         expect(requestResult[0]).to.include.keys('title');
@@ -49,6 +51,7 @@ describe('Test fetch all jobs', function () {
         expect(requestResult[0]).to.include.keys('experienceNeeded');
         expect(requestResult[0]).to.include.keys('hasApplicants');
 	});
+    /*Checking expected properties, value lengths and field types for all job arrays */
 	it('All arrays of jobs should have the expected properties, expected field value lengths and expected field types', function(){
 		expect(response.body).to.satisfy(
 			function (body) {
