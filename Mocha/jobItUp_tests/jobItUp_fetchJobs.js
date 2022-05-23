@@ -74,7 +74,6 @@ describe('Test fetch all jobs', function () {
                     expect(body[i]).to.have.property('hasApplicants');
                 }
                 return true;
-
             })
         });
 

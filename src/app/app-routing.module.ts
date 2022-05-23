@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'applyjob/:id', component: ApplyJobPageComponent },
   { path: 'postJob', component: PostJobPageComponent },
-  { path: 'appliedJob', component: AppliedJobsComponent },
+  { path: 'appliedJobs', component: AppliedJobsComponent },
   { path: 'jobSeekerProfile/:id', component: JobSeekerProfileComponent},
   { path: 'editjob/:id', component: PostJobPageComponent },
   { path: 'jobSeekerEditProfile/:id', component: JobSeekerEditProfileComponent},

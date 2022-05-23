@@ -39,7 +39,7 @@ describe('Test fetch all jobs', function () {
     });
 
     /*Checking all keys being present */
-	it('The Job Seeker JSON should have all keys', function(){
+	it('The Job Seeker JSON should have all keys (at root json)', function(){
         expect(requestResult).to.include.keys('primarySkills');
         expect(requestResult).to.include.keys('otherSkills');
         expect(requestResult).to.include.keys('_id');
@@ -58,27 +58,25 @@ describe('Test fetch all jobs', function () {
         expect(requestResult).to.include.keys('workExperience');
     });
         
-        /*Checking Nested json properties to be present */
-    it('The Job Seeker JSON should have all nested properties', function(){
-        it('The Job Seeker JSON should have expected value lengths (in nested arrays)', function(){
+    /*Checking Nested json properties to be present */
+    it('The Job Seeker JSON should have all properties (in nested arrays)', function(){
             expect(response.body).to.satisfy(
                 function (body) {
                     for (var i = 0; i < body.length; i++) {
-                        expect(requestResult).to.have.nested.property('education[0].educationId');
-                        expect(requestResult).to.have.nested.property('education[0].universityName');
-                        expect(requestResult).to.have.nested.property('education[0].degree');
-                        expect(requestResult).to.have.nested.property('education[0].fromDate');
-                        expect(requestResult).to.have.nested.property('education[0].toDate');
+                        expect(body.education[i]).to.have.nested.property('educationId');
+                        expect(body.education[i]).to.have.nested.property('universityName');
+                        expect(body.education[i]).to.have.nested.property('degree');
+                        expect(body.education[i]).to.have.nested.property('fromDate');
+                        expect(body.education[i]).to.have.nested.property('toDate');
 
-                        expect(requestResult).to.have.nested.property('workExperience[0].workExperienceId');
-                        expect(requestResult).to.have.nested.property('workExperience[0].companyName');
-                        expect(requestResult).to.have.nested.property('workExperience[0].role');
-                        expect(requestResult).to.have.nested.property('workExperience[0].toDate');
-                        expect(requestResult).to.have.nested.property('workExperience[0].toDate');
+                        expect(body.workExperience[i]).to.have.nested.property('workExperienceId');
+                        expect(body.workExperience[i]).to.have.nested.property('companyName');
+                        expect(body.workExperience[i]).to.have.nested.property('role');
+                        expect(body.workExperience[i]).to.have.nested.property('fromDate');
+                        expect(body.workExperience[i]).to.have.nested.property('toDate');
                     }
                     return true;
                 })
-        })
     });
 
     /*Checking field value lengths of the root json fields */
@@ -101,7 +99,7 @@ describe('Test fetch all jobs', function () {
         expect(requestResult).to.have.property('workExperience').to.have.length.above(0);
         });
 
-        /*Checking field value lengths of the nested json */
+    /*Checking field value lengths of the nested json */
     it('The Job Seeker JSON should have expected value lengths (in nested arrays)', function(){
             expect(response.body).to.satisfy(
                 function (body) {
@@ -112,17 +110,17 @@ describe('Test fetch all jobs', function () {
                         expect(body.education[i]).to.have.nested.property('fromDate').to.have.length.above(0);
                         expect(body.education[i]).to.have.nested.property('toDate').to.have.length.above(0);
 
-                        expect(body.education[i]).to.have.nested.property('workExperienceId').to.have.length.above(0);
-                        expect(body.education[i]).to.have.nested.property('companyName').to.have.length.above(0);
-                        expect(body.education[i]).to.have.nested.property('role').to.have.length.above(0);
-                        expect(body.education[i]).to.have.nested.property('toDate').to.have.length.above(0);
-                        expect(body.education[i]).to.have.nested.property('toDate').to.have.length.above(0);
+                        expect(body.workExperience[i]).to.have.nested.property('workExperienceId').to.have.length.above(0);
+                        expect(body.workExperience[i]).to.have.nested.property('companyName').to.have.length.above(0);
+                        expect(body.workExperience[i]).to.have.nested.property('role').to.have.length.above(0);
+                        expect(body.workExperience[i]).to.have.nested.property('fromDate').to.have.length.above(0);
+                        expect(body.workExperience[i]).to.have.nested.property('toDate').to.have.length.above(0);
                     }
                     return true;
                 })
         });
 
-        /*Checking types of fields in root response json */
+    /*Checking types of fields in root response json */
     it('The Job Seeker JSON should have expected property types (at root level)', function(){
         expect(requestResult).to.have.property('primarySkills').that.is.a('array');
         expect(requestResult).to.have.property('otherSkills').that.is.a('array');
@@ -142,22 +140,22 @@ describe('Test fetch all jobs', function () {
         expect(requestResult).to.have.property('workExperience').that.is.a('array');
         });
 
+    /*Checking types of nested json fields in nested response json */
     it('The Job Seeker JSON should have expected property types (in nested arrays)', function(){
-        /*Checking types of nested json fields in nested response json */
         expect(response.body).to.satisfy(
             function (body) {
                 for (var i = 0; i < body.length; i++) {
-                    expect(requestResult).to.have.nested.property('education[0].educationId').that.is.a('string');
-                    expect(requestResult).to.have.nested.property('education[0].universityName').that.is.a('string');
-                    expect(requestResult).to.have.nested.property('education[0].degree').that.is.a('string');
-                    expect(requestResult).to.have.nested.property('education[0].fromDate').that.is.a('string');
-                    expect(requestResult).to.have.nested.property('education[0].toDate').that.is.a('string');
+                    expect(body.education[i]).to.have.nested.property('educationId').that.is.a('string');
+                    expect(body.education[i]).to.have.nested.property('universityName').that.is.a('string');
+                    expect(body.education[i]).to.have.nested.property('degree').that.is.a('string');
+                    expect(body.education[i]).to.have.nested.property('fromDate').that.is.a('string');
+                    expect(body.education[i]).to.have.nested.property('toDate').that.is.a('string');
 
-                    expect(requestResult).to.have.nested.property('workExperience[0].workExperienceId').that.is.a('string');
-                    expect(requestResult).to.have.nested.property('workExperience[0].companyName').that.is.a('string');
-                    expect(requestResult).to.have.nested.property('workExperience[0].role').that.is.a('string');
-                    expect(requestResult).to.have.nested.property('workExperience[0].toDate').that.is.a('string');
-                    expect(requestResult).to.have.nested.property('workExperience[0].toDate').that.is.a('string');
+                    expect(body.workExperience[i]).to.have.nested.property('workExperienceId').that.is.a('string');
+                    expect(body.workExperience[i]).to.have.nested.property('companyName').that.is.a('string');
+                    expect(body.workExperience[i]).to.have.nested.property('role').that.is.a('string');
+                    expect(body.workExperience[i]).to.have.nested.property('toDate').that.is.a('string');
+                    expect(body.workExperience[i]).to.have.nested.property('toDate').that.is.a('string');
                 }
                 return true;
             })
