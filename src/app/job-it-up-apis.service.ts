@@ -61,6 +61,10 @@ export class JobItUpApisService {
   getJobPosterProfile (id: string){
     return this.http.get<JobPosterClass>(this.hostUrl + 'app/jobposter/' + id );
   }
+
+  editJobPosterProfile (jobPosterId: string, checkoutForm: FormData){
+    return this.http.put<JobPosterClass>(this.hostUrl + 'app/jobposter/' + jobPosterId ,checkoutForm);
+  }
   
 
   searchJobs(isJobSeeker:string,checkoutForm: FormGroup){

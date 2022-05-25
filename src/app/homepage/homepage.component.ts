@@ -32,7 +32,7 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isJobSeeker='Y';
+    this.isJobSeeker='N';
     this.apiService.getJobs(this.isJobSeeker).subscribe((result: JobClass[]) => {
       console.log("The response for all jobs is",result);
       this.results = result;

@@ -94,7 +94,7 @@ var JobPosterModel = /** @class */ (function () {
                     }
                     else {
                         console.log('success');
-                        response.send('Job Poster object updated');
+                        response.send('{"jobPosterid":"' + jobPosterId + '", "Response":"JobPoster Profile updated"}');
                     }
                 });
             }

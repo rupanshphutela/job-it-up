@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { JobPosterClass } from '../jobposter-class';
-import { HttpClient } from '@angular/common/http';
 import { JobItUpApisService } from '../job-it-up-apis.service';
+import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-job-poster-profile',
-  templateUrl: './job-poster-profile.component.html',
-  styleUrls: ['./job-poster-profile.component.css']
+  selector: 'app-job-poster-edit-profile',
+  templateUrl: './job-poster-edit-profile.component.html',
+  styleUrls: ['./job-poster-edit-profile.component.css']
 })
-export class JobPosterProfileComponent implements OnInit {
+export class JobPosterEditProfileComponent implements OnInit {
   jobPosterResults!: JobPosterClass;
-  jobPosterId: string="";
   isJobPoster: string="Y";
+  jobPosterId: string="";
+  response_id: string="";
   contactNo: string="";
   location: string="";
   companyName: string="";
@@ -23,15 +25,30 @@ export class JobPosterProfileComponent implements OnInit {
   headquarters: string="";
   founded: string="";
 
+
+  checkoutForm = this.fb.group({
+	  contactNo: '',
+	  location: '',
+	  companyName: '',
+	  Overview: '',
+	  website: '',
+	  industry: '',
+	  companySize: '',
+	  headquarters: '',
+	  founded: ''
+  }); 
+
   constructor(
     private route: ActivatedRoute, 
     private apiService: JobItUpApisService, 
-    private http: HttpClient
+    private http: HttpClient,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
     this.jobPosterId = this.route.snapshot.params['id'];
-    console.log("Job Poster ID passed from Landing Page is: ", this.jobPosterId);
+    console.log("Job Poster ID passed from Job Poster Profile Page is: ", this.jobPosterId);
+    
     this.apiService.getJobPosterProfile(this.jobPosterId).subscribe((jobPoster: JobPosterClass) => 
     {
       this.jobPosterResults = jobPoster;
@@ -48,10 +65,28 @@ export class JobPosterProfileComponent implements OnInit {
     });
   }
 
-  jobPosterEditLink(id: string): string {
+  submitForm(Values: any) {
+    console.log("job id passed to form group is ", this.jobPosterId)
+
+    this.checkoutForm.patchValue({
+      jobPosterId: this.jobPosterId,
+    });
+
+    console.log("values.....", this.checkoutForm.value)
+  
+  
+    this.apiService.editJobPosterProfile(this.jobPosterId, this.checkoutForm.value).subscribe((jobPoster: JobPosterClass) => 
+    {
+      this.response_id = jobPoster.jobPosterId;
+      console.log('API Service Result for this Job Poster is: ' + JSON.stringify(jobPoster));
+    });
+
+  }
+
+  jobPosterLink(id: string): string {
     this.jobPosterId = id;
     console.log(this.jobPosterId);
-    return "/jobPosterEditProfile/" + (id);
-    }
+    return "/jobPosterProfile/" + (id);
+  }
 
 }

@@ -7,11 +7,11 @@
     </div>
 
     <div id="editProfile" class="col-md-2">
-        <a class="btn btn-lg btn-primary" *ngIf="isJobPoster == 'Y'" routerLink={{jobPosterEditLink((jobPosterResults.jobPosterId))}}>Edit Profile</a>
+        <a class="btn btn-lg btn-primary" *ngIf="isJobPoster == 'Y'" routerLink={{jobPosterEditLink((jobPosterId))}}>Edit Profile</a>
         <!-- <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'Y'" routerLink={{link((selectedJob.jobId))}}>Edit Job</a> -->
     </div>
             <div class='col-md-12'>
-                <h2><strong>{{jobPosterResults.companyName  }}</strong></h2>
+                <h2><strong>{{companyName}}</strong></h2>
             </div>
 
 
@@ -22,7 +22,7 @@
                 </div>
 
                 <div class='col-md-12 overview'>
-                    <h4>{{jobPosterResults.Overview}}</h4>
+                    <h4>{{Overview}}</h4>
                 </div>
                 </div>
 
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class='col-md-3'>
-                    <h4>{{jobPosterResults.website}}</h4> 
+                    <h4>{{website}}</h4> 
                 </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class='col-md-3'>
-                    <h4>{{jobPosterResults.contactNo}}</h4> 
+                    <h4>{{contactNo}}</h4> 
                 </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                 </div>
 
                 <div class='col-md-3'>
-                    <h4>{{jobPosterResults.industry}}</h4> 
+                    <h4>{{industry}}</h4> 
                 </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                 </div>
 
                 <div class='col-md-3'>
-                    <h4>{{jobPosterResults.companySize}}</h4> 
+                    <h4>{{companySize}}</h4> 
                 </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                 </div>
 
                 <div class='col-md-3'>
-                    <h4>{{jobPosterResults.headquarters}}</h4> 
+                    <h4>{{headquarters}}</h4> 
                 </div>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                 </div>
 
                 <div class='col-md-3'>
-                    <h4>{{jobPosterResults.founded}}</h4> 
+                    <h4>{{founded}}</h4> 
                 </div>
                 </div>
             </div>
@@ -108,7 +108,7 @@
                 </div>
 
                 <div class='col-md-3'>
-                    <h4>{{jobPosterResults.location}}</h4> 
+                    <h4>{{location}}</h4> 
                 </div>
                 </div>
             </div>
