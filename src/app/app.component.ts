@@ -16,7 +16,7 @@ export class AppComponent {
   jobPosterId: string="";
 
   ngOnInit(): void {
-    this.isJobSeeker='N';
+    this.isJobSeeker='Y';
   }
 
   jobSeekerLink(id: string): string {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JobClass } from '../job-class';
 import { JobPosterClass } from '../jobposter-class';
 import { JobItUpApisService } from '../job-it-up-apis.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-homepage',
@@ -18,12 +19,20 @@ export class HomepageComponent implements OnInit {
   selectedCompanyLogo!: String;
   selectedCompanyName!: String;
   isJobSeeker!: string;
-  constructor(private apiService: JobItUpApisService) {
+
+  checkoutForm = this.fb.group({
+    title: '',
+    domain: 'Select Domain',
+    location: '',
+    startDate: '',
+    endDate: ''
+  });
+  constructor(private fb: FormBuilder,private apiService: JobItUpApisService) {
 
   }
 
   ngOnInit(): void {
-    this.isJobSeeker='N';
+    this.isJobSeeker='Y';
     this.apiService.getJobs(this.isJobSeeker).subscribe((result: JobClass[]) => {
       console.log("The response for all jobs is",result);
       this.results = result;
@@ -75,5 +84,31 @@ export class HomepageComponent implements OnInit {
   //split the description string using new line to preserve format
   getDescription(desc: string): string[] {
     return desc.split("\n");
+  }
+
+  search(){
+    this.apiService.searchJobs(this.checkoutForm).subscribe((result: JobClass[]) => {   
+      this.results = result;
+      this.selectedJob = result[0];
+      console.log("job results:" + this.results);
+if(result!=null){
+      //setting company logo at each index
+      result.forEach((element, index) => {
+     
+        this.apiService.getSpecificJobPoster(element.jobPosterId).subscribe((poster: JobPosterClass) => 
+          { 
+            this.companyLogo[index] = poster.companyLogo
+            this.companyName[index] = poster.companyName
+            console.log('company logo path at index ' + [index] + ' is ' + (this.companyLogo[index]));
+            console.log('company name path at index ' + [index] + ' is ' + (this.companyName[index]));
+            //to display the first job details when page is loaded
+            if(index==0){
+            this.selectedCompanyLogo=this.companyLogo[index];
+            this.selectedCompanyName=this.companyName[index];
+            }
+          });
+        }); 
+      }  
+    });
   }
 }
