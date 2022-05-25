@@ -76,6 +76,17 @@ class App {
       this.Jobs.retrieveJobsBySearch(res, query);  
   });
 
+    /* Retrieve Jobs by Search Criteria for a specific Job Poster*/
+    router.get('/app/jobs/jobposter/:jobPosterId/search', (req, res) => {
+      var urlParts = url.parse(req.url, true);
+      var id = req.params.jobPosterId;
+      var query = urlParts.query;
+      query.jobPosterId = id;
+      console.log(query)
+        this.Jobs.retrieveJobsBySearch(res, query);  
+    });
+  
+
   /* Retrieve Jobs with Applicants*/
   router.get('/app/job/jobposter/:jobPosterId', (req, res) => {
     var id = req.params.jobPosterId;
