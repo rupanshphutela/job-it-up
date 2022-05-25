@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "3f2e2802-373c-4623-82c8-39a9055e0124",
+		"_postman_id": "f76cb1be-9ff8-452b-8a70-07f58ca7030c",
 		"name": "job-it-up",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19570950"
 	},
 	"item": [
 		{
@@ -104,6 +105,50 @@
 						"job",
 						"jobposter",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchJobsbyJobPoster",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/app/jobs/jobposter/2/search?title=Dental%20Assistant&domain=Dental&startDate=05/09/2022&endDate=05/13/2022&location=Seattle,WA",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"app",
+						"jobs",
+						"jobposter",
+						"2",
+						"search"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Dental%20Assistant"
+						},
+						{
+							"key": "domain",
+							"value": "Dental"
+						},
+						{
+							"key": "startDate",
+							"value": "05/09/2022"
+						},
+						{
+							"key": "endDate",
+							"value": "05/13/2022"
+						},
+						{
+							"key": "location",
+							"value": "Seattle,WA"
+						}
 					]
 				}
 			},
@@ -521,6 +566,14 @@
 						""
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		}
