@@ -61,6 +61,7 @@ var JobModel = /** @class */ (function () {
         var query = this.model.find(filter);
         console.log('Query  ' + query);
         query.exec(function (err, itemArray) {
+            console.log("search results " + itemArray);
             response.json(itemArray);
         });
     };

@@ -32,7 +32,7 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isJobSeeker='Y';
+    this.isJobSeeker='N';
     this.apiService.getJobs(this.isJobSeeker).subscribe((result: JobClass[]) => {
       console.log("The response for all jobs is",result);
       this.results = result;
@@ -87,7 +87,7 @@ export class HomepageComponent implements OnInit {
   }
 
   search(){
-    this.apiService.searchJobs(this.checkoutForm).subscribe((result: JobClass[]) => {   
+    this.apiService.searchJobs(this.isJobSeeker,this.checkoutForm).subscribe((result: JobClass[]) => {   
       this.results = result;
       this.selectedJob = result[0];
       console.log("job results:" + this.results);

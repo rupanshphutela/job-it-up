@@ -63,7 +63,7 @@ export class JobItUpApisService {
   }
   
 
-  searchJobs(checkoutForm: FormGroup){
+  searchJobs(isJobSeeker:string,checkoutForm: FormGroup){
     let params = new HttpParams();
     if(checkoutForm.get('title')?.value !=''){
       params=params.append('title',checkoutForm.get('title')?.value);
@@ -80,7 +80,10 @@ export class JobItUpApisService {
     if(checkoutForm.get('endDate')?.value !=''){
       params=params.append('endDate',checkoutForm.get('endDate')?.value);
     }
-   
+    if(isJobSeeker=='Y'){
     return this.http.get<JobClass[]>(this.hostUrl + "app/jobs/" , {params: params});
+    }else{
+      return this.http.get<JobClass[]>(this.hostUrl + "app/jobs/jobposter/"+ this.jobPostedId, {params: params});
+    }
   }
 }
