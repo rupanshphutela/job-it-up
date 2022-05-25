@@ -11,7 +11,7 @@ import { Form, FormGroup } from '@angular/forms';
 export class JobItUpApisService {
 
   hostUrl:string = 'http://localhost:8080/';
-  jobPostedId:string='1';
+  jobPosterId:string='1';
   constructor(private http: HttpClient) { }
 
   getJobs(isJobSeeker:string){
@@ -19,7 +19,7 @@ export class JobItUpApisService {
       return this.http.get<JobClass[]>(this.hostUrl + 'app/job');
     }
     
-    return this.http.get<JobClass[]>(this.hostUrl + 'app/job/jobPoster/'+this.jobPostedId);
+    return this.http.get<JobClass[]>(this.hostUrl + 'app/job/jobposter/'+this.jobPosterId);
   }
 
   getSpecificJob(id:string){
@@ -43,15 +43,15 @@ export class JobItUpApisService {
   }
 
   
-  editJobSeekerProfile (checkoutForm: FormData){
-    return this.http.put<JobSeekerClass>(this.hostUrl + 'app/jobseeker/',checkoutForm);
+  editJobSeekerProfile (jobSeekerId: string, checkoutForm: FormData){
+    return this.http.put<JobSeekerClass>(this.hostUrl + 'app/jobseeker/' + jobSeekerId ,checkoutForm);
   }
 
   updateJobPost (checkoutForm: FormData,id:string){
     console.log(checkoutForm);
     return this.http.put<any>(this.hostUrl + 'app/job/'+id,checkoutForm);}
   getJobSeekerAppliedJobs (id: string){
-    return this.http.get<any>(this.hostUrl + 'app/jobApplication/jobSeeker/' + id );
+    return this.http.get<any>(this.hostUrl + 'app/jobApplication/jobseeker/' + id );
   }
 
   deleteJobApplication (id: string){
@@ -59,7 +59,7 @@ export class JobItUpApisService {
   }
 
   getJobPosterProfile (id: string){
-    return this.http.get<JobPosterClass>(this.hostUrl + 'app/jobPoster/' + id );
+    return this.http.get<JobPosterClass>(this.hostUrl + 'app/jobposter/' + id );
   }
   
 
@@ -83,7 +83,7 @@ export class JobItUpApisService {
     if(isJobSeeker=='Y'){
     return this.http.get<JobClass[]>(this.hostUrl + "app/jobs" , {params: params});
     }else{
-      return this.http.get<JobClass[]>(this.hostUrl + "app/jobposter/"+ this.jobPostedId+"/jobs", {params: params});
+      return this.http.get<JobClass[]>(this.hostUrl + "app/jobposter/"+ this.jobPosterId+"/jobs", {params: params});
     }
   }
 }

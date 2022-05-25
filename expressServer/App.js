@@ -131,37 +131,37 @@ var App = /** @class */ (function () {
             });
             res.send('{"id":"' + id + '"}');
         });
-        router.get('/app/jobSeeker/:jobSeekerId', function (req, res) {
+        router.get('/app/jobseeker/:jobSeekerId', function (req, res) {
             var id = req.params.jobSeekerId;
             console.log('Query Single Job Seeker with id: ' + id);
             _this.JobSeekers.retrieveJobSeekerDetails(res, { jobSeekerId: id });
         });
         /*Update a JobSeeker profile*/
-        router.put('/app/JobSeeker/:JobSeekerId', function (req, res) {
+        router.put('/app/jobseeker/:jobSeekerId', function (req, res) {
             console.log("151: res", res);
             console.log("152: req", req);
-            var JobSeekerId = req.params.JobSeekerId;
-            console.log("155: JobSeekerId", JobSeekerId);
+            var jobSeekerId = req.params.jobSeekerId;
+            console.log("155: JobSeekerId", jobSeekerId);
             var body = req.body;
             console.log("158: res.body", body);
-            _this.JobSeekers.updateJobSeekerProfile(res, JobSeekerId, body);
+            _this.JobSeekers.updateJobSeekerProfile(res, jobSeekerId, body);
         });
         /*Update a JobSeeker work experience*/
-        router.put('/app/JobSeeker/:JobSeekerId/workExperience/:workExperienceId', function (req, res) {
-            var JobSeekerId = req.params.JobSeekerId;
+        router.put('/app/jobseeker/:jobSeekerId/workExperience/:workExperienceId', function (req, res) {
+            var jobSeekerId = req.params.jobSeekerId;
             var workExperienceId = req.params.workExperienceId;
             var body = req.body;
-            _this.JobSeekers.updateJobSeekerWorkExperience(res, JobSeekerId, workExperienceId, body);
+            _this.JobSeekers.updateJobSeekerWorkExperience(res, jobSeekerId, workExperienceId, body);
         });
         /*Update a JobSeeker Education*/
-        router.put('/app/JobSeeker/:JobSeekerId/education/:educationId', function (req, res) {
-            var JobSeekerId = req.params.JobSeekerId;
+        router.put('/app/jobseeker/:jobSeekerId/education/:educationId', function (req, res) {
+            var jobSeekerId = req.params.jobSeekerId;
             var educationId = req.params.educationId;
             var body = req.body;
-            _this.JobSeekers.updateJobSeekerEducation(res, JobSeekerId, educationId, body);
+            _this.JobSeekers.updateJobSeekerEducation(res, jobSeekerId, educationId, body);
         });
         // delete job seeker profile.
-        router["delete"]('/app/jobSeeker/:jobSeekerId', function (req, res) {
+        router["delete"]('/app/jobseeker/:jobSeekerId', function (req, res) {
             var id = req.params.jobSeekerId;
             var input = { jobSeekerId: id };
             try {
@@ -190,7 +190,7 @@ var App = /** @class */ (function () {
             res.send('{"id":"' + id + '"}');
         });
         // update details for specified job poster
-        router.put('/app/jobPoster/:jobPosterId', function (req, res) {
+        router.put('/app/jobposter/:jobPosterId', function (req, res) {
             var jobPosterId = req.params.jobPosterId;
             var body = req.body;
             _this.JobPosters.updateJobPosterDetails(res, jobPosterId, body);
@@ -228,7 +228,7 @@ var App = /** @class */ (function () {
             }
         });
         //get all jobs posted by job poster
-        router.get('/app/job/jobPoster/:jobPosterId', function (req, res) {
+        router.get('/app/job/jobposter/:jobPosterId', function (req, res) {
             var id = req.params.jobPosterId;
             console.log('Query applications of job poster with id: ' + id);
             _this.Jobs.retrieveJobDetails(res, { jobPosterId: id });

@@ -4,7 +4,7 @@
     </div>
 
             <div class='col-md-12'>
-                <h2><strong>{{jobSeekerResults.fname}} {{jobSeekerResults.lname}}</strong></h2>
+                <h2><strong>{{fname}} {{lname}}</strong></h2>
             </div>
 
             <div class='col-md-10'>
@@ -12,7 +12,7 @@
             </div>
 
             <div id="editJob" class="col-md-2">
-                <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'Y'" routerLink={{jobSeekerEditLink((jobSeekerResults.jobSeekerId))}}>Edit Profile</a>
+                <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'Y'" routerLink={{jobSeekerEditLink((jobSeekerId))}}>Edit Profile</a>
                 <!-- <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'Y'" routerLink={{link((selectedJob.jobId))}}>Edit Job</a> -->
                 </div>
 
@@ -23,7 +23,7 @@
                 </div>
 
                 <div class='col-md-12 bio'>
-                    <h4>{{jobSeekerResults.bio}}</h4>
+                    <h4>{{bio}}</h4>
                 </div>
                 </div>
 
@@ -39,8 +39,8 @@
                     </div>
 
                     <div class='col-md-2'>
-                        <a href={{jobSeekerResults.resume}} download rel="noopener noreferrer" target="_blank">
-                            <h4>{{jobSeekerResults.fname+" "+jobSeekerResults.lname}}</h4>
+                        <a href={{resume}} download rel="noopener noreferrer" target="_blank">
+                            <h4>{{fname+" "+lname}}</h4>
                         </a>
                         
                     </div>
@@ -50,7 +50,7 @@
                     </div>
 
                     <div class='col-md-2'>
-                        <h4>{{jobSeekerResults.contactNo}}</h4>
+                        <h4>{{contactNo}}</h4>
                     </div>
 
                     <div class='col-md-1'>
@@ -58,7 +58,7 @@
                     </div>
 
                     <div class='col-md-5'>
-                        <h4>{{jobSeekerResults.email}}</h4>
+                        <h4>{{email}}</h4>
                     </div>
 
                     <div class='col-md-1'>
@@ -66,7 +66,7 @@
                     </div>
 
                     <div class='col-md-2'>
-                        <h4>{{jobSeekerResults.location}}</h4>
+                        <h4>{{location}}</h4>
                     </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                 </div>
 
                 <div class='col-md-12'>
-                    <div *ngFor="let skill of jobSeekerResults.primarySkills; let i = index ">
+                    <div *ngFor="let skill of primarySkills; let i = index ">
                         <div class='col-md-2 skill' >
                             <h4>{{skill}}</h4>
                         </div>
@@ -104,7 +104,7 @@
                 </div>
 
                 <div class='col-md-12'>
-                    <div *ngFor="let skill of jobSeekerResults.otherSkills; let i = index ">
+                    <div *ngFor="let skill of otherSkills; let i = index ">
                         <div class='col-md-2 skill' >
                             <h4>{{skill}}</h4>
                         </div>
@@ -126,7 +126,7 @@
 
             <div class='col-md-12'>
                 <div class="row">
-                <div *ngFor="let work of jobSeekerResults.workExperience; let i = index ">
+                <div *ngFor="let work of workExperience; let i = index ">
                     
                     <div class='col-md-2' >
                         <h4><strong>Company Name</strong></h4>
@@ -170,7 +170,7 @@
 
             <div class='col-md-12'>
                 <div class="row">
-                <div *ngFor="let education of jobSeekerResults.education; let i = index ">
+                <div *ngFor="let education of education; let i = index ">
                     
                     <div class='col-md-2' >
                         <h4><strong>University Name</strong></h4>

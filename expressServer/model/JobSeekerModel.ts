@@ -105,7 +105,7 @@ class JobSeekerModel {
                     }
                     else {
                         console.log('success')
-                        response.send('Status updated');
+                        response.send('{"jobSeekerid":"' + jobSeekerId + '", "Response":"Job Seeker Profile updated"}');
                     }
                 });
             }

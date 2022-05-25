@@ -28,13 +28,12 @@ describe('Test fetch all jobs', function () {
         });
     
     /*Check response body */
-    it('API should return one Job Seeker JSON', function (){
+    it('API should return Job Seeker JSON', function (){
 		expect(response).to.have.status(200);
         expect(response).to.be.json;
         expect(response.body).to.be.an('object');
 		expect(response).to.have.headers;
         expect(response.body).to.not.be.a.string;
-        //checking count of jobSeekerId key to be 1
         expect(response.body).to.include.keys('jobSeekerId');
     });
 

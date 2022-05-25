@@ -9,13 +9,13 @@
                 <div class="col-md-6">
                     <h4><strong><label class="control-label">First Name</label></strong></h4>                    
 
-                    <input type="text" class="form-control" formControlName="fname" [(ngModel)]=jobSeekerResults.fname required>
+                    <input type="text" class="form-control" formControlName="fname" [(ngModel)]=fname required>
                 </div>
 
                 <div class="col-md-6">
                     <h4><strong><label class="control-label">Last Name</label></strong></h4>                    
 
-                    <input type="text" class="form-control" formControlName="lname" [(ngModel)]=jobSeekerResults.lname required>
+                    <input type="text" class="form-control" formControlName="lname" [(ngModel)]=lname required>
                 </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                 <div class="row">
                 <div class="col-md-12">
                     <h4><strong><label class="control-label">Bio</label></strong></h4>                    
-                    <input type="text" class="form-control bio" formControlName="bio" [(ngModel)]=jobSeekerResults.bio required>
+                    <input type="text" class="form-control bio" formControlName="bio" [(ngModel)]=bio required>
                 </div>
                 </div>
 
@@ -42,28 +42,28 @@
                     <div class="col-md-3">
                         <h4><strong><label class="control-label">Resume</label></strong></h4>     
                         <div class="col-md-5">               
-                        <a href={{jobSeekerResults.resume}} download rel="noopener noreferrer" target="_blank">
-                            <h5>{{jobSeekerResults.fname+" "+jobSeekerResults.lname}}</h5>
+                        <a href={{resume}} download rel="noopener noreferrer" target="_blank">
+                            <h5>{{fname+" "+lname}}</h5>
                         </a>
                         </div>
                         <div class="col-md-7">
-                        <input type="file" class="form-control" formControlName="resume" required>
+                        <!-- <input type="file" class="form-control" formControlName="resume" required> -->
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <h4><strong><label class="control-label">Contact</label></strong></h4>
-                        <input type="tel" class="form-control" formControlName="contactNo" [(ngModel)]=jobSeekerResults.contactNo required>
+                        <input type="tel" class="form-control" formControlName="contactNo" [(ngModel)]=contactNo required>
                     </div>
 
                     <div class="col-md-3">
                         <h4><strong><label class="control-label">Email</label></strong></h4>
-                        <input type="email" class="form-control" formControlName="email" [(ngModel)]=jobSeekerResults.email required>
+                        <input type="email" class="form-control" formControlName="email" [(ngModel)]=email required>
                     </div>
 
                     <div class="col-md-3">
                         <h4><strong><label class="control-label">Location</label></strong></h4>
-                        <input type="text" class="form-control" formControlName="location" [(ngModel)]=jobSeekerResults.location required>
+                        <input type="text" class="form-control" formControlName="location" [(ngModel)]=location required>
                     </div>
                     </div>
                 </div>
@@ -81,10 +81,10 @@
                 <div class='col-md-12'>
                     <h4><strong>Primary Skills</strong></h4>
                     <div class="row">
-                    <div *ngFor="let skill of jobSeekerResults.primarySkills; let i = index ">
+                    <div *ngFor="let skill of primarySkills; let i = index ">
                         <div class='col-md-4' >
                             <h4><strong><label class="control-label">Skill {{i+1}}</label></strong></h4>
-                            <input type="text" class="form-control" formControlName="primarySkills" [(ngModel)]=jobSeekerResults.primarySkills[i] required>
+                            <input type="text" class="form-control" formControlName="primarySkills" [ngModel]=skill>
                         </div>
                     </div>
 
@@ -100,10 +100,10 @@
                 <div class='col-md-12'>
                     <h4><strong>Other Skills</strong></h4>
                     <div class="row">
-                    <div *ngFor="let skill of jobSeekerResults.otherSkills; let i = index ">
+                    <div *ngFor="let skill of otherSkills; let i = index ">
                         <div class='col-md-4' >
                             <h4><strong><label class="control-label">Skill {{i+1}}</label></strong></h4>
-                            <input type="text" class="form-control" formControlName="otherSkills" [(ngModel)]=jobSeekerResults.otherSkills[i] required>
+                            <input type="text" class="form-control" formControlName="otherSkills" [ngModel]=skill>
                         </div>
                      </div>
                     </div>
@@ -117,26 +117,26 @@
 
             <div class='col-md-12'>
                 <h3 class="section-header"><strong>Work Experience</strong></h3>
-                <div *ngFor="let work of jobSeekerResults.workExperience; let i = index " formGroupName=workExperience>
-                    <div class="row">
-                    <div class='col-md-3'>
+                <div *ngFor="let work of workExperience; let i = index" formArrayName=workExperience>
+                    <div class="row" [formGroupName] = "i">
+                    <div class='col-md-3'> 
                         <h4><strong><label class="control-label">Company Name</label></strong></h4>
-                        <input type="text" class="form-control" formControlName=companyName [(ngModel)]=work.companyName required>
+                        <input type="text" class="form-control" formControlName="companyName" [(ngModel)]=work.companyName>
                     </div>
 
                     <div class='col-md-3'>
                         <h4><strong><label class="control-label">Role</label></strong></h4>
-                        <input type="text" class="form-control" formControlName=role [(ngModel)]=work.role required>
+                        <input type="text" class="form-control" formControlName="role" [(ngModel)]=work.role>
                     </div>
 
                     <div class='col-md-3'>
                         <h4><strong><label class="control-label">From Date</label></strong></h4>
-                        <input type="text" class="form-control" formControlName="fromDate[i]" [(ngModel)]=work.fromDate required>
+                        <input type="text" class="form-control" formControlName="fromDate" [(ngModel)]=work.fromDate>
                     </div>
                    
                     <div class='col-md-3'>
                         <h4><strong><label class="control-label">To Date</label></strong></h4>
-                        <input type="text" class="form-control" formControlName="toDate[i]" [(ngModel)]=work.toDate required>
+                        <input type="text" class="form-control" formControlName="toDate" [(ngModel)]=work.toDate>
                     </div>
                     </div>
 
@@ -152,28 +152,28 @@
             </div>
 
             <div class='col-md-12'>
-                <div *ngFor="let education of jobSeekerResults.education; let i = index ">
-                    <div class="row">
+                <div *ngFor="let education of education; let i = index " formArrayName=education>
+                    <div class="row" [formGroupName] = i>
                     <div class='col-md-3'>
                         <h4><strong><label class="control-label">University Name</label></strong></h4>
-                        <input type="text" class="form-control" formControlName="universityName[index]" [(ngModel)]=education.universityName required>
+                        <input type="text" class="form-control" formControlName=universityName [(ngModel)]=education.universityName>
                     </div>
 
                     <div class='col-md-3'>
                         <h4><strong><label class="control-label">Degree</label></strong></h4>
-                        <input type="text" class="form-control" formControlName="degree[index]" [(ngModel)]=education.degree required>
+                        <input type="text" class="form-control" formControlName=degree [(ngModel)]=education.degree>
                     </div>
                     
                     <div class='col-md-3'>
                         <h4><strong><label class="control-label">From Date</label></strong></h4>
-                        <input type="text" class="form-control" formControlName="fromDate[index]" [(ngModel)]=education.fromDate required>
+                        <input type="text" class="form-control" formControlName=fromDate [(ngModel)]=education.fromDate>
                     </div>
 
                     <div class='col-md-3'>
                         <h4><strong><label class="control-label">To Date</label></strong></h4>
-                        <input type="text" class="form-control" formControlName="toDate[index]" [(ngModel)]=education.toDate required>
+                        <input type="text" class="form-control" formControlName=toDate [(ngModel)]=education.toDate>
                     </div>
-                    </div>
+                </div>
 
                     <div class='col-md-12'>
                         <hr class="bg-danger border-2 border-top border-danger">
@@ -185,7 +185,7 @@
                 <button class="btn btn-primary btn-lg click" type="submit">Update</button>
                 &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;
-                <button class="btn btn-cancel btn-lg" routerLink={{jobSeekerLink((jobSeekerResults.jobSeekerId))}} >Back</button>
+                <button class="btn btn-cancel btn-lg" routerLink={{jobSeekerLink((jobSeekerId))}} >Back</button>
                 <div *ngIf="response_id.length>0">
                     <h4>The profile has been updated successfully!</h4>
                  </div>
