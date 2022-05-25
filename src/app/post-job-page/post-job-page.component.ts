@@ -22,6 +22,7 @@ export class PostJobPageComponent implements OnInit {
     experienceNeeded: '',
     location: '',
     salary: '',
+    applyDeadline: '',
     startDate: '',
     endDate: '',
     description: '',
@@ -53,7 +54,6 @@ export class PostJobPageComponent implements OnInit {
       jobId: this.jobId,
       jobPosterId: "1",
       hasApplicants: "N",
-      applyDeadline: " "
     });
 
     console.log("values.....", this.checkoutForm.value)
@@ -69,7 +69,7 @@ export class PostJobPageComponent implements OnInit {
     });
   }
 
-    
+ 
   }
 
  
