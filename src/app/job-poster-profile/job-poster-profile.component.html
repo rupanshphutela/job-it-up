@@ -1,0 +1,117 @@
+<div class="container">
+    <div class='col-md-12'>
+        <h1 class="text-center">Profile</h1>
+    </div>
+
+    <div class='col-md-10'>
+    </div>
+
+    <div id="editProfile" class="col-md-2">
+        <a class="btn btn-lg btn-primary" *ngIf="isJobPoster == 'Y'" routerLink={{jobPosterEditLink((jobPosterResults.jobPosterId))}}>Edit Profile</a>
+        <!-- <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'Y'" routerLink={{link((selectedJob.jobId))}}>Edit Job</a> -->
+    </div>
+            <div class='col-md-12'>
+                <h2><strong>{{jobPosterResults.companyName  }}</strong></h2>
+            </div>
+
+
+            <div class='col-md-12'>
+                <div class="row">
+                <div class='col-md-12'>
+                    <h4 style="color: #337ab7"><strong>Company Overview</strong></h4>
+                </div>
+
+                <div class='col-md-12 overview'>
+                    <h4>{{jobPosterResults.Overview}}</h4>
+                </div>
+                </div>
+
+            </div>
+
+
+            <div class='col-md-10'>
+                <div class="row">
+                <div class='col-md-3'>
+                    <h4 style="color: #337ab7"><strong>Company Website:</strong></h4>
+                </div>
+
+                <div class='col-md-3'>
+                    <h4>{{jobPosterResults.website}}</h4> 
+                </div>
+                </div>
+            </div>
+
+            <div class='col-md-10'>
+                <div class="row">
+                <div class='col-md-3'>
+                    <h4 style="color: #337ab7"><strong>Contact No:</strong></h4>
+                </div>
+
+                <div class='col-md-3'>
+                    <h4>{{jobPosterResults.contactNo}}</h4> 
+                </div>
+                </div>
+            </div>
+
+            <div class='col-md-10'>
+                <div class="row">
+                <div class='col-md-3'>
+                    <h4 style="color: #337ab7"><strong>Industry:</strong></h4>
+                </div>
+
+                <div class='col-md-3'>
+                    <h4>{{jobPosterResults.industry}}</h4> 
+                </div>
+                </div>
+            </div>
+
+            <div class='col-md-10'>
+                <div class="row">
+                <div class='col-md-3'>
+                    <h4 style="color: #337ab7"><strong>Company Size:</strong></h4>
+                </div>
+
+                <div class='col-md-3'>
+                    <h4>{{jobPosterResults.companySize}}</h4> 
+                </div>
+                </div>
+            </div>
+
+            <div class='col-md-10'>
+                <div class="row">
+                <div class='col-md-3'>
+                    <h4 style="color: #337ab7"><strong>HeadQuarters:</strong></h4>
+                </div>
+
+                <div class='col-md-3'>
+                    <h4>{{jobPosterResults.headquarters}}</h4> 
+                </div>
+                </div>
+            </div>
+
+            <div class='col-md-10'>
+                <div class="row">
+                <div class='col-md-3'>
+                    <h4 style="color: #337ab7"><strong>Founded In:</strong></h4>
+                </div>
+
+                <div class='col-md-3'>
+                    <h4>{{jobPosterResults.founded}}</h4> 
+                </div>
+                </div>
+            </div>
+
+            <div class='col-md-10'>
+                <div class="row">
+                <div class='col-md-3'>
+                    <h4 style="color: #337ab7"><strong>Company Location:</strong></h4>
+                </div>
+
+                <div class='col-md-3'>
+                    <h4>{{jobPosterResults.location}}</h4> 
+                </div>
+                </div>
+            </div>
+
+</div>
+                

@@ -6,34 +6,35 @@
                 Find work you'll love, fast.
             </h3>
         </div>
-        <div class="search-form">
-        <div class="container">
-                <form action="#" method="post" novalidate="novalidate" style="width:100%">
+        <form [formGroup]="checkoutForm" >
+          <div class="search-form">
+        <div class="form-group" >
+        <div class="container" >
                     <div class="row" style=" margin-top:15%;margin-left:8%">
                         <div class="col-lg-10" style="width:100%">
                                 <div  class="col-md-2 col-sm-12 p-0"  style="padding:0px;width:15%">
-                                    <input type="text" class=" form-control search-slt" style="padding:0px;width:100% " placeholder="Enter job role" >
+                                    <input type="text" formControlName="title" class=" form-control search-slt" style="padding:0px;width:100% " placeholder="Enter job role" >
                                 </div>
                                 <div class="col-lg-2 col-md-3 col-sm-12 p-0" style="padding:0px;width:15% " >
-                                    <select class="form-control search-slt " style="padding:0px;width:100%" id="exampleFormControlSelect1" >
+                                    <select class="form-control search-slt " formControlName="domain" style="padding:0px;width:100%" id="domain"  >
                                         <option>Select Domain</option>
-                                        <option>Dentist</option>
+                                        <option>Dental</option>
                                         <option>Front End Engineer</option>
                                         <option>Full Stack Developer</option>
                                         <option>Third Choice</option>
                                     </select>
                                 </div>
                                 <div  class="col-lg-2 col-md-3 col-sm-12 p-0" style="padding:0px;width:15%" >
-                                    <input input type="date" id="startDate" class="form-control search-slt " />
+                                    <input input type="date" id="startDate" formControlName="startDate" class="form-control search-slt " />
                                 </div>
                                 <div  class="col-lg-2 col-md-3 col-sm-12 p-0" style="padding:0px;width:15%" >
-                                    <input input type="date" id="endDate" class="form-control search-slt " />
+                                    <input input type="date" id="endDate" formControlName="endDate" class="form-control search-slt " />
                                 </div>
                                 <div class="col-lg-2 col-md-3 col-sm-12 p-0" style="padding:0px;width:15%" >
-                                    <input type="text" class="form-control search-slt" style="padding:0px;width:100%" placeholder="Enter Location" >
+                                    <input type="text" class="form-control search-slt" formControlName="location"style="padding:0px;width:100%" placeholder="Enter Location" >
                                 </div>
                                 <div class="col-lg-2 col-md-3 col-sm-12 p-0" style="padding:0px; width:120px;">
-                                    <button type="button" class="btn wrn-btn" style="background-color:#3E9AE9;color:white" >Search</button>
+                                    <button type="button" class="btn wrn-btn" style="background-color:#3E9AE9;color:white" (click)="search()" >Search</button>
                                 </div>
                         </div>
                         <div class="col-lg-2" *ngIf="isJobSeeker == 'N'" style="width:100%">
@@ -44,9 +45,10 @@
                           </div>
                         </div>
                     </div>
-                </form>
             </div>
             </div>
+          </div>
+        </form>
         <div class="text-over-img">
         <h4>
             Experience the new way to work..

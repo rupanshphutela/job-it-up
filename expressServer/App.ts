@@ -72,7 +72,7 @@ class App {
   router.get('/app/jobs/', (req, res) => {
     var urlParts = url.parse(req.url, true);
     var query = urlParts.query;
-    console.log(query)
+    console.log("search query : " +query);
       this.Jobs.retrieveJobsBySearch(res, query);  
   });
 

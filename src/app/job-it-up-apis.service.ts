@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
 import { JobClass } from './job-class';
 import { JobSeekerClass } from './jobseeker-class';
+import { JobPosterClass } from './jobposter-class';
+import { Form, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -55,5 +57,30 @@ export class JobItUpApisService {
   deleteJobApplication (id: string){
     return this.http.delete<number>(this.hostUrl + "app/jobApplication/" +id);
   }
+
+  getJobPosterProfile (id: string){
+    return this.http.get<JobPosterClass>(this.hostUrl + 'app/jobPoster/' + id );
+  }
   
+
+  searchJobs(checkoutForm: FormGroup){
+    let params = new HttpParams();
+    if(checkoutForm.get('title')?.value !=''){
+      params=params.append('title',checkoutForm.get('title')?.value);
+    }
+    if(checkoutForm.get('domain')?.value !='' && checkoutForm.get('domain')?.value!= 'Select Domain'){
+      params=params.append('domain',checkoutForm.get('domain')?.value);
+    }
+    if(checkoutForm.get('location')?.value !=''){
+      params=params.append('location',checkoutForm.get('location')?.value);
+    }
+    if(checkoutForm.get('startDate')?.value !=''){
+      params=params.append('startDate',checkoutForm.get('startDate')?.value);
+    }
+    if(checkoutForm.get('endDate')?.value !=''){
+      params=params.append('endDate',checkoutForm.get('endDate')?.value);
+    }
+   
+    return this.http.get<JobClass[]>(this.hostUrl + "app/jobs/" , {params: params});
+  }
 }
