@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { JobClass } from './job-class';
 import { JobSeekerClass } from './jobseeker-class';
+import { JobPosterClass } from './jobposter-class';
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +55,10 @@ export class JobItUpApisService {
 
   deleteJobApplication (id: string){
     return this.http.delete<number>(this.hostUrl + "app/jobApplication/" +id);
+  }
+
+  getJobPosterProfile (id: string){
+    return this.http.get<JobPosterClass>(this.hostUrl + 'app/jobPoster/' + id );
   }
   
 }
