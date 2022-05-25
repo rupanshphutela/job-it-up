@@ -72,12 +72,12 @@ class App {
   router.get('/app/jobs/', (req, res) => {
     var urlParts = url.parse(req.url, true);
     var query = urlParts.query;
-    console.log("search query : " +query);
+    console.log(query);
       this.Jobs.retrieveJobsBySearch(res, query);  
   });
 
     /* Retrieve Jobs by Search Criteria for a specific Job Poster*/
-    router.get('/app/jobposter/:jobPosterId/jobs', (req, res) => {
+    router.get('/app/jobposter/:jobPosterId/jobs/', (req, res) => {
       var urlParts = url.parse(req.url, true);
       var id = req.params.jobPosterId;
       var query = urlParts.query;

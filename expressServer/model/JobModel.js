@@ -47,6 +47,7 @@ var JobModel = /** @class */ (function () {
         var query = this.model.find(filter);
         console.log('Query  ' + query);
         query.exec(function (err, itemArray) {
+            console.log("search results " + itemArray);
             response.json(itemArray);
         });
     };
@@ -59,7 +60,7 @@ var JobModel = /** @class */ (function () {
     };
     JobModel.prototype.retrieveJobsBySearch = function (response, filter) {
         var query = this.model.find(filter);
-        console.log('Query  ' + query);
+        console.log('Search Query  ' + query);
         query.exec(function (err, itemArray) {
             console.log("search results " + itemArray);
             response.json(itemArray);

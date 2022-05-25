@@ -81,7 +81,7 @@ export class JobItUpApisService {
       params=params.append('endDate',checkoutForm.get('endDate')?.value);
     }
     if(isJobSeeker=='Y'){
-    return this.http.get<JobClass[]>(this.hostUrl + "app/jobs/" , {params: params});
+    return this.http.get<JobClass[]>(this.hostUrl + "app/jobs" , {params: params});
     }else{
       return this.http.get<JobClass[]>(this.hostUrl + "app/jobposter/"+ this.jobPostedId+"/jobs", {params: params});
     }

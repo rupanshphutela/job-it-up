@@ -59,6 +59,7 @@ class JobModel {
         var query = this.model.find(filter);
         console.log('Query  ' + query);
         query.exec( (err, itemArray) => {
+            console.log("search results " + itemArray);
             response.json(itemArray);
         });
     }
@@ -73,7 +74,7 @@ class JobModel {
 
     public retrieveJobsBySearch(response:any, filter:Object) {
         var query = this.model.find(filter);
-        console.log('Query  ' + query);
+        console.log('Search Query  ' + query);
         
         query.exec( (err, itemArray) => {
             console.log("search results "+itemArray);
