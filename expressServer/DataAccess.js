@@ -16,7 +16,8 @@ var DataAccess = /** @class */ (function () {
         this.mongooseInstance = Mongoose.connect(this.DB_CONNECTION_STRING);
         return this.mongooseInstance;
     };
-    DataAccess.DB_CONNECTION_STRING = 'mongodb://dbAdmin:test@localhost:3000/jobItUp?authSource=admin';
+    // static DB_CONNECTION_STRING:string = 'mongodb://dbAdmin:test@localhost:3000/jobItUp?authSource=admin';
+    DataAccess.DB_CONNECTION_STRING = 'mongodb+srv://team6:team6@jobItUp.hhrls.mongodb.net/jobItUp?retryWrites=true&w=majority';
     return DataAccess;
 }());
 exports.DataAccess = DataAccess;
