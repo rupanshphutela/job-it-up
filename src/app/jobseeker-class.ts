@@ -10,8 +10,8 @@ export interface JobSeekerClass {
     contactNo: string,
     email: string,
     referralCode: string,
-    primarySkills: [string],
-    otherSkills: [string],
+    primarySkills: string[],
+    otherSkills: string[],
     education: 
     [ {
         educationId: string,

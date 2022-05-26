@@ -22,8 +22,8 @@ export class JobSeekerProfileComponent implements OnInit {
   location: string="";
   primarySkills: Array<String>=[];
   otherSkills:Array<String>=[];
-  workExperience!: JobSeekerClass["workExperience"];
-  education!: JobSeekerClass["education"];
+  workExperiences!: JobSeekerClass["workExperience"];
+  educations!: JobSeekerClass["education"];
 
  
   constructor(
@@ -46,8 +46,8 @@ export class JobSeekerProfileComponent implements OnInit {
       this.location = jobSeeker.location;
       this.primarySkills = jobSeeker.primarySkills;
       this.otherSkills = jobSeeker.otherSkills;
-      this.workExperience = jobSeeker.workExperience;
-      this.education = jobSeeker.education;
+      this.workExperiences = jobSeeker.workExperience;
+      this.educations = jobSeeker.education;
       console.log('API Service Result for this Job Seeker is: ' + JSON.stringify(jobSeeker));
     });
   }

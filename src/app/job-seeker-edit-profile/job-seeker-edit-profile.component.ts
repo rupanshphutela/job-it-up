@@ -21,15 +21,24 @@ export class JobSeekerEditProfileComponent implements OnInit {
   contactNo: string="";
   email: string="";
   location: string="";
-  primarySkills: Array<String>=[];
-  otherSkills:Array<String>=[];
-  workExperience!: JobSeekerClass["workExperience"];
-  education!: JobSeekerClass["education"];
+  primarySkills: Array<string>=[];
+  // primarySkill: Array<string>=[];
+  otherSkills:Array<string>=[];
+  // otherSkill: Array<string>=[];
+  workExperiences!: JobSeekerClass["workExperience"];
+  companyName: Array<string>=[];
+  role: Array<string>=[];
+  fromDate: Array<string>=[];
+  toDate: Array<string>=[];
+  educations!: JobSeekerClass["education"];
+  universityName: Array<string>=[];
+  degree: Array<string>=[];
   response_id: string="";
 
   checkoutForm = this.fb.group({
-  primarySkills: ['', Validators.required],
-  otherSkills: ['', Validators.required],
+  primarySkills: [],
+  otherSkills: [],
+  // otherSkills: ['', Validators.required],
   bio: '',
   resume: '',
   picture: '',
@@ -38,8 +47,34 @@ export class JobSeekerEditProfileComponent implements OnInit {
   lname: '',
   contactNo: '',
   email: '',
-  workExperience: this.fb.array([this.WorkExperience()]),
-  education: this.fb.array([this.Education()])
+  workExperience: this.fb.array([
+    this.fb.group({
+      companyName: '',
+      role: '',
+      fromDate: '',
+      toDate: ''
+    }),
+    this.fb.group({
+      companyName: '',
+      role: '',
+      fromDate: '',
+      toDate: ''
+    })
+  ]),
+  education: this.fb.array([
+    this.fb.group({
+      universityName: '',
+      degree: '',
+      fromDate: '',
+      toDate: ''
+    }),
+    this.fb.group({
+      universityName: '',
+      degree: '',
+      fromDate: '',
+      toDate: ''
+    })
+  ])
   }); 
 
   constructor(
@@ -47,24 +82,6 @@ export class JobSeekerEditProfileComponent implements OnInit {
     private apiService: JobItUpApisService, 
     private http: HttpClient,
     private fb: FormBuilder) {}
-      
-  WorkExperience(): FormGroup {
-    return this.fb.group({
-      companyName: new FormControl("companyName", Validators.required),
-      role: new FormControl("role", Validators.required),
-      fromDate: new FormControl("fromDate", Validators.required),
-      toDate: new FormControl("toDate", Validators.required)
-    })
-  }
-
-  Education(): FormGroup {
-    return this.fb.group({
-      universityName: new FormControl("universityName", Validators.required),
-      degree: new FormControl("degree", Validators.required),
-      fromDate: new FormControl("fromDate", Validators.required),
-      toDate: new FormControl("toDate", Validators.required)
-    })
-  }
 
   ngOnInit(): void {
     this.jobSeekerId = this.route.snapshot.params['id'];
@@ -72,6 +89,7 @@ export class JobSeekerEditProfileComponent implements OnInit {
     
     this.apiService.getJobSeekerProfile(this.jobSeekerId).subscribe((jobSeeker: JobSeekerClass) => 
     {
+      console.log('API Service Result for this Job Seeker is: ' + JSON.stringify(jobSeeker));
       this.jobSeekerResults = jobSeeker;
       this.fname = jobSeeker.fname;
       this.lname = jobSeeker.lname;
@@ -82,9 +100,25 @@ export class JobSeekerEditProfileComponent implements OnInit {
       this.location = jobSeeker.location;
       this.primarySkills = jobSeeker.primarySkills;
       this.otherSkills = jobSeeker.otherSkills;
-      this.workExperience = jobSeeker.workExperience;
-      this.education = jobSeeker.education;
-      console.log('API Service Result for this Job Seeker is: ' + JSON.stringify(jobSeeker));
+      this.workExperiences = jobSeeker.workExperience;
+      this.educations = jobSeeker.education;
+
+      /** Work Experience */ 
+      jobSeeker.workExperience.forEach((element, index)=>{
+        this.companyName[index] = element.companyName;
+        this.role[index] = element.role;
+        this.fromDate[index]  = element.fromDate;
+        this.toDate[index]  = element.toDate;
+      });
+
+      /** Education */ 
+      this.educations.forEach((element, index)=>{
+        this.universityName[index]  = element.universityName;
+        this.degree[index]  = element.degree;
+        this.fromDate[index]  = element.fromDate;
+        this.toDate[index]   = element.toDate;
+      });
+
     });
   }
 
