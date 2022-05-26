@@ -41,6 +41,7 @@ export class PostJobPageComponent implements OnInit {
     
     if(this.jobId!=null){
       this.apiService.getSpecificJob(this.jobId).subscribe((result: JobClass) => {
+        console.log("in");
         console.log('detail result' + JSON.stringify(result));
         this.selectedJob=result;
       });
@@ -65,6 +66,7 @@ export class PostJobPageComponent implements OnInit {
   }else{
     this.apiService.updateJobPost(this.checkoutForm.value,this.selectedJob.jobId).subscribe((response) =>{
       this.response_id = response.id;
+      
       console.log(response);
     });
   }
