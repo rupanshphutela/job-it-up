@@ -136,6 +136,7 @@ export class JobSeekerEditProfileComponent implements OnInit {
     {
       this.response_id = jobSeeker.jobSeekerId;
       console.log('API Service Result for this Job Seeker is: ' + JSON.stringify(jobSeeker));
+      this.ngOnInit();
     });
 
   }

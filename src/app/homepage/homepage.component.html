@@ -91,15 +91,15 @@
                 <h5 class='list-group-item-text'>{{selectedJob.location}}</h5>
                 <br>
                 <div id="applyJob" class="text-center" role="group">
-                <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'Y'" routerLink={{link((selectedJob.jobId))}}>Apply Now</a>
+                <a class="btn btn-md btn-primary" *ngIf="isJobSeeker == 'Y'" routerLink={{link((selectedJob.jobId))}}>Apply Now</a>
                 </div>
                 <br>
                 <div id="applyJob" class="text-center" role="group">
-                    <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'N'" routerLink={{viewApplicants(selectedJob.jobId)}}>View Applicants</a>
+                    <button class="btn btn-md btn-primary" *ngIf="isJobSeeker == 'N'" routerLink={{viewApplicants(selectedJob.jobId)}}>View Applicants</button>
                     </div>
                     <br>
                     <div id="editJob" class="text-center" role="group">
-                        <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'N'" routerLink={{editJobLink((selectedJob.jobId))}}>Edit Job</a>
+                        <button class="btn btn-wrn btn-md" *ngIf="isJobSeeker == 'N'" routerLink={{editJobLink((selectedJob.jobId))}}>Edit Job</button>
                         </div>
             </div>
             </div>

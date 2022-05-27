@@ -289,7 +289,7 @@ var App = /** @class */ (function () {
                         }
                         else {
                             console.log('success');
-                            res.send('Status updated');
+                            res.send('{"jobApplicationId":"' + req.params.jobApplicationId + '", "Response":"Job Application successfully updated"}');
                         }
                     });
                 }

@@ -346,7 +346,7 @@ router.put('/app/jobApplication/:jobApplicationId', (req, res) => {
         else
         {
           console.log('success')
-          res.send('Status updated');
+          res.send('{"jobApplicationId":"' + req.params.jobApplicationId + '", "Response":"Job Application successfully updated"}');
         }
       });
     }

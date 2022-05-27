@@ -79,6 +79,7 @@ export class JobPosterEditProfileComponent implements OnInit {
     {
       this.response_id = jobPoster.jobPosterId;
       console.log('API Service Result for this Job Poster is: ' + JSON.stringify(jobPoster));
+      this.ngOnInit();
     });
 
   }

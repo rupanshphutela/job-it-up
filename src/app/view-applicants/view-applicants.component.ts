@@ -63,15 +63,15 @@ export class ViewApplicantsComponent implements OnInit {
   acceptBtn(newValue: any) {
     console.log(newValue)
 
-    if (confirm('Are you sure to Accept Application?')) {
+    if (confirm('Are you sure to accept job application?')) {
       this.selectedApplication = newValue
 
       const body = { "status": "Accepted" }
       this.apiService.updateApplicationStatus(newValue.jobApplicationId, body).subscribe(() => { 
         console.log('API Service Result for this Job Seeker is: ');
         console.log("first", body)
-        alert("Application Accepted successfully");
-        window.location.reload();
+        alert("Application accepted successfully");
+        this.ngOnInit();
       });
     }
     else {
@@ -82,14 +82,14 @@ export class ViewApplicantsComponent implements OnInit {
 
   rejectBtn(newValue: any) {
 
-    if (confirm('Are you sure to reject Application?')) {
+    if (confirm('Are you sure to reject job application?')) {
 
       this.selectedApplication = newValue
-     const body = { "status": "Rejected" }
+      const body = { "status": "Rejected" }
       console.log("first", body)
       this.apiService.updateApplicationStatus(newValue.jobApplicationId, body).subscribe(() => {
-        alert("Application Accepted successfully");
-        window.location.reload();
+        alert("Application rejected successfully");
+        this.ngOnInit();
       })
     }
     else {
