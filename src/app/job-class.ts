@@ -11,5 +11,5 @@ export interface JobClass {
 	startDate:string;
 	endDate:string;
 	experienceNeeded:string;
-    hasApplicants:String
+    hasApplicants:String;
 }

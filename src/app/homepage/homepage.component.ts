@@ -19,6 +19,7 @@ export class HomepageComponent implements OnInit {
   selectedCompanyLogo!: String;
   selectedCompanyName!: String;
   isJobSeeker!: string;
+  jobPosterId!: String;
 
   checkoutForm = this.fb.group({
     title: '',
@@ -111,5 +112,10 @@ if(result!=null){
         }); 
       }  
     });
+  }
+  viewApplicants(index:string): string {
+    this.jobPosterId = "1";
+    this.jobId = index;
+    return "/viewApplicants/" + (this.jobId);
   }
 }

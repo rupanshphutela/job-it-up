@@ -14,6 +14,7 @@ import { JobSeekerProfileComponent } from './job-seeker-profile/job-seeker-profi
 import { JobSeekerEditProfileComponent } from './job-seeker-edit-profile/job-seeker-edit-profile.component';
 import { JobPosterProfileComponent } from './job-poster-profile/job-poster-profile.component';
 import { JobPosterEditProfileComponent } from './job-poster-edit-profile/job-poster-edit-profile.component';
+import { ViewApplicantsComponent } from './view-applicants/view-applicants.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { JobPosterEditProfileComponent } from './job-poster-edit-profile/job-pos
     JobSeekerEditProfileComponent,
     JobPosterProfileComponent,
     JobPosterEditProfileComponent,
+    ViewApplicantsComponent,
   ],
   imports: [
     BrowserModule,

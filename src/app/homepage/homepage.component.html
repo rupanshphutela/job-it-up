@@ -95,7 +95,7 @@
                 </div>
                 <br>
                 <div id="applyJob" class="text-center" role="group">
-                    <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'N'" >View Applicants</a>
+                    <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'N'" routerLink={{viewApplicants(selectedJob.jobId)}}>View Applicants</a>
                     </div>
                     <br>
                     <div id="editJob" class="text-center" role="group">

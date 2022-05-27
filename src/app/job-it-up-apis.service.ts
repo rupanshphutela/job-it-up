@@ -10,84 +10,91 @@ import { Form, FormGroup } from '@angular/forms';
 })
 export class JobItUpApisService {
 
-  hostUrl:string = 'http://localhost:8080/';
-  jobPosterId:string='1';
+  hostUrl: string = 'http://localhost:8080/';
+  jobPosterId: string = '1';
   constructor(private http: HttpClient) { }
 
-  getJobs(isJobSeeker:string){
-    if(isJobSeeker=='Y'){
+  getJobs(isJobSeeker: string) {
+    if (isJobSeeker == 'Y') {
       return this.http.get<JobClass[]>(this.hostUrl + 'app/job');
     }
-    
-    return this.http.get<JobClass[]>(this.hostUrl + 'app/job/jobposter/'+this.jobPosterId);
+
+    return this.http.get<JobClass[]>(this.hostUrl + 'app/job/jobposter/' + this.jobPosterId);
   }
 
-  getSpecificJob(id:string){
-    return this.http.get<any>(this.hostUrl + 'app/job/' + id );
+  getSpecificJob(id: string) {
+    return this.http.get<any>(this.hostUrl + 'app/job/' + id);
   }
 
-  getSpecificJobPoster(id:string){
-    return this.http.get<any>(this.hostUrl + 'app/jobposter/' + id );
+  getSpecificJobPoster(id: string) {
+    return this.http.get<any>(this.hostUrl + 'app/jobposter/' + id);
   }
 
-  createJobApplication (checkoutForm: FormData){
-    return this.http.post<any>(this.hostUrl + 'app/jobApplication/',checkoutForm);
+  createJobApplication(checkoutForm: FormData) {
+    return this.http.post<any>(this.hostUrl + 'app/jobApplication/', checkoutForm);
 
   }
-  createJobPost (checkoutForm: FormData){
-    return this.http.post<any>(this.hostUrl + 'app/job/',checkoutForm);
+  createJobPost(checkoutForm: FormData) {
+    return this.http.post<any>(this.hostUrl + 'app/job/', checkoutForm);
   }
 
-  getJobSeekerProfile (id: string){
-    return this.http.get<JobSeekerClass>(this.hostUrl + 'app/jobseeker/' + id );
+  getJobSeekerProfile(id: string) {
+    return this.http.get<JobSeekerClass>(this.hostUrl + 'app/jobseeker/' + id);
   }
 
-  
-  editJobSeekerProfile (jobSeekerId: string, checkoutForm: FormData){
-    return this.http.put<JobSeekerClass>(this.hostUrl + 'app/jobseeker/' + jobSeekerId ,checkoutForm);
+  editJobSeekerProfile(jobSeekerId: string, checkoutForm: FormData) {
+    return this.http.put<JobSeekerClass>(this.hostUrl + 'app/jobseeker/' + jobSeekerId, checkoutForm);
   }
 
-  updateJobPost (checkoutForm: FormData,id:string){
+  updateJobPost(checkoutForm: FormData, id: string) {
     console.log(checkoutForm);
-    return this.http.put<any>(this.hostUrl + 'app/job/'+id,checkoutForm);}
-  getJobSeekerAppliedJobs (id: string){
-    return this.http.get<any>(this.hostUrl + 'app/jobApplication/jobseeker/' + id );
+    return this.http.put<any>(this.hostUrl + 'app/job/' + id, checkoutForm);
+  }
+  getJobSeekerAppliedJobs(id: string) {
+    return this.http.get<any>(this.hostUrl + 'app/jobApplication/jobseeker/' + id);
   }
 
-  deleteJobApplication (id: string){
-    return this.http.delete<number>(this.hostUrl + "app/jobApplication/" +id);
+  deleteJobApplication(id: string) {
+    return this.http.delete<number>(this.hostUrl + "app/jobApplication/" + id);
   }
 
-  getJobPosterProfile (id: string){
-    return this.http.get<JobPosterClass>(this.hostUrl + 'app/jobposter/' + id );
+  getJobPosterProfile(id: string) {
+    return this.http.get<JobPosterClass>(this.hostUrl + 'app/jobposter/' + id);
   }
 
-  editJobPosterProfile (jobPosterId: string, checkoutForm: FormData){
-    return this.http.put<JobPosterClass>(this.hostUrl + 'app/jobposter/' + jobPosterId ,checkoutForm);
+  editJobPosterProfile(jobPosterId: string, checkoutForm: FormData) {
+    return this.http.put<JobPosterClass>(this.hostUrl + 'app/jobposter/' + jobPosterId, checkoutForm);
   }
-  
 
-  searchJobs(isJobSeeker:string,checkoutForm: FormGroup){
+  jobApplicationsByJobId(jobId: string) {
+    return this.http.get<any>(this.hostUrl + 'app/jobApplication/job/' + jobId);
+  }
+
+  public updateApplicationStatus(jobApplicationId: string, status: object) {
+    return this.http.put<any>(this.hostUrl + 'app/jobApplication/' + jobApplicationId,status);
+  }
+
+  searchJobs(isJobSeeker: string, checkoutForm: FormGroup) {
     let params = new HttpParams();
-    if(checkoutForm.get('title')?.value !=''){
-      params=params.append('title',checkoutForm.get('title')?.value);
+    if (checkoutForm.get('title')?.value != '') {
+      params = params.append('title', checkoutForm.get('title')?.value);
     }
-    if(checkoutForm.get('domain')?.value !='' && checkoutForm.get('domain')?.value!= 'Select Domain'){
-      params=params.append('domain',checkoutForm.get('domain')?.value);
+    if (checkoutForm.get('domain')?.value != '' && checkoutForm.get('domain')?.value != 'Select Domain') {
+      params = params.append('domain', checkoutForm.get('domain')?.value);
     }
-    if(checkoutForm.get('location')?.value !=''){
-      params=params.append('location',checkoutForm.get('location')?.value);
+    if (checkoutForm.get('location')?.value != '') {
+      params = params.append('location', checkoutForm.get('location')?.value);
     }
-    if(checkoutForm.get('startDate')?.value !=''){
-      params=params.append('startDate',checkoutForm.get('startDate')?.value);
+    if (checkoutForm.get('startDate')?.value != '') {
+      params = params.append('startDate', checkoutForm.get('startDate')?.value);
     }
-    if(checkoutForm.get('endDate')?.value !=''){
-      params=params.append('endDate',checkoutForm.get('endDate')?.value);
+    if (checkoutForm.get('endDate')?.value != '') {
+      params = params.append('endDate', checkoutForm.get('endDate')?.value);
     }
-    if(isJobSeeker=='Y'){
-    return this.http.get<JobClass[]>(this.hostUrl + "app/jobs" , {params: params});
-    }else{
-      return this.http.get<JobClass[]>(this.hostUrl + "app/jobposter/"+ this.jobPosterId+"/jobs", {params: params});
+    if (isJobSeeker == 'Y') {
+      return this.http.get<JobClass[]>(this.hostUrl + "app/jobs", { params: params });
+    } else {
+      return this.http.get<JobClass[]>(this.hostUrl + "app/jobposter/" + this.jobPosterId + "/jobs", { params: params });
     }
   }
 }
