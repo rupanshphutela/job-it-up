@@ -10,7 +10,8 @@ import { Form, FormGroup } from '@angular/forms';
 })
 export class JobItUpApisService {
 
-  hostUrl: string = 'http://localhost:8080/';
+  hostUrl: string = 'https://jobitup.azurewebsites.net:443/';
+//  hostUrl: string = 'http://localhost:8080/';
   jobPosterId: string = '1';
   constructor(private http: HttpClient) { }
 

@@ -16,7 +16,7 @@ describe('Test fetch all jobs', function () {
 		 
     before(function (done) {
         /*Make Node Server route call */
-        chai.request("http://localhost:8080")
+        chai.request("https://jobitup.azurewebsites.net/")
 			.get("/app/job")
 			.end(function (err, res) {
 				requestResult = res.body;
