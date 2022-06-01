@@ -4,35 +4,41 @@
     </div>
 
     <div class='col-md-10'>
+        <div class="media-left">
+            <img class="media-object" src={{companyLogo}}/>
+          </div>
     </div>
 
     <div id="editProfile" class="col-md-2">
-        <a class="btn btn-lg btn-primary" *ngIf="isJobPoster == 'Y'" routerLink={{jobPosterEditLink((jobPosterId))}}>Edit Profile</a>
+        <button type="button" class="btn btn-dark" *ngIf="isJobPoster == 'Y'" routerLink={{jobPosterEditLink((jobPosterId))}}>Edit Profile</button>
         <!-- <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'Y'" routerLink={{link((selectedJob.jobId))}}>Edit Job</a> -->
     </div>
+
             <div class='col-md-12'>
                 <h2><strong>{{companyName}}</strong></h2>
             </div>
 
-
             <div class='col-md-12'>
-                <div class="row">
-                <div class='col-md-12'>
-                    <h4 style="color: #337ab7"><strong>Company Overview</strong></h4>
+                <div class="border">
+                    <hr class="heading_border">
+                    <h3 class="section-header"><strong>Company Overview</strong></h3>
+                    <hr class="heading_border">
                 </div>
 
-                <div class='col-md-12 overview'>
-                    <h4>{{Overview}}</h4>
+                <div class='col-md-12 '>
+                   <h5> <div *ngFor="let desc of getDescription(Overview)">{{desc}}</div> </h5>
+                  
                 </div>
-                </div>
-
             </div>
 
+            <div class='col-md-12'>
+                <hr class="line">
+            </div>
 
             <div class='col-md-10'>
                 <div class="row">
                 <div class='col-md-3'>
-                    <h4 style="color: #337ab7"><strong>Company Website:</strong></h4>
+                    <h4 style="color: black"><strong>Company Website:</strong></h4>
                 </div>
 
                 <div class='col-md-3'>
@@ -44,7 +50,7 @@
             <div class='col-md-10'>
                 <div class="row">
                 <div class='col-md-3'>
-                    <h4 style="color: #337ab7"><strong>Contact No:</strong></h4>
+                    <h4 style="color: black"><strong>Contact No:</strong></h4>
                 </div>
 
                 <div class='col-md-3'>
@@ -53,10 +59,14 @@
                 </div>
             </div>
 
+            <div class='col-md-12'>
+                <hr class="line">
+            </div>
+
             <div class='col-md-10'>
                 <div class="row">
                 <div class='col-md-3'>
-                    <h4 style="color: #337ab7"><strong>Industry:</strong></h4>
+                    <h4 style="color: black"><strong>Industry:</strong></h4>
                 </div>
 
                 <div class='col-md-3'>
@@ -68,7 +78,7 @@
             <div class='col-md-10'>
                 <div class="row">
                 <div class='col-md-3'>
-                    <h4 style="color: #337ab7"><strong>Company Size:</strong></h4>
+                    <h4 style="color: black"><strong>Company Size:</strong></h4>
                 </div>
 
                 <div class='col-md-3'>
@@ -80,7 +90,7 @@
             <div class='col-md-10'>
                 <div class="row">
                 <div class='col-md-3'>
-                    <h4 style="color: #337ab7"><strong>HeadQuarters:</strong></h4>
+                    <h4 style="color: black"><strong>HeadQuarters:</strong></h4>
                 </div>
 
                 <div class='col-md-3'>
@@ -92,7 +102,7 @@
             <div class='col-md-10'>
                 <div class="row">
                 <div class='col-md-3'>
-                    <h4 style="color: #337ab7"><strong>Founded In:</strong></h4>
+                    <h4 style="color: black"><strong>Founded In:</strong></h4>
                 </div>
 
                 <div class='col-md-3'>
@@ -101,16 +111,24 @@
                 </div>
             </div>
 
+            <div class='col-md-12'>
+                <hr class="line">
+            </div>
+
             <div class='col-md-10'>
                 <div class="row">
                 <div class='col-md-3'>
-                    <h4 style="color: #337ab7"><strong>Company Location:</strong></h4>
+                    <h4 style="color: black"><strong>Company Location:</strong></h4>
                 </div>
 
                 <div class='col-md-3'>
                     <h4>{{location}}</h4> 
                 </div>
                 </div>
+            </div>
+
+            <div class='col-md-12'>
+                <hr class="line">
             </div>
 
 </div>

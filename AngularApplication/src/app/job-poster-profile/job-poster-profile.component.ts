@@ -16,6 +16,7 @@ export class JobPosterProfileComponent implements OnInit {
   contactNo: string="";
   location: string="";
   companyName: string="";
+  companyLogo: string= "";
   Overview: string="";
   website: string="";
   industry: string="";
@@ -38,6 +39,7 @@ export class JobPosterProfileComponent implements OnInit {
       this.contactNo = jobPoster.contactNo;
       this.location = jobPoster.location;
       this.companyName = jobPoster.companyName;
+      this.companyLogo = jobPoster.companyLogo;
       this.Overview = jobPoster.Overview;
       this.website = jobPoster.website;
       this.industry = jobPoster.industry;
@@ -48,6 +50,11 @@ export class JobPosterProfileComponent implements OnInit {
     });
   }
 
+ //split the description string using new line to preserve format
+ getDescription(desc: string): string[] 
+ {
+  return desc.split("\n");
+ }
   jobPosterEditLink(id: string): string {
     this.jobPosterId = id;
     console.log(this.jobPosterId);
