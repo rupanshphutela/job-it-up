@@ -1,20 +1,27 @@
 <div class="container">
     <div class='col-md-12'>
+        <div class="row">
+    <div class='col-md-10'>
         <h1 class="text-center">Profile</h1>
     </div>
-
+    <div id="editJob" class="col-md-2">
+        <button type="button" class="btn btn-dark" *ngIf="isJobSeeker == 'Y'" routerLink={{jobSeekerEditLink((jobSeekerId))}}>Edit Profile</button>
+        <!-- <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'Y'" routerLink={{link((selectedJob.jobId))}}>Edit Job</a> -->
+        </div>
+        </div></div>
             <div class='col-md-12'>
                 <h2><strong>{{fname}} {{lname}}</strong></h2>
             </div>
 
-            <div class='col-md-10'>
-                <h3 class="section-header"><strong>About</strong></h3>
+            <div class='col-md-12'>
+                <div class="border">
+                    <hr class="heading_border">
+                    <h3 class="section-header"><strong>About</strong></h3>
+                    <hr class="heading_border">
+                </div>
             </div>
 
-            <div id="editJob" class="col-md-2">
-                <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'Y'" routerLink={{jobSeekerEditLink((jobSeekerId))}}>Edit Profile</a>
-                <!-- <a class="btn btn-lg btn-primary" *ngIf="isJobSeeker == 'Y'" routerLink={{link((selectedJob.jobId))}}>Edit Job</a> -->
-                </div>
+            
 
             <div class='col-md-12'>
                 <div class="row">
@@ -28,7 +35,8 @@
                 </div>
 
                 <div class='col-md-12'>
-                    <hr class="bg-danger border-2 border-top border-danger">
+                    <!-- <hr class="line"> -->
+                    <h4></h4>
                 </div>
             </div>
 
@@ -71,11 +79,15 @@
                     </div>
                 </div>
             <div class='col-md-12'>
-                <hr class="bg-danger border-2 border-top border-danger">
+                <!-- <hr class="bg-danger border-2 border-top border-danger"> -->
             </div>
 
             <div class='col-md-12'>
+                <div class="border">
+                    <hr class="heading_border">
                 <h3 class="section-header"><strong>Skills</strong></h3>
+                <hr class="heading_border">
+            </div>
             </div>
 
             <div class='col-md-12'>
@@ -94,9 +106,8 @@
                         </div>
                     </div>
                 </div>
-
                 <div class='col-md-12'>
-                    <hr class="bg-danger border-2 border-top border-danger">
+                    <hr class="line">
                 </div>
                 
                 <div class='col-md-12'>
@@ -116,12 +127,14 @@
             </div>
             </div>
 
-            <div class='col-md-12'>
-                <hr class="bg-danger border-2 border-top border-danger">
-            </div>
+            
 
             <div class='col-md-12'>
-                <h3 class="section-header"><strong>Work Experience</strong></h3>
+                <div class="border">
+                    <hr class="heading_border">
+                    <h3 class="section-header"><strong>Work Experience</strong></h3>
+                    <hr class="heading_border">
+                </div>
             </div>
 
             <div class='col-md-12'>
@@ -157,7 +170,7 @@
                     </div>
 
                     <div class='col-md-12'>
-                        <hr class="bg-danger border-2 border-top border-danger">
+                        <hr class="line">
                     </div>
                 </div>
                 </div>
@@ -165,7 +178,11 @@
 
 
             <div class='col-md-12'>
-                <h3 class="section-header"><strong>Education</strong></h3>
+                <div class="border">
+                <hr class="heading_border">
+                    <h3 class="section-header"><strong>Education</strong></h3>
+                    <hr class="heading_border">
+                </div>
             </div>
 
             <div class='col-md-12'>
@@ -201,7 +218,7 @@
                     </div>
 
                     <div class='col-md-12'>
-                        <hr class="bg-danger border-2 border-top border-danger">
+                        <hr class="line">
                     </div>
                 </div>
                 </div>

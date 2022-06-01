@@ -32,7 +32,7 @@ export class AppliedJobsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.isJobSeeker = 'N';
+    this.isJobSeeker = 'Y';
     this.jobSeekerId = '1';
 
     this.apiService.getJobSeekerAppliedJobs(this.jobSeekerId).subscribe((result: JobApplicationClass[]) => {
