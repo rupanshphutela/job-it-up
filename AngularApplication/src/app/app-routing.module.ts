@@ -9,6 +9,7 @@ import { JobSeekerEditProfileComponent } from './job-seeker-edit-profile/job-see
 import { JobPosterProfileComponent } from './job-poster-profile/job-poster-profile.component';
 import { JobPosterEditProfileComponent } from './job-poster-edit-profile/job-poster-edit-profile.component';
 import { ViewApplicantsComponent } from './view-applicants/view-applicants.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [  
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'jobSeekerEditProfile/:id', component: JobSeekerEditProfileComponent},
   { path: 'jobPosterProfile/:id', component: JobPosterProfileComponent},
   { path: 'jobPosterEditProfile/:id', component: JobPosterEditProfileComponent},
-  { path: 'viewApplicants/:id', component: ViewApplicantsComponent}
+  { path: 'viewApplicants/:id', component: ViewApplicantsComponent},
+  { path: 'login', component: LoginComponent}
 
 ];
 

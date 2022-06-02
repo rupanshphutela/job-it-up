@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { JobSeekerClass } from './jobseeker-class';
 import { JobPosterClass } from './jobposter-class';
+import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -30,4 +31,14 @@ export class AppComponent {
     console.log(this.jobPosterId);
     return "/jobPosterProfile/" + (id);    
   }
+
+  public showNavBar = true;
+
+  toggleNavBar(component:any) {
+   if(component instanceof LoginComponent) {
+      this.showNavBar = false;
+   } else {
+      this.showNavBar = true;
+   }
+}
 }

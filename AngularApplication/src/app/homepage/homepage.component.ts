@@ -60,8 +60,6 @@ export class HomepageComponent implements OnInit {
       
     }
     );
-
-
   }
 
   link(index: string): string {

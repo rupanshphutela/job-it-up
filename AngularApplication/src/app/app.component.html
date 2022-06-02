@@ -4,33 +4,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- <link rel="stylesheet" type="text/css" href="index.component.css"> -->
 </head>
-   <div class="container-fluid">
+<div class="container-fluid">
 
-      <nav class="navbar">
-          <div class="container-fluid">
-              <div class="navbar-header">
-                  <!-- need to change below a tag with img for logo. -->
-                  <a class="a"  href="#">
-                      Job It Up
-                  </a>
-              </div>
-          <div class="">
-              <ul class="nav navbar-nav navbar-right bg-dark">
-                  <li class="active"><a href="#">
-                          HOME
-                      </a></li>
-                  <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'Y'" routerLink="appliedJobs">APPLIED JOBS</a></li>
-                  <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'" routerLink="postJob" >POST JOB</a></li>
-                  <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'Y'" routerLink="/jobSeekerProfile/1">PROFILE</a></li>
-                  <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'" routerLink="/jobPosterProfile/1">PROFILE</a></li>
-                  <!-- <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'"  routerLink={{jobPosterLink((jobPoster.jobPosterId))}}>PROFILE</a></li> -->
-                  <!--<li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'"  >PROFILE</a></li> -->
-                  <li><a href="#" class="text-white">ACCOUNT DATA</a></li>
-                  <li><a href="#" class="text-white">LOG OUT</a></li>
-              </ul>
-          </div>
-          </div>
-      </nav>
-<router-outlet></router-outlet>
+    <nav class="navbar" *ngIf="showNavBar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!-- need to change below a tag with img for logo. -->
+                <a class="a" href="#">
+                    Job It Up
+                </a>
+            </div>
+            <div class="">
+                <ul class="nav navbar-nav navbar-right bg-dark">
+                    <li class="active"><a href="#">
+                            HOME
+                        </a></li>
+                    <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'Y'" routerLink="appliedJobs">APPLIED
+                            JOBS</a></li>
+                    <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'" routerLink="postJob">POST JOB</a></li>
+                    <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'Y'"
+                            routerLink="/jobSeekerProfile/1">PROFILE</a></li>
+                    <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'"
+                            routerLink="/jobPosterProfile/1">PROFILE</a></li>
+                    <!-- <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'"  routerLink={{jobPosterLink((jobPoster.jobPosterId))}}>PROFILE</a></li> -->
+                    <!--<li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'"  >PROFILE</a></li> -->
+                    <li><a href="#" class="text-white">ACCOUNT DATA</a></li>
+                    <li><a href="#" class="text-white">LOG OUT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <router-outlet (activate)="toggleNavBar($event)"></router-outlet>
 
-    </div>
+</div>
