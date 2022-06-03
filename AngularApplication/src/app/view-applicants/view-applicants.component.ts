@@ -76,7 +76,7 @@ export class ViewApplicantsComponent implements OnInit {
     }
     else {
       alert("Operation canceled")
-      window.location.reload();
+      this.ngOnInit();
     }
   }
 
@@ -94,7 +94,7 @@ export class ViewApplicantsComponent implements OnInit {
     }
     else {
       alert("Operation canceled")
-      window.location.reload();
+      this.ngOnInit();
     }
   }
 

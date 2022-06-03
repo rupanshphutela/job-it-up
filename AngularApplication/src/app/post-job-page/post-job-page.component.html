@@ -93,7 +93,7 @@
                             <button class="btn btn-primary btn-lg click" *ngIf="selectedJob" type="submit">Close Job</button>
                             &nbsp; &nbsp; &nbsp; &nbsp;
                             &nbsp; &nbsp; &nbsp; &nbsp;
-                            <button class="btn btn-cancel btn-lg" routerLink="" >Back</button>
+                            <button class="btn btn-cancel btn-lg" routerLink={{alljobs()}} >Back</button>
                             <div *ngIf="response_id.length>0">
                                 <h4>The job post has been added successfully!</h4>
                              </div>

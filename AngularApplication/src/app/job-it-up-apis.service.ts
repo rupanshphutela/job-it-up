@@ -10,17 +10,18 @@ import { Form, FormGroup } from '@angular/forms';
 })
 export class JobItUpApisService {
 
-  hostUrl: string = 'https://jobitup.azurewebsites.net:443/';
-//  hostUrl: string = 'http://localhost:8080/';
-  jobPosterId: string = '1';
+  //hostUrl: string = 'https://jobitup.azurewebsites.net:443/';
+  hostUrl: string = 'http://localhost:8080/';
+  // jobPosterId!: string;
   constructor(private http: HttpClient) { }
 
-  getJobs(isJobSeeker: string) {
+  getJobs(isJobSeeker: string, jobPosterId: String) {
     if (isJobSeeker == 'Y') {
       return this.http.get<JobClass[]>(this.hostUrl + 'app/job');
     }
-
-    return this.http.get<JobClass[]>(this.hostUrl + 'app/job/jobposter/' + this.jobPosterId);
+    else{
+    return this.http.get<JobClass[]>(this.hostUrl + 'app/job/jobposter/' + jobPosterId);
+    }
   }
 
   getSpecificJob(id: string) {
@@ -75,7 +76,7 @@ export class JobItUpApisService {
     return this.http.put<any>(this.hostUrl + 'app/jobApplication/' + jobApplicationId,status);
   }
 
-  searchJobs(isJobSeeker: string, checkoutForm: FormGroup) {
+  searchJobs(isJobSeeker: string, jobPosterId: String, checkoutForm: FormGroup) {
     let params = new HttpParams();
     if (checkoutForm.get('title')?.value != '') {
       params = params.append('title', checkoutForm.get('title')?.value);
@@ -95,7 +96,7 @@ export class JobItUpApisService {
     if (isJobSeeker == 'Y') {
       return this.http.get<JobClass[]>(this.hostUrl + "app/jobs", { params: params });
     } else {
-      return this.http.get<JobClass[]>(this.hostUrl + "app/jobposter/" + this.jobPosterId + "/jobs", { params: params });
+      return this.http.get<JobClass[]>(this.hostUrl + "app/jobposter/" + jobPosterId + "/jobs", { params: params });
     }
   }
 }

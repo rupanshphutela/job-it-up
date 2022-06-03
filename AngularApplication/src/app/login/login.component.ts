@@ -12,8 +12,4 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  viewGoogleAuth(): void {
-      // return "auth/google";  
-    this.document.location.href = "https://jobitup.azurewebsites.net/auth/google";
-  }
 }

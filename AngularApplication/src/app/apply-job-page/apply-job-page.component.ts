@@ -13,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 export class ApplyJobPageComponent implements OnInit {
   jobId: string = "";
   response_id: string="";
+  jobSeekerId: string="";
  // form: FormGroup;
 
   checkoutForm = this.fb.group({
@@ -36,6 +37,7 @@ export class ApplyJobPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.jobId = this.route.snapshot.params['id'];
+    this.jobSeekerId = this.route.snapshot.params['jobSeekerId'];
     console.log("this is id. in apply job cmpt 16:", this.jobId);
   }
 
@@ -44,7 +46,7 @@ export class ApplyJobPageComponent implements OnInit {
 
     this.checkoutForm.patchValue({
       jobId: this.jobId,
-      jobSeekerId: "1",
+      jobSeekerId: this.jobSeekerId,
       status: "Applied"
     });
 
@@ -53,6 +55,10 @@ export class ApplyJobPageComponent implements OnInit {
       this.response_id = response.id;
       console.log(response);
     });
+  }
+
+  alljobs(): string {
+    return "/homepage/" + (this.jobSeekerId) + '/Y';
   }
   
 

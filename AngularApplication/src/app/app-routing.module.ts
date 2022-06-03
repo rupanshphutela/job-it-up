@@ -13,12 +13,13 @@ import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [  
-  { path: '', component: HomepageComponent },
-  { path: 'applyjob/:id', component: ApplyJobPageComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'homepage/:id/:isJobSeeker', component: HomepageComponent },
+  { path: 'applyjob/:id/:jobSeekerId', component: ApplyJobPageComponent },
   { path: 'postJob', component: PostJobPageComponent },
   { path: 'appliedJobs', component: AppliedJobsComponent },
   { path: 'jobSeekerProfile/:id', component: JobSeekerProfileComponent},
-  { path: 'editjob/:id', component: PostJobPageComponent },
+  { path: 'editjob/:jobPosterId/:jobId', component: PostJobPageComponent },
   { path: 'jobSeekerEditProfile/:id', component: JobSeekerEditProfileComponent},
   { path: 'jobPosterProfile/:id', component: JobPosterProfileComponent},
   { path: 'jobPosterEditProfile/:id', component: JobPosterEditProfileComponent},
@@ -28,7 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

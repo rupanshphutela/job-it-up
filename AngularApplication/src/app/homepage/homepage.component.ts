@@ -3,6 +3,7 @@ import { JobClass } from '../job-class';
 import { JobPosterClass } from '../jobposter-class';
 import { JobItUpApisService } from '../job-it-up-apis.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -20,6 +21,7 @@ export class HomepageComponent implements OnInit {
   selectedCompanyName!: String;
   isJobSeeker!: string;
   jobPosterId!: String;
+  jobSeekerId!: String;
 
   checkoutForm = this.fb.group({
     title: '',
@@ -28,13 +30,28 @@ export class HomepageComponent implements OnInit {
     startDate: '',
     endDate: ''
   });
-  constructor(private fb: FormBuilder,private apiService: JobItUpApisService) {
+  constructor(
+    private fb: FormBuilder,
+    private apiService: JobItUpApisService,
+    private route: ActivatedRoute
+    ) {
 
   }
 
   ngOnInit(): void {
-    this.isJobSeeker='N';
-    this.apiService.getJobs(this.isJobSeeker).subscribe((result: JobClass[]) => {
+    this.isJobSeeker = this.route.snapshot.params['isJobSeeker'];
+    if(this.isJobSeeker == "N")
+    {
+      this.jobPosterId = this.route.snapshot.params['id'];
+    }
+    else
+    {
+      this.jobSeekerId = this.route.snapshot.params['id'];
+    }
+    // this.isJobSeeker='N';
+    // if(this.isJobSeeker == "Y")
+    // {
+    this.apiService.getJobs(this.isJobSeeker, this.jobPosterId).subscribe((result: JobClass[]) => {
       console.log("The response for all jobs is",result);
       this.results = result;
       this.selectedJob = result[0];
@@ -56,21 +73,18 @@ export class HomepageComponent implements OnInit {
             }
           });
         });
-        
-      
-    }
-    );
+      });
+    // }
   }
 
   link(index: string): string {
-    this.jobId = index;
-    console.log(this.jobId);
-    return "/applyjob/" + (index);
+    console.log('Job Seeker: ',this.jobSeekerId, 'applying to Job ID: ', index);
+    return "/applyjob/" + (index) + '/' + this.jobSeekerId;
   }
   editJobLink(index: string): string {
     this.jobId = index;
-    console.log(this.jobId);
-    return "/editjob/" + (index);
+    console.log("Going to edit job id: ", index, " posted by job poster: ", this.jobPosterId);
+    return "/editjob/" + (this.jobPosterId) + '/' + index;
   }
   listClick(newValue: JobClass,index: number) {
 
@@ -87,7 +101,7 @@ export class HomepageComponent implements OnInit {
 
   search(){
     console.log("Values from HTML are.....", this.checkoutForm.value)
-    this.apiService.searchJobs(this.isJobSeeker,this.checkoutForm).subscribe((result: JobClass[]) => {   
+    this.apiService.searchJobs(this.isJobSeeker, this.jobPosterId,this.checkoutForm).subscribe((result: JobClass[]) => {   
       this.results = result;
       this.selectedJob = result[0];
       console.log("job results:" + this.results);
@@ -112,7 +126,7 @@ if(result!=null){
     });
   }
   viewApplicants(index:string): string {
-    this.jobPosterId = "1";
+    // this.jobPosterId = "1";
     this.jobId = index;
     return "/viewApplicants/" + (this.jobId);
   }

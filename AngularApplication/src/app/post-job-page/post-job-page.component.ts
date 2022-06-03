@@ -14,6 +14,7 @@ import { DatePipe } from '@angular/common';
 export class PostJobPageComponent implements OnInit {
   jobId: string = "";
   response_id: string="";
+  jobPosterId: string="";
   selectedJob!: JobClass;
   checkoutForm = this.fb.group({
     title: '',
@@ -36,8 +37,12 @@ export class PostJobPageComponent implements OnInit {
     private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.jobId = this.route.snapshot.params['id'];
-    console.log("this is id. in post a job cmpt 16:", this.jobId);
+    this.jobId = this.route.snapshot.params['jobId'];
+    this.jobPosterId = this.route.snapshot.params['jobPosterId'];
+
+    console.log("this is jobid received by post/edit a job component", this.jobId);
+    console.log("this is jobPosterId received by post/edit a job component", this.jobPosterId);
+
     
     if(this.jobId!=null){
       this.apiService.getSpecificJob(this.jobId).subscribe((result: JobClass) => {
@@ -53,7 +58,7 @@ export class PostJobPageComponent implements OnInit {
 
     this.checkoutForm.patchValue({
       jobId: this.jobId,
-      jobPosterId: "1",
+      jobPosterId: this.jobPosterId,
       hasApplicants: "N",
     });
 
@@ -62,19 +67,18 @@ export class PostJobPageComponent implements OnInit {
     this.apiService.createJobPost(this.checkoutForm.value).subscribe((response) =>{
       this.response_id = response.id;
       console.log(response);
-    });
-  }else{
-    this.apiService.updateJobPost(this.checkoutForm.value,this.selectedJob.jobId).subscribe((response) =>{
-      this.response_id = response.id;
-      
-      console.log(response);
-    });
+      });
+    }
+    else{
+      this.apiService.updateJobPost(this.checkoutForm.value,this.selectedJob.jobId).subscribe((response) =>{
+        this.response_id = response.id;
+        
+        console.log(response);
+      });
+    }
   }
 
- 
+  alljobs(): string {
+    return "/homepage/" + (this.jobPosterId) + '/N';
   }
-
- 
-
-
 }
