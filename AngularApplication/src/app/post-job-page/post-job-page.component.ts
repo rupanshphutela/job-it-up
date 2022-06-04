@@ -71,7 +71,7 @@ export class PostJobPageComponent implements OnInit {
     }
     else{
       this.apiService.updateJobPost(this.checkoutForm.value,this.selectedJob.jobId).subscribe((response) =>{
-        this.response_id = response.id;
+        this.response_id = response.jobId;
         
         console.log(response);
       });
