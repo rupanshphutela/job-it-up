@@ -4,6 +4,7 @@ import { JobPosterClass } from '../jobposter-class';
 import { JobItUpApisService } from '../job-it-up-apis.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { UserClass } from '../user-class';
 
 @Component({
   selector: 'app-homepage',
@@ -23,6 +24,11 @@ export class HomepageComponent implements OnInit {
   jobPosterId!: String;
   jobSeekerId!: String;
 
+  userresults!: UserClass;
+  userId!: string;
+  displayName!: string;
+  profileType!: string;
+
   checkoutForm = this.fb.group({
     title: '',
     domain: 'Select Domain',
@@ -38,7 +44,7 @@ export class HomepageComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.isJobSeeker = this.route.snapshot.params['isJobSeeker'];
     if(this.isJobSeeker == "N")
     {
@@ -74,7 +80,26 @@ export class HomepageComponent implements OnInit {
           });
         });
       });
+      await this.getUser();
     // }
+  }
+
+  async getUser()
+  {
+      let user: UserClass= await this.apiService.getUser();
+      this.userresults = user;
+      this.userId = user.userId;
+      this.displayName = user.userName;
+      this.profileType = user.profileType;
+      console.log ('After get User API call -User ID is ', this.userId, "displayName is ", this.displayName, "profileType is ", this.profileType);
+
+      if(this.profileType == 'JP')
+      {
+        this.isJobSeeker = 'N';
+      }
+      else{
+        this.isJobSeeker = 'Y';
+      } 
   }
 
   link(index: string): string {

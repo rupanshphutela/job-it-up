@@ -58,7 +58,8 @@ export class ApplyJobPageComponent implements OnInit {
   }
 
   alljobs(): string {
-    return "/homepage/" + (this.jobSeekerId) + '/Y';
+    console.log("Go back to Homepage from apply jobs page: ", this.jobSeekerId)
+    return '/homepage/' + (this.jobSeekerId) + '/Y';
   }
   
 

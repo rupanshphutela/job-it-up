@@ -18,7 +18,7 @@ describe('Post Job result', function () {
    //   chai.request("http://localhost:8080")
         chai.request("https://jobitup.azurewebsites.net/")
             .post("/api/job")
-            .send({title: "Ux designer 2",skills : "javascript, java",domain : "Software industry", jobId :"1", jobPosterId :"1", location :"seattle", description :"This is a Ux designing job", salary :"15k", applydeadline :"07/12/2022",
+            .send({title: "Ux designer 2",skills : "javascript, java",domain : "Software industry", jobId :"1", jobPosterId :"2", location :"seattle", description :"This is a Ux designing job", salary :"15k", applydeadline :"07/12/2022",
             startDate :"06/13/2022", endDate :"06/18/2022", experienceNeeded : "2 years", hasApplicants : "N"})
             .end(function (err, res) {
                 requestResult = res.body;

@@ -42,14 +42,6 @@
             </div>
         </div>
     </nav>
-    <div class="col-md-12" *ngIf="showNavBar">
-        <div class="row">
-        <p style="color: white"><strong>Google User: {{this.userId}}</strong></p>
-        </div>
-        <div class="row">
-        <p style="color: white"><strong>Google Name: {{this.displayName}}</strong></p>
-        </div>
-    </div>
     <router-outlet (activate)="toggleNavBar($event)"></router-outlet>
 
 </div>

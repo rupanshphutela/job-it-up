@@ -46,8 +46,8 @@ export class ViewApplicantsComponent implements OnInit {
             .subscribe((JobSeeker: JobSeekerClass) => {
               this.applicantName[index] =
                 JobSeeker.fname + ' ' + JobSeeker.lname;
-              this.email[index] = JobSeeker.email;
-              this.phone[index] = JobSeeker.contactNo;
+              this.email[index] = jobApplications[index].email;
+              this.phone[index] = jobApplications[index].phone;
               this.status[index] = jobApplications[index].status;
             });
           this.apiService

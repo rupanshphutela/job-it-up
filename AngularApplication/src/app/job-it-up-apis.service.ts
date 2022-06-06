@@ -11,8 +11,8 @@ import { UserClass } from './user-class';
 })
 export class JobItUpApisService {
 
-  hostUrl: string = 'https://jobitup.azurewebsites.net:443/';
-  // hostUrl: string = 'http://localhost:8080/';
+    hostUrl: string = 'https://jobitup.azurewebsites.net:443/';
+  //hostUrl: string = 'http://localhost:8080/';
   // jobPosterId!: string;
   constructor(private http: HttpClient) { }
 
@@ -54,6 +54,12 @@ export class JobItUpApisService {
   }
   createJobPost(checkoutForm: FormData) {
     return this.http.post<any>(this.hostUrl + 'app/job/', checkoutForm);
+  }
+
+  deleteJob(id: string) {
+
+    return this.http.delete<number>(this.hostUrl + "app/job/" + id);
+
   }
 
   getJobSeekerProfile(id: string) {
