@@ -274,7 +274,7 @@ jobCollection.insert(
 jobCollection.insert(
 {
 	title: "Dental Assistant",
-	skills: ["Idaho Functions certificate(s)","EFDA"],
+	skills: ["EFDA"],
 	domain: "Dental",
 	jobId:"2",
 	jobPosterId: "2",
