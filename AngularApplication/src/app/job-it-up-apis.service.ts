@@ -4,6 +4,7 @@ import { JobClass } from './job-class';
 import { JobSeekerClass } from './jobseeker-class';
 import { JobPosterClass } from './jobposter-class';
 import { Form, FormGroup } from '@angular/forms';
+import { UserClass } from './user-class';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { Form, FormGroup } from '@angular/forms';
 export class JobItUpApisService {
 
   hostUrl: string = 'https://jobitup.azurewebsites.net:443/';
-  //hostUrl: string = 'http://localhost:8080/';
+  // hostUrl: string = 'http://localhost:8080/';
   // jobPosterId!: string;
   constructor(private http: HttpClient) { }
 
@@ -23,6 +24,21 @@ export class JobItUpApisService {
     return this.http.get<JobClass[]>(this.hostUrl + 'app/job/jobposter/' + jobPosterId);
     }
   }
+
+  async getUser():Promise<UserClass>
+  {
+    const result = await this.http.get<any>(this.hostUrl + 'app/current/').toPromise();
+    console.log("Inside get User service - async await - ", result);
+    return result;
+  }
+
+  getCurrentUser() {
+
+    console.log("getting user");
+    
+    return this.http.get<any>(this.hostUrl + 'user/current/' );
+    
+    }
 
   getSpecificJob(id: string) {
     return this.http.get<any>(this.hostUrl + 'app/job/' + id);

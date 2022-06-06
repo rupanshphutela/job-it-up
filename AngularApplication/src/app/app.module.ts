@@ -16,6 +16,7 @@ import { JobPosterProfileComponent } from './job-poster-profile/job-poster-profi
 import { JobPosterEditProfileComponent } from './job-poster-edit-profile/job-poster-edit-profile.component';
 import { ViewApplicantsComponent } from './view-applicants/view-applicants.component';
 import { LoginComponent } from './login/login.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import { LoginComponent } from './login/login.component';
     FormsModule,    //added here too
     ReactiveFormsModule //added here too
   ],
-  providers: [],
+  providers: [
+    CookieService,
+  ],
   bootstrap: [AppComponent],
   exports: [
     FormsModule,

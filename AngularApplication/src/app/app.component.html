@@ -10,30 +10,46 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <!-- need to change below a tag with img for logo. -->
-                <a class="a" href="#">
+                <a class="a" *ngIf="isJobSeeker == 'Y'" href="#" routerLink="homepage/1/Y">
+                    Job It Up
+                </a>
+
+                <a class="a" *ngIf="isJobSeeker == 'N'" href="#" routerLink="homepage/1/N">
                     Job It Up
                 </a>
             </div>
             <div class="">
                 <ul class="nav navbar-nav navbar-right bg-dark">
-                    <li class="active"><a href="#">
+                    <li class="active" *ngIf="isJobSeeker == 'Y'"><a href="#" routerLink="homepage/1/Y">
                             HOME
                         </a></li>
-                    <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'Y'" routerLink="appliedJobs">APPLIED
-                            JOBS</a></li>
+
+                        <li class="active" *ngIf="isJobSeeker == 'N'"><a href="#" routerLink="homepage/1/N">
+                            HOME
+                        </a></li>
+                    <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'Y'" routerLink="appliedJobs">APPLIED JOBS</a></li>
                     <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'" routerLink="postJob">POST JOB</a></li>
                     <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'Y'"
-                            routerLink="/jobSeekerProfile/1">PROFILE</a></li>
-                    <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'"
+                        routerLink="/jobSeekerProfile/1">PROFILE</a></li>
+<!--                        routerLink="/jobSeekerProfile/{{this.userId}}">PROFILE</a></li>-->
+                        <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'"
                             routerLink="/jobPosterProfile/1">PROFILE</a></li>
                     <!-- <li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'"  routerLink={{jobPosterLink((jobPoster.jobPosterId))}}>PROFILE</a></li> -->
                     <!--<li><a href="#" class="text-white" *ngIf="isJobSeeker == 'N'"  >PROFILE</a></li> -->
-                    <li><a href="#" class="text-white">ACCOUNT DATA</a></li>
+                    <!-- <li ><a href="#" class="text-white">ACCOUNT DATA</a></li> -->
                     <li><a href="/auth/logout" class="text-white">LOG OUT</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    <div class="col-md-12" *ngIf="showNavBar">
+        <div class="row">
+        <p style="color: white"><strong>Google User: {{this.userId}}</strong></p>
+        </div>
+        <div class="row">
+        <p style="color: white"><strong>Google Name: {{this.displayName}}</strong></p>
+        </div>
+    </div>
     <router-outlet (activate)="toggleNavBar($event)"></router-outlet>
 
 </div>
