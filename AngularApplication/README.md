@@ -59,3 +59,12 @@ ng serve
 http://localhost:4200/
 http://localhost:4200/appliedJob
 http://localhost:4200/applyjob/1
+
+## 9. Google accounts
+jobseekerteam6@gmail.com/nehu.1234
+jobposterteam6@gmail.com/nehu.1234
+
+Mongo account - https://cloud.mongodb.com/
+Azure- https://portal.azure.com/?Microsoft_Azure_Education_correlationId=9a2eb02aafe449e4b283d191d3f90149&Microsoft_Azure_Education_newA4E=true&Microsoft_Azure_Education_asoSubGuid=8f9df028-1623-4aba-bfb1-fbb8a4bec339#@redhawks.onmicrosoft.com/resource/subscriptions/8f9df028-1623-4aba-bfb1-fbb8a4bec339/resourcegroups/WestUS/providers/Microsoft.Web/sites/JobItUp/appServices
+Local Git azure credentials
+CPSC5240team6/Nehu1234@
